@@ -1,0 +1,54 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+
+.card_description{
+    max-height: 40px;
+    overflow: hidden;
+}
+
+.show{
+    max-height: fit-content;
+}
+
+.inside_img{
+    width: 50%;
+    margin: auto;
+}
+
+.card_inside_title{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.card_inside_short_content{
+    font-size: 22px;
+}
+
+.card_inside_content{
+    font-size: 18px;
+}
+
+.inside_form{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+
+
+@media  screen and (max-width: 991px) {
+  .inside_img{
+      width: 100%;
+  }
+}
