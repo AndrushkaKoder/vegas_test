@@ -2,32 +2,22 @@
 
 @section('content')
 
-    @if(!empty($info))
-    <section class="py-5 text-center container">
-        <div class="row py-lg-3">
-            <div class="col-lg-6 col-md-8 mx-auto">
-                @foreach($info as $item)
-                <h1 class="fw-light">{{$item->title}}</h1>
-                <p class="lead text-muted">
-                    {{$item->content}}
-                </p>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    @endif
     <div class="album py-5 bg-light">
         <div class="container">
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
 
-                @if(!empty($services))
-                    @foreach($services as $item)
+                @if(!empty($service))
+                    @foreach($service as $item)
                 <div class="col">
                     <div class="card shadow-sm">
                         <a href="{{route('services.show', [$item->slug])}}">
-                            <img src="{{$item->img}}" alt="photo" width="100%" height="225">
+
+                            @if ($img = $item->getImg('outer'))
+                            <img src="{{ asset('_files/'. $img->filename) }}" alt="photo" width="100%" height="225">
+                            @endif
+
                         </a>
                         <div class="card-body">
                             <h4>{{$item->title}}</h4>
@@ -48,6 +38,11 @@
                     </div>
                 </div>
                     @endforeach
+
+                @else
+
+                    нет сервисов
+
                 @endif
 
 
@@ -55,7 +50,7 @@
 
             <div class="row mt-5">
                 <div class="col-12 d-flex justify-content-center">
-                    {{$services->links()}}
+{{--                    {{$service->links()}}--}}
                 </div>
             </div>
 

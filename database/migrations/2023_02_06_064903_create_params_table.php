@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateServicesTable extends Migration
+class CreateParamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('params', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->text('short_content');
-            $table->text('content');
-            $table->text('_files');
+            $table->string('name');
+            $table->string('value');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('params');
     }
 }

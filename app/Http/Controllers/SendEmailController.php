@@ -22,7 +22,7 @@ class SendEmailController extends Controller
                 : $mailBody = '';
 
             //Вставить свой e-mail и чекать спам
-            Mail::to('ivany4h@yandex.ru')->send(new MailController($mailBody));
+            Mail::to('andrusha.kolmakov@yandex.ru')->send(new MailController($mailBody));
 
             $request->session()->flash('success', 'Мы свяжемся с Вами в течение 10 минут');
 

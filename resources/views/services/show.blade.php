@@ -14,8 +14,10 @@
 
                 <div class="col-lg-6 col-md-12 inside_img">
 
-                    <img src="{{$service->img}}" alt="photo" width="100%"
+                    @if($img = $service->getImg('inner'))
+                    <img src="{{ asset('_files/' . $img->filename) }}" alt="photo" width="100%"
                          height="405">
+                    @endif
 
                     <div class="card-body text-center">
                         <h4 class="card_inside_title">{{$service->title}}</h4>
