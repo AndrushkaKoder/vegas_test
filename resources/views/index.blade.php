@@ -15,7 +15,7 @@
                         <a href="{{route('services.show', [$item->slug])}}">
 
                             @if ($img = $item->getImg('outer'))
-                            <img src="{{ asset('_files/'. $img->filename) }}" alt="photo" width="100%" height="225">
+                            <img src="{{ $img->getPath() }}" alt="photo" width="100%" height="225">
                             @endif
 
                         </a>

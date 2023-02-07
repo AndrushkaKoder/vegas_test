@@ -15,7 +15,7 @@
                 <div class="col-lg-6 col-md-12 inside_img">
 
                     @if($img = $service->getImg('inner'))
-                    <img src="{{ asset('_files/' . $img->filename) }}" alt="photo" width="100%"
+                    <img src="{{ $img->getPath() }}" alt="photo" width="100%"
                          height="405">
                     @endif
 

@@ -18,7 +18,7 @@ class ServiceFactory extends Factory
 //            'title' => $this->faker->word,
 //            'short_content' => $this->faker->paragraph,
 //            'content' => $this->faker->text(30),
-//            '_files' => $this->faker->imageUrl(),
+//            'files' => $this->faker->imageUrl(),
 //            'created_at' => $this->faker->dateTime,
 //            'updated_at' => $this->faker->dateTime,
 //            'slug' => $this->faker->word

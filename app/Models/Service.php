@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use App\helpers\ModelHelper;
 
 class Service extends Model
 {
@@ -16,19 +19,40 @@ class Service extends Model
         return $this->morphMany(Files::class, 'imageable');
     }
 
+//Вынести в трейт savefile, files, getImg
+
+    public function saveFile($name, $filepath)
+    {
+        $object = $this;
+        $class = get_class($object);
+        $id = $object->id;
+        $copyToDir = str_replace('\\', '/', public_path("files/{$class}/{$id}/{$name}"));
+
+        if (!is_dir($copyToDir)) {
+            File::makeDirectory($copyToDir, 0755, true, true);
+        }
+
+        if (mb_strpos($filepath, 'https://') !== 0) {
+            $fileName = File::basename($filepath);
+            $copyToFile = "{$copyToDir}/{$fileName}";
 
 
-//    public function image1()
-//    {
-//        $item = self::find(1);
-//        $file = new Files();
-//        $file->filename = '223';
-//        $file->name = 'list';
-//        //$file->name = 'main';
-//        $item->files()->save($file);
-//        $file->saveFile(public_path('_files/avto.jpg'));
-//        return $this->files()->where('name', 'image1');
-//    }
+            File::copy($filepath, $copyToFile);
+        } else {
+            $content = file_get_contents($filepath); //контент внутри файла
+            $fileName = File::basename($filepath); //как он будет называться
+            file_put_contents($copyToDir . "/" . $fileName, $content);
+        }
+
+
+        Files::query()->create([
+            'name' => $name,
+            'filename' => $fileName,
+            'imageable_id' => $id,
+            'imageable_type' => $class
+
+        ]);
+    }
 
     public function getImg($name)
     {
@@ -36,21 +60,19 @@ class Service extends Model
     }
 
 
-    public function saveFile($filepath)
+
+    protected static function booted()
     {
-        $filename = File::basename($filepath);
-        $object = $this->object;
-        $class = get_class($object);
-        $id = $object->id;
-        $name = $this->name;
-        $dir = public_path("files/{$class}/{$id}/{$name}");
+        parent::booted();
+
+        static::creating(function ($service) {
+
+            $service->attributes['slug'] = Str::slug($service->title);
+
+        });
     }
 
 
-
-
-
-
-
-
 }
+
+//

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Service;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class ServicesSeeder extends Seeder
 {
@@ -17,25 +18,23 @@ class ServicesSeeder extends Seeder
     {
         $data = include storage_path("seed/services/services.php");
 
-        foreach ($data as $item){
-
+        foreach ($data as $item) {
             $service = Service::query()->create([
                 'title' => $item['title'],
                 'short_content' => $item['short_content'],
                 'content' => $item['content'],
-                'slug' => $item['slug']
+
             ]);
 
-            $service->saveFile($imgName, $imgFilename);
+            foreach ($item['images'] as $name => $filename) {
+                if (mb_strpos($filename, 'https://') !== 0)
+                    $filename = storage_path("seed/services/files/$filename");
+
+                $service->saveFile($name, $filename);  //inner, D:/OpenServer/domains/vegas/public/files/avto.jpg
+            }
         }
 
 
-
-//         Service::query()->create(Arr::only($data, ['title', 'short_content', 'content', 'slug']));
-
-//        foreach ($data['images'] as $imgName => $imgFilename) {
-//            $imgFilename = public_path("_files/{$imgFilename}");
-//            $item->saveFile($imgName, $imgFilename);
-//        }
     }
+
 }

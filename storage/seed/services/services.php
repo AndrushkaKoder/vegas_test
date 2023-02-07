@@ -7,7 +7,6 @@
             'inner' => 'avto.jpg',
             'outer' => 'avto2.jpg',
         ],
-        'slug' => 'avtoservis'
     ],
 
     [
@@ -18,7 +17,6 @@
             'inner' => 'sobaki.jpg',
             'outer' => 'sobaki2.jpg',
         ],
-        'slug' => 'vigul_sobak'
     ],
 
     [
@@ -29,7 +27,16 @@
             'inner' => 'strizhka.jpg',
             'outer' => 'strizhka2.jpg',
         ],
-        'slug' => 'strizhka'
+    ],
+
+    [
+        'title' => 'Стрижка с URL',
+        'short_content' => 'Добавляем картинку из интернета',
+        'content' => 'lorem ipsum',
+        'images' => [
+            'inner' => 'https://images.thevoicemag.ru/upload/img_cache/1ec/1ec52e7fe48dad52cabaaac0cab36f7b_cropped_666x833.jpg',
+            'outer' => 'https://images.thevoicemag.ru/upload/img_cache/de8/de8b0c91857dcc47d3a1edba3b731666_cropped_666x833.jpg',
+        ],
     ],
 
 
