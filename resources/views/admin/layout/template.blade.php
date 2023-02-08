@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Администратор</title>
+    @include('admin.layout.meta')
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    @include('admin.layout.header')
+
+    @include('admin.layout.sidebar')
+
+    <main>
+        @yield('content')
+    </main>
+
+    <footer class="main-footer">
+        @include('admin.layout.footer')
+    </footer>
+
+    <aside class="control-sidebar control-sidebar-dark"></aside>
+
+</div>
+
+
+<script src="{{ asset('assets/_admin/js/admin.js') }}"></script>
+</body>
+</html>

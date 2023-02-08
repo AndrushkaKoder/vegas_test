@@ -10,7 +10,6 @@ class Files extends Model
 {
     use HasFactory;
 
-
     public function object(): \Illuminate\Database\Eloquent\Relations\MorphTo
     {
         return $this->morphTo();
@@ -18,7 +17,7 @@ class Files extends Model
 
     public function getPath($relative = true)
     {
-        $path = "/files/$this->imageable_type/$this->imageable_id/$this->name/$this->filename";
+        $path = "/assets/frontend/files/$this->imageable_type/$this->imageable_id/$this->name/$this->filename";
         $path = str_replace('\\', '/', $path);
 
         if ($relative) {

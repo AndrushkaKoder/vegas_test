@@ -17,6 +17,8 @@ class CreateFilesTable extends Migration
             $table->increments('id');
             $table->string('filename');
             $table->string('name');
+            $table->integer('imageable_id');
+            $table->string('imageable_type');
             $table->timestamps();
         });
     }
@@ -28,6 +30,9 @@ class CreateFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('files');
+        Schema::table('files', function (Blueprint $table) {
+            $table->dropColumn('imageable_id');
+            $table->dropColumn('imageable_type');
+        });
     }
 }

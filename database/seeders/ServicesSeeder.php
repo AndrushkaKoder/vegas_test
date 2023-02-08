@@ -19,11 +19,11 @@ class ServicesSeeder extends Seeder
         $data = include storage_path("seed/services/services.php");
 
         foreach ($data as $item) {
+            /** @var Service $service */
             $service = Service::query()->create([
                 'title' => $item['title'],
                 'short_content' => $item['short_content'],
                 'content' => $item['content'],
-
             ]);
 
             foreach ($item['images'] as $name => $filename) {
@@ -33,8 +33,6 @@ class ServicesSeeder extends Seeder
                 $service->saveFile($name, $filename);  //inner, D:/OpenServer/domains/vegas/public/files/avto.jpg
             }
         }
-
-
     }
 
 }

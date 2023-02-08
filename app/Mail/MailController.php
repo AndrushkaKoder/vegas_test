@@ -31,6 +31,6 @@ class MailController extends Mailable
      */
     public function build()
     {
-        return $this->from('andrusha.kolmakov@yandex.ru', 'From Test App')->view('mail');
+        return $this->from('andrusha.kolmakov@yandex.ru', 'From Test App')->view('frontend.mail');
     }
 }

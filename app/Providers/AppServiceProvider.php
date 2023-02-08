@@ -2,14 +2,11 @@
 
 namespace App\Providers;
 
-use App\Http\Controllers\IndexController;
 use App\Models\Contacts;
 use App\Models\Social;
-use http\Header;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-
-use Illuminate\Pagination\Paginator;
 
 
 class AppServiceProvider extends ServiceProvider
