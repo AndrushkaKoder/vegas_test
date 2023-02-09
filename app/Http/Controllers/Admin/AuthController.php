@@ -10,41 +10,38 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
 
-    public function login()
-    {
-        return view('admin.login');
-    }
+	public function login()
+	{
+		return view('admin.login');
+	}
 
+	/**
+	 * @throws \Illuminate\Validation\ValidationException
+	 */
+	public function auth(Request $request)
+	{
+		$this->validate($request, [
+			'login' => ['required', 'max:100'],
+			'password' => ['required']
+		]);
 
-    /**
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function auth(Request $request)
-    {
-        //Добавить админа через new Admin
-        $admin = (new Admin([
-            'password' => 'asdfasdf',
-        ]))->save();
-        $a=1;
-        $this->validate($request, [
-            'login' => 'required',
-            'password' => 'required'
-        ]);
+		if (Auth::guard('admin')->attempt([
+			'login' => $request->input('login'),
+			'password' => $request->input('password'),
+			'active' => 1
+		])) {
+			return redirect()->route('admin.index');
+		} else {
+			return back()->with('error', 'Некорректные данные. Попробуйте еще раз');
+		}
 
-        if (Auth::guard('admin')->attempt([
-            'login' => $request->input('login'),
-            'password' => $request->input('password')])){
-            return redirect('admin.index');
-        } else {
-            return 'Авторизация не прошла';
-        }
-//        dd($request->input('login'));
-    }
+	}
 
-
-    public function logout()
-    {
-        Auth::guard('admin')->logout();
-        return redirect()->route('admin.login');
-    }
+	public function logout(Request $request): \Illuminate\Http\RedirectResponse
+	{
+		Auth::guard('admin')->logout();
+		$request->session()->regenerate();
+		$request->session()->regenerateToken();
+		return redirect()->route('admin.login');
+	}
 }

@@ -9,28 +9,28 @@ use Illuminate\Queue\SerializesModels;
 
 class MailController extends Mailable
 {
-    use Queueable, SerializesModels;
+	use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
+	/**
+	 * Create a new message instance.
+	 *
+	 * @return void
+	 */
 
-    public $mailBody;
+	public $mailBody;
 
-    public function __construct($mailBody)
-    {
-        $this->mailBody = $mailBody;
-    }
+	public function __construct($mailBody)
+	{
+		$this->mailBody = $mailBody;
+	}
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
-    public function build()
-    {
-        return $this->from('andrusha.kolmakov@yandex.ru', 'From Test App')->view('frontend.mail');
-    }
+	/**
+	 * Build the message.
+	 *
+	 * @return $this
+	 */
+	public function build()
+	{
+		return $this->from('andrusha.kolmakov@yandex.ru', 'From Test App')->view('frontend.mail');
+	}
 }

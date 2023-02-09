@@ -8,23 +8,23 @@ use Illuminate\Support\Facades\File;
 
 class Files extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
-    public function object(): \Illuminate\Database\Eloquent\Relations\MorphTo
-    {
-        return $this->morphTo();
-    }
+	public function object(): \Illuminate\Database\Eloquent\Relations\MorphTo
+	{
+		return $this->morphTo();
+	}
 
-    public function getPath($relative = true)
-    {
-        $path = "/assets/frontend/files/$this->imageable_type/$this->imageable_id/$this->name/$this->filename";
-        $path = str_replace('\\', '/', $path);
+	public function getPath($relative = true)
+	{
+		$path = "/assets/frontend/files/$this->imageable_type/$this->imageable_id/$this->name/$this->filename";
+		$path = str_replace('\\', '/', $path);
 
-        if ($relative) {
-            return $path;
-        }
+		if ($relative) {
+			return $path;
+		}
 
-        return public_path($path);
-    }
+		return public_path($path);
+	}
 
 }

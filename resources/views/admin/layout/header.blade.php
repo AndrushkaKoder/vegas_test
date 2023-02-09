@@ -103,6 +103,6 @@
         <!-- Notifications Dropdown Menu -->
 
     </ul>
-    <a href="{{ route('frontend.index') }}" class="btn btn-success m-3">Выйти</a>
+    <a href="{{ route('admin.logout') }}" class="btn btn-success m-3">Выйти</a>
 </nav>
 <!-- /.navbar -->

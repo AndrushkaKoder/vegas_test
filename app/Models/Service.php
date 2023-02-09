@@ -9,15 +9,15 @@ use App\Traits\FileTrait;
 
 class Service extends Model
 {
-    use HasFactory;
-    use FileTrait;
+	use HasFactory;
+	use FileTrait;
 
-    protected static function booted()
-    {
-        parent::booted();
+	protected static function booted()
+	{
+		parent::booted();
 
-        static::creating(function ($service) {
-            $service->attributes['slug'] = Str::slug($service->title);
-        });
-    }
+		static::creating(function ($service) {
+			$service->attributes['slug'] = Str::slug($service->title);
+		});
+	}
 }
