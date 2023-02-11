@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Service;
 use App\Traits\FileTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,22 +38,22 @@ class IndexController extends Controller
 	 * Display the specified resource.
 	 *
 	 * @param int $id
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
 	 */
 	public function show($id)
 	{
-		//
+
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param int $id
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
 	 */
 	public function edit($id)
 	{
-		//
+
 	}
 
 	/**

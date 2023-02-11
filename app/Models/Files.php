@@ -10,6 +10,11 @@ class Files extends Model
 {
 	use HasFactory;
 
+	protected $fillable = [
+		'name',
+		'filename'
+	];
+
 	public function object(): \Illuminate\Database\Eloquent\Relations\MorphTo
 	{
 		return $this->morphTo();

@@ -17,6 +17,8 @@
                     @if($img = $service->getImg('inner'))
                     <img src="{{ $img->getPath() }}" alt="photo" width="100%"
                          height="405">
+	                @else
+		                <div style="background: black; width: 100%; height: 405px">.</div>
                     @endif
 
                     <div class="card-body text-center">

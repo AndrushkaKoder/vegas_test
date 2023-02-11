@@ -2,3 +2,23 @@
 .admin_name{
     color: white;
 }
+
+.admin_action i{
+	color: black;
+}
+
+.admin_edit_form{
+	padding: 20px;
+}
+.admin_edit_img{
+	border: 2px solid gray;
+}
+
+.admin_create_alert{
+	position: absolute;
+	top: 10%;
+	left: 37%;
+	z-index: 99999;
+	width: 30%;
+	text-align: center;
+}

@@ -20,6 +20,7 @@ class AuthController extends Controller
 	 */
 	public function auth(Request $request)
 	{
+
 		$this->validate($request, [
 			'login' => ['required', 'max:100'],
 			'password' => ['required']

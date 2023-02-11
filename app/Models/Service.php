@@ -12,6 +12,10 @@ class Service extends Model
 	use HasFactory;
 	use FileTrait;
 
+	/**
+	 * @var mixed
+	 */
+
 	protected static function booted()
 	{
 		parent::booted();
@@ -20,4 +24,11 @@ class Service extends Model
 			$service->attributes['slug'] = Str::slug($service->title);
 		});
 	}
+
+	protected $fillable = [
+		'title',
+		'short_content',
+		'content'
+
+	];
 }

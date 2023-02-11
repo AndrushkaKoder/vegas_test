@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Models\Files;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 
 trait FileTrait
@@ -12,8 +13,9 @@ trait FileTrait
 		return $this->morphMany(Files::class, 'imageable');
 	}
 
-	public function saveFile($name, $filepath)
+	public function saveFile($name, $filepath) //inner, "D:\OpenServer\userdata\temp\upload\php3B09.tmp"
 	{
+
 		$object = $this;
 		$class = get_class($object);
 		$id = $object->id;
@@ -23,25 +25,26 @@ trait FileTrait
 			File::makeDirectory($copyToDir, 0755, true, true);
 		}
 
-		if (mb_strpos($filepath, 'https://') !== 0) {
+		if (is_object($filepath) && $filepath instanceof UploadedFile) {
+			/** @var $filepath UploadedFile */
+			$fileName = $filepath->getClientOriginalName();
+			$filepath->move($copyToDir, $fileName);
+
+		} else if (is_string($filepath) && mb_strpos($filepath, 'https://') !== 0) {
 			$fileName = File::basename($filepath);
 			$copyToFile = "{$copyToDir}/{$fileName}";
-
-
 			File::copy($filepath, $copyToFile);
+
 		} else {
 			$content = file_get_contents($filepath); //контент внутри файла
 			$fileName = File::basename($filepath); //как он будет называться
 			file_put_contents($copyToDir . "/" . $fileName, $content);
 		}
 
-
-		Files::query()->create([
+		$object->files()->updateOrCreate([
 			'name' => $name,
+		], [
 			'filename' => $fileName,
-			'imageable_id' => $id,
-			'imageable_type' => $class
-
 		]);
 	}
 

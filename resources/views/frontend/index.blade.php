@@ -16,6 +16,9 @@
 
                                     @if ($img = $item->getImg('outer'))
                                         <img src="{{ $img->getPath() }}" alt="photo" width="100%" height="225">
+
+	                                @else
+										<div style="background: black; width: 100%; height: 225px">.</div>
                                     @endif
 
                                 </a>
