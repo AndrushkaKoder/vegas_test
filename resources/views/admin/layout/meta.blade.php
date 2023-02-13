@@ -5,3 +5,9 @@
 
 <link rel="stylesheet" href="{{asset('assets/_admin/css/admin.css')}}">
 <link rel="stylesheet" href="{{ asset('assets/_admin/css/main.css') }}">
+
+<script>
+	window.App = {
+		csrf: '{{ csrf_token() }}'
+	};
+</script>

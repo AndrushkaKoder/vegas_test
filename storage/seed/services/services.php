@@ -38,6 +38,15 @@
             'outer' => 'https://images.thevoicemag.ru/upload/img_cache/de8/de8b0c91857dcc47d3a1edba3b731666_cropped_666x833.jpg',
         ],
     ],
+	[
+		'title' => 'Ремонт квартир',
+		'short_content' => 'Все виды ремонта квартир',
+		'content' => 'lorem ipsum',
+		'images' => [
+			'inner' => 'https://upload.flado.ru/uads/n/022/78/2278730.jpg',
+			'outer' => 'https://g7.ltd/images/uslugi/4.jpg',
+		],
+	],
 
 
 ];

@@ -19,7 +19,7 @@ class MailController extends Mailable
 
 	public $mailBody;
 
-	public function __construct($mailBody)
+	public function __construct(Mailer $mailer)
 	{
 		$this->mailBody = $mailBody;
 	}
@@ -31,6 +31,7 @@ class MailController extends Mailable
 	 */
 	public function build()
 	{
-		return $this->from('andrusha.kolmakov@yandex.ru', 'From Test App')->view('frontend.mail');
+		return $this->from('andrusha.kolmakov@yandex.ru', 'From Test App')
+			->view('frontend.mail');
 	}
 }

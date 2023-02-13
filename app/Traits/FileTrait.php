@@ -13,13 +13,24 @@ trait FileTrait
 		return $this->morphMany(Files::class, 'imageable');
 	}
 
+
+	public function getImg($name)
+	{
+		return $this->files->where('name', $name)->first();
+	}
+
+
+	private function getDirectoryPath($class, $id, $name, $filename = null)
+	{
+		return str_replace('\\', '/', public_path("/assets/frontend/files/$class/$id/$name/$filename"));
+	}
+
 	public function saveFile($name, $filepath) //inner, "D:\OpenServer\userdata\temp\upload\php3B09.tmp"
 	{
-
 		$object = $this;
 		$class = get_class($object);
 		$id = $object->id;
-		$copyToDir = str_replace('\\', '/', public_path("/assets/frontend/files/{$class}/{$id}/{$name}"));
+		$copyToDir = $this->getDirectoryPath($class, $id, $name);
 
 		if (!is_dir($copyToDir)) {
 			File::makeDirectory($copyToDir, 0755, true, true);
@@ -32,7 +43,7 @@ trait FileTrait
 
 		} else if (is_string($filepath) && mb_strpos($filepath, 'https://') !== 0) {
 			$fileName = File::basename($filepath);
-			$copyToFile = "{$copyToDir}/{$fileName}";
+			$copyToFile = "$copyToDir/$fileName";
 			File::copy($filepath, $copyToFile);
 
 		} else {
@@ -48,9 +59,18 @@ trait FileTrait
 		]);
 	}
 
-	public function getImg($name)
+
+	public function deleteFile($name)
 	{
-		return $this->files->where('name', $name)->first();
+		$image = $this->getImg($name);
+		$service = $this;
+		$className = get_class($service);
+		$objectId = $service->id;
+		$name = $image->name;
+		$fileName = $image->filename;
+		$pathToImage = $this->getDirectoryPath($className, $objectId, $name, $fileName);
+		File::delete($pathToImage);
+		$image->delete();
 	}
 
 

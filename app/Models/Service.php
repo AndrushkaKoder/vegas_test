@@ -12,9 +12,11 @@ class Service extends Model
 	use HasFactory;
 	use FileTrait;
 
-	/**
-	 * @var mixed
-	 */
+	protected $fillable = [
+		'title',
+		'short_content',
+		'content',
+	];
 
 	protected static function booted()
 	{
@@ -25,10 +27,18 @@ class Service extends Model
 		});
 	}
 
-	protected $fillable = [
-		'title',
-		'short_content',
-		'content'
+	/*public static function makeNew($data, $fields)
+	{
+		$item = new self;
+		foreach ($fields as $field) {
+			if (isset($data[$field])) {
 
-	];
+			}
+		}
+
+		$item->save();
+		return $item;
+	}*/
+
+
 }

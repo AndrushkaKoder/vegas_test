@@ -12,6 +12,7 @@
 
     @include('admin.layout.sidebar')
 
+	@include('admin.messages.messages')
     <main>
         @yield('content')
     </main>
@@ -24,7 +25,7 @@
 
 </div>
 
-
 <script src="{{ asset('assets/_admin/js/admin.js') }}"></script>
+<script src="{{ asset('assets/_admin/js/main.js') }}"></script>
 </body>
 </html>

@@ -1,23 +1,6 @@
 @extends('admin.layout.template')
 
 @section('content')
-
-	@if($errors->any())
-		<div class="alert alert-danger admin_create_alert" role="alert">
-			<ul>
-				@foreach($errors->all() as $error)
-					<li  style="list-style: none">{{ $error }}</li>
-				@endforeach
-			</ul>
-		</div>
-	@endif
-
-	@if(session('success'))
-		<div class="alert alert-success admin_create_alert" role="alert">
-					{{ session('success') }}
-		</div>
-	@endif
-
 	<div class="content-wrapper">
 		<section class="content">
 			<div class="container-fluid">
@@ -26,6 +9,11 @@
 					<form action="{{ route($action, $service->id) }}" method="POST" class="admin_edit_form"
 					      enctype="multipart/form-data">
 						@csrf
+
+						@if($service->exists)
+							@method('put')
+						@endif
+
 						<div class="row">
 							<div class="col-6">
 								<div class="mb-3">
@@ -40,22 +28,16 @@
 									       value="{{ $service->short_content }}">
 								</div>
 								<div class="admin_edit_images d-flex justify-content-between">
-									<div class="mb-3">
-										@if($img = $service->getImg('inner'))
-											<p class="text-center">Внутренняя картинка</p>
-											<img src="{{ $img->getPath() }}"
-											     width="270" height="200" alt="#" class="admin_edit_img mb-2">
-										@endif
-										<input type="file" name="inner" class="form-control" style="width: 92%">
-									</div>
-									<div class="mb-3">
-										@if($img = $service->getImg('outer'))
-											<p class="text-center">Внешняя картинка</p>
-											<img src="{{ $img->getPath() }}"
-											     width="270" height="200" alt="#" class="admin_edit_img mb-2">
-										@endif
-										<input type="file" name="outer" class="form-control" style="width: 92%">
-									</div>
+									@include('admin.elements._img_uploader', [
+										'title' => 'Внутренняя картинка',
+										'name' => 'inner',
+										'file' => $service->getImg('inner')
+									])
+									@include('admin.elements._img_uploader', [
+										'title' => 'Внешняя картинка',
+										'name' => 'outer',
+										'file' => $service->getImg('outer')
+									])
 								</div>
 							</div>
 							<div class="col-6">

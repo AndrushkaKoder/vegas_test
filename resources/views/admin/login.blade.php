@@ -14,7 +14,7 @@
 	<div class="row">
 
 		@if($errors->any())
-			<div class="alert alert-danger login_alert" role="alert">
+			<div class="alert alert-danger login_alert admin_alert" role="alert">
 				<ul>
 					@foreach($errors->all() as $item)
 						<li>{{ $item }}</li>
@@ -24,7 +24,7 @@
 		@endif
 
 		@if(session('error'))
-				<div class="alert alert-danger login_alert" role="alert">
+				<div class="alert alert-danger login_alert admin_alert" role="alert">
 					<ul>
 						<li>{{ session('error') }}</li>
 					</ul>
@@ -100,5 +100,6 @@
 
 </style>
 
+<script src=" {{ asset('assets/_admin/js/main.js') }}"></script>
 </body>
 </html>
