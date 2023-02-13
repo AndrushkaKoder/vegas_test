@@ -11,9 +11,6 @@ class IndexController extends Controller
 
     public function index(){
 
-//        $services = Service::query()->paginate(9);
-
-
         $service = Service::query()->with('files')->get();
 
 
