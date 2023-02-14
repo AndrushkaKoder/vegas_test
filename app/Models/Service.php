@@ -27,18 +27,6 @@ class Service extends Model
 		});
 	}
 
-	/*public static function makeNew($data, $fields)
-	{
-		$item = new self;
-		foreach ($fields as $field) {
-			if (isset($data[$field])) {
-
-			}
-		}
-
-		$item->save();
-		return $item;
-	}*/
 
 
 }

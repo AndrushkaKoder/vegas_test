@@ -44,19 +44,24 @@
                     <form  class="inside_form" action="/send" method="post">
                         @csrf
                         <input type="hidden" name="service"
-                               value="{{$service->title}}">
+                               value="{{ $service->id }}">
 
                         <label for="name" class="form-check-label">
                             Имя
-                            <input class="form-control" type="text" name="name"
+                            <input class="form-control" type="text" name="user_name"
                                    required placeholder="Как к Вам обращаться?">
                         </label>
 
                         <label for="phone" class="form-check-label">
                             Телефон
-                            <input class="form-control" type="tel" name="phone"
+                            <input class="form-control" type="tel" name="user_phone"
                                    required placeholder="Обещам не звонить с рекламой">
                         </label>
+	                    <label for="phone" class="form-check-label">
+		                    E-mail
+		                    <input class="form-control" type="email" name="user_email"
+		                           placeholder="Можете оставить вашу почту">
+	                    </label>
 
                         <button type="submit" class="btn btn-success mt-3">Заказать звонок</button>
                     </form>

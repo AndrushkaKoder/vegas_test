@@ -35,6 +35,12 @@
 						<p>Сервисы</p>
 					</a>
 				</li>
+				<li class="nav-item">
+					<a href="{{ route('admin.index.orders') }}" class="nav-link">
+						<i class="nav-icon fas fa-list"></i>
+						<p>Заказы</p>
+					</a>
+				</li>
 
 
 			</ul>

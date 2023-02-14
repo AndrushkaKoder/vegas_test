@@ -17,9 +17,8 @@ class CreateFeedbackTable extends Migration
             $table->increments('id');
 			$table->string('user_name');
 			$table->string('user_phone');
-			$table->string('user_email');
-			$table->json('services');
-
+			$table->string('user_email')->nullable();
+			$table->json('user_data');
             $table->timestamps();
         });
     }

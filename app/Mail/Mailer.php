@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MailController extends Mailable
+class Mailer extends Mailable
 {
 	use Queueable, SerializesModels;
 
@@ -17,11 +17,11 @@ class MailController extends Mailable
 	 * @return void
 	 */
 
-	public $mailBody;
+	public $feedback;
 
-	public function __construct(Mailer $mailer)
+	public function __construct($feedback)
 	{
-		$this->mailBody = $mailBody;
+		$this->feedback = $feedback;
 	}
 
 	/**
