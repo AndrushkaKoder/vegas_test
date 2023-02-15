@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\IndexController;
-use App\Http\Controllers\SendEmailController;
+use App\Http\Controllers\Frontend\SendEmailController;
 use Illuminate\Support\Facades\Route;
 
 

@@ -7,16 +7,16 @@ use Illuminate\Database\Seeder;
 
 class AdminSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        Admin::query()->create([
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
+		Admin::query()->create([
 			'login' => 'admin',
-	        'password' => 123
-        ]);
-    }
+			'password' => '123'
+		]);
+	}
 }

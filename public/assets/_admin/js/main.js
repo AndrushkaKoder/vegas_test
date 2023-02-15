@@ -65,5 +65,18 @@ for (let btn of deleteButton) {
 }
 
 
+//показать сео параметры
+
+let seoButton = document.querySelector('.admin_edit_seo_btn'),
+	seoBlock = document.querySelector('.admin_edit_seo');
+
+seoButton.addEventListener('click', ()=>{
+	seoBlock.classList.toggle('active_seo')
+	seoBlock.classList.contains('active_seo') ? seoButton.innerHTML = 'Скрыть СЕО параметры' : seoButton.innerHTML = 'Показать СЕО параметры';
+
+
+});
+
+
 
 

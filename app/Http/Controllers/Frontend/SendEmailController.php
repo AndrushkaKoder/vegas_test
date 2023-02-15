@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
 use App\Mail\Mailer;
 use App\Models\Feedback;
 use App\Models\Service;
@@ -16,10 +17,13 @@ class SendEmailController extends Controller
 		$data = request()->all();
 		$data['service'] = Service::findOrFail($data['service'])->title;
 
-		$feedback = Feedback::makeNew('Услуга', $data, [
-			'service' => 'Сервис',
-		]);
-
+		try {
+			$feedback = Feedback::makeNew('Услуга', $data, [
+				'service' => 'Сервис',
+			]);
+		} catch (\Exception $e) {
+			return redirect()->back()->with('error', $e->getMessage());
+		}
 
 		Mail::to('andrusha.kolmakov@yandex.ru')->send(new Mailer($feedback));
 

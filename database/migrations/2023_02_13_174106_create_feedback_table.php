@@ -19,6 +19,7 @@ class CreateFeedbackTable extends Migration
 			$table->string('user_phone');
 			$table->string('user_email')->nullable();
 			$table->json('user_data');
+			$table->integer('feedback_type_id');
             $table->timestamps();
         });
     }

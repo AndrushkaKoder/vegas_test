@@ -19,6 +19,9 @@ class CreateServicesTable extends Migration
             $table->string('slug');
             $table->text('short_content');
             $table->text('content');
+			$table->text('seo_title');
+			$table->text('seo_description');
+			$table->text('seo_keywords');
             $table->timestamps();
         });
     }

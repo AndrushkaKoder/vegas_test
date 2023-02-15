@@ -4,20 +4,15 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Page;
 
 class AboutController extends Controller
 {
 
     public function index()
-    {
+	{
+		$page = Page::whereUrl('/about')->first();
 
-        $aboutData = About::query()->insert([
-            'name' => 'Премка228',
-            'description' => 'Заебис внатуре четко',
-
-        ]);
-
-        return view('frontend.about');
-
-    }
+		return view('frontend.about', compact('page'));
+	}
 }

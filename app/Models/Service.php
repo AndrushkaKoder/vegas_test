@@ -16,6 +16,9 @@ class Service extends Model
 		'title',
 		'short_content',
 		'content',
+		'seo_title',
+		'seo_description',
+		'seo_keywords'
 	];
 
 	protected static function booted()

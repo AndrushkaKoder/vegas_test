@@ -10825,7 +10825,6 @@ textarea.form-control-lg {
 }
 
 .show {
-  max-height: -moz-fit-content;
   max-height: fit-content;
 }
 

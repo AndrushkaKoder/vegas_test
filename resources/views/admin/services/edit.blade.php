@@ -27,6 +27,28 @@
 									       id="edit_short_content"
 									       value="{{ $service->short_content }}">
 								</div>
+								<button type="button" class="btn btn-primary admin_edit_seo_btn">
+									Показать СЕО параметры</button>
+								<div class="admin_edit_seo">
+									<div class="mb-3">
+										<label for="edit_short_content" class="form-label">СЕО заголовок</label>
+										<input type="text" name="seo_title" class="form-control"
+										       id="edit_short_content"
+										       value="{{ $service->seo_title }}">
+									</div>
+									<div class="mb-3">
+										<label for="edit_short_content" class="form-label">СЕО описание</label>
+										<input type="text" name="seo_description" class="form-control"
+										       id="edit_short_content"
+										       value="{{ $service->seo_description }}">
+									</div>
+									<div class="mb-3">
+										<label for="edit_short_content" class="form-label">СЕО ключеые слова</label>
+										<input type="text" name="seo_keywords" class="form-control"
+										       id="edit_short_content"
+										       value="{{ $service->seo_keywords }}">
+									</div>
+								</div>
 								<div class="admin_edit_images d-flex justify-content-between">
 									@include('admin.elements._img_uploader', [
 										'title' => 'Внутренняя картинка',

@@ -1,9 +1,6 @@
 <?php
 
 return [
-    [
-        'login' => 'admin1',
-        'password' = '111'
-    ]
-
+	'login' => 'admin',
+	'password' => '123'
 ];

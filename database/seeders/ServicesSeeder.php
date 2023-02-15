@@ -24,6 +24,9 @@ class ServicesSeeder extends Seeder
                 'title' => $item['title'],
                 'short_content' => $item['short_content'],
                 'content' => $item['content'],
+                'seo_title' => $item['seo_title'],
+                'seo_description' => $item['seo_description'],
+                'seo_keywords' => $item['seo_keywords'],
             ]);
 
             foreach ($item['images'] as $name => $filename) {

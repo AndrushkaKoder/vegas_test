@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Validator;
 
 class Feedback extends Model
 {
@@ -21,7 +22,13 @@ class Feedback extends Model
 	];
 
 
-	public static function makeNew(FeedbackForm $type, $data, $fields)
+	public function feedbackType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+	{
+		return $this->belongsTo(FeedbackType::class);
+	}
+
+
+	public static function makeNew($type, $data, $fields)
 	{
 		$res = [];
 
@@ -34,14 +41,22 @@ class Feedback extends Model
 			}
 		}
 
-		request()->validate([
+		$validator = Validator::make($data, [
 			'user_name' => 'required',
 			'user_phone' => 'required',
 			'user_data' => 'array'
+		], [
+			'user_name.required' => 'asdfadsf',
+			'user_phone.required' => 'asdfadsf',
 		]);
 
+		if ($validator->fails()) {
+			throw new \Exception($validator->errors()->first());
+		}
+
+		$feedbackType = FeedbackType::where('title', $type)->first();
 		$item = new Feedback();
-		$item->type_id = $type->id;
+		$item->feedback_type_id = $feedbackType ? $feedbackType->id : 0;
 		$item->fill([
 			'user_name' => request('user_name'),
 			'user_phone' => request('user_phone'),

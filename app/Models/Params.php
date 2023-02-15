@@ -9,6 +9,11 @@ class Params extends Model
 {
     use HasFactory;
 
+	protected $fillable = [
+		'name',
+		'value'
+	];
+
 
     static function getValue($names)
     {

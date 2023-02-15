@@ -66,4 +66,17 @@
 	display: none;
 }
 
+/*скрытие-показ сео блока в описании*/
+
+.admin_edit_seo_btn{
+	margin: 15px 0;
+}
+.admin_edit_seo{
+	display: none;
+}
+
+.active_seo{
+	display: block!important;
+}
+
 

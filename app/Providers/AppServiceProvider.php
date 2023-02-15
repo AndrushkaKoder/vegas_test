@@ -29,11 +29,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
-
-        $socials = Social::query()->get();
-        $contacts = Contacts::query()->get();
-
-        View::share('socials', $socials);
-        View::share('contacts', $contacts);
     }
 }

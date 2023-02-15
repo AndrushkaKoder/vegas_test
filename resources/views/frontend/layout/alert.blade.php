@@ -1,14 +1,12 @@
-@if(session('success'))
-
-    <div class="container">
-        <div class="row mt-5">
-            <div class="col-12">
-                <div class="alert alert-success text-center" role="alert">
-                    {{session('success')}}
-                </div>
-            </div>
-        </div>
-    </div>
+@if($message = session('success'))
+	<div class="alert alert-success admin_create_alert admin_alert" role="alert">
+		{{ $message }}
+	</div>
+@endif
 
 
+@if($message = session('error'))
+	<div class="alert alert-danger admin_create_alert admin_alert" role="alert">
+		{{ $message }}
+	</div>
 @endif
