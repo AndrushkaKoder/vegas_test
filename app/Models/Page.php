@@ -9,6 +9,15 @@ class Page extends Model
 {
     use HasFactory;
 
+	protected $fillable = [
+		'uri',
+		'title',
+		'seo_title',
+		'seo_description',
+		'seo_keywords',
+		'content'
+	];
+
 	public static function whereUrl($url): \Illuminate\Database\Eloquent\Builder
 	{
 		return Page::query()->where('uri', $url);

@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\SendEmailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\PageController;
 
 
 /*
@@ -24,5 +24,5 @@ Route::get('/services/{slug}', [IndexController::class, 'show'])->name('services
 
 Route::post('send', [SendEmailController::class, 'sendEmail']);
 
-Route::get('about', [AboutController::class, 'index'])->name('about');
-
+Route::get('{uri}', [PageController::class, 'showPage'])
+	->where('uri', '.*');

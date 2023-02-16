@@ -65,7 +65,7 @@
 							<div class="col-6">
 								<div class="mb-3">
 									<label for="edit_content" class="form-label">Описание</label>
-									<textarea name="content" class="form-control" id="edit_content" cols="10"
+									<textarea name="content" class="edit_content" id="edit_content"  cols="10"
 									          rows="17">{{ $service->content }}</textarea>
 								</div>
 							</div>

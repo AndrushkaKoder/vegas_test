@@ -11,7 +11,7 @@ class AboutController extends Controller
 
     public function index()
 	{
-		$page = Page::whereUrl('/about')->first();
+		$page = Page::whereUrl('/about')->firstOrFail();
 
 		return view('frontend.about', compact('page'));
 	}

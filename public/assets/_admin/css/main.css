@@ -79,4 +79,12 @@
 	display: block!important;
 }
 
+.feedback_item{
+	background: lightgreen;
+}
+
+.feedback_checked{
+	background: transparent;
+}
+
 

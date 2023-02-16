@@ -27,7 +27,7 @@
 									</thead>
 									<tbody>
 									@foreach($items as $item)
-									<tr>
+									<tr class="{{hclass($item->checked ===1 , 'feedback_checked')}}feedback_item">
 										<td>{{ $item->id }}</td>
 										<td>{{ $item->feedbackType->title }}</td>
 										<td>{{ $item->user_name }}</td>
@@ -38,6 +38,13 @@
 												<i class="nav-icon fas fa-phone" style="color: black;
 												font-size:25px"></i>
 											</a>
+											<div class="admin_action">
+												<a href="{{ route('admin.checked', $item->id) }}"
+												   class="admin_feedback_check">
+													<i class="nav-icon fas fa-check-square" style="color: black;
+												font-size:25px"></i>
+												</a>
+											</div>
 											<a href="{{ route('admin.feedback.show', $item->id) }}">
 												<i class="nav-icon fas fa-angle-down" style="color: black;
 												font-size:25px"></i>

@@ -7,7 +7,7 @@
 		<span class="brand-text font-weight-light">На сайт</span>
 	</a>
 
-	<!-- Sidebar -->
+	<!-- Nav -->
 	<div class="sidebar">
 			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 				<div class="image">
@@ -25,10 +25,16 @@
 
 
 
-		<!-- Sidebar Menu -->
+		<!-- Nav Menu -->
 		<nav class="mt-2">
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
+				<li class="nav-item">
+					<a href="{{ route('admin.pages.index') }}" class="nav-link">
+						<i class="nav-icon fas fa-list"></i>
+						<p>Приложение</p>
+					</a>
+				</li>
 				<li class="nav-item">
 					<a href="{{ route('admin.services.index') }}" class="nav-link">
 						<i class="nav-icon fas fa-pen"></i>

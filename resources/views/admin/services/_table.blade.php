@@ -15,7 +15,7 @@
 			<td>{{ $item->id }}</td>
 			<td>{{ $item->title }}</td>
 			<td>{{ $item->short_content }}</td>
-			<td>{{ $item->content }}</td>
+			<td>{!! $item->content !!}</td>
 			<td>{{ $item->created_at }}</td>
 			<td>
 				<div class="admin_action d-flex justify-content-around">

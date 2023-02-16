@@ -9,6 +9,10 @@ class FeedbackType extends Model
 {
     use HasFactory;
 
+	protected $fillable = [
+		'title',
+	];
+
 	public function feedback()
 	{
 		return $this->hasMany(Feedback::class);

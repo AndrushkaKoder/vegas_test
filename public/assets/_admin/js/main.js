@@ -29,7 +29,6 @@ function deleteElement(appendParent, action, value = null) {
 		deleteForm.method = 'POST';
 		deleteForm.action = action;
 		deleteForm.submit();
-		console.log('form');
 	}
 }
 
@@ -65,18 +64,47 @@ for (let btn of deleteButton) {
 }
 
 
+//Просмотр feedback
+
+let checkButton = document.querySelector('.admin_feedback_check');
+if(checkButton){
+	checkButton.addEventListener('click', (e)=>{
+		let form = document.createElement('form');
+		let csrf = document.createElement('input');
+		let hidden = document.createElement('input');
+		form.method = 'post';
+		form.action = checkButton.getAttribute('href');
+		adminAction.append(form);
+		adminAction.append(csrf);
+		hidden.name = '_method';
+		hidden.value = 'update';
+		adminAction.append(hidden);
+		csrf.value = App.csrf;
+		form.append(checkButton)
+		form.submit();
+		e.preventDefault();
+	});
+}
+
+
+
 //показать сео параметры
 
 let seoButton = document.querySelector('.admin_edit_seo_btn'),
 	seoBlock = document.querySelector('.admin_edit_seo');
+if (seoButton) {
+	seoButton.addEventListener('click', () => {
+		seoBlock.classList.toggle('active_seo')
+		seoBlock.classList.contains('active_seo') ? seoButton.innerHTML = 'Скрыть СЕО параметры' : seoButton.innerHTML = 'Показать СЕО параметры';
+	});
+}
 
-seoButton.addEventListener('click', ()=>{
-	seoBlock.classList.toggle('active_seo')
-	seoBlock.classList.contains('active_seo') ? seoButton.innerHTML = 'Скрыть СЕО параметры' : seoButton.innerHTML = 'Показать СЕО параметры';
 
+//Ининциализация редактора текста
 
+tinymce.init({
+	selector: 'textarea.edit_content',
 });
-
 
 
 

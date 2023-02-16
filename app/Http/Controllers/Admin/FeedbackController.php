@@ -23,6 +23,7 @@ class FeedbackController extends Controller
 	{
 		$item = Feedback::find($id);
 
+
 		return view('admin.feedback.show', compact('item'));
 	}
 
@@ -32,6 +33,19 @@ class FeedbackController extends Controller
 		Feedback::find($id)->delete();
 
 		return redirect()->route('admin.feedback.index')->with('success', 'Заявка удалена');
+	}
+
+
+	public function changeChecked($id)
+	{
+
+		$item = Feedback::query()->findOrFail($id);
+		$item->checked = 1;
+		$item->save();
+
+		return redirect()->route('admin.feedback.index')->with('success', 'Просмотрено');
+		//создать роут на этот метод с Route::post
+
 	}
 }
 

@@ -38,6 +38,7 @@
 								<input class="form-control" id="exampleInputEmail1"
 								       value="{{$item->feedbackType->title }}" disabled>
 							</div>
+
 							@foreach($item->user_data as $ud)
 								<div class="col-12 mb-3">
 									<label class="form-label">{{ $ud['title'] }}</label>

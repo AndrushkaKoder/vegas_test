@@ -21049,7 +21049,7 @@ return jQuery;
   var $no_border_container = $('<div />', { class: 'mb-4' }).append($no_border_checkbox).append('<span>No border</span>')
   $container.append($no_border_container)
 
-  $container.append('<h6>Sidebar Options</h6>')
+  $container.append('<h6>Nav Options</h6>')
 
   var $sidebar_collapsed_checkbox = $('<input />', {
     type: 'checkbox',
@@ -21104,7 +21104,7 @@ return jQuery;
       $('body').removeClass('sidebar-mini')
     }
   })
-  var $sidebar_mini_container = $('<div />', { class: 'mb-1' }).append($sidebar_mini_checkbox).append('<span>Sidebar Mini</span>')
+  var $sidebar_mini_container = $('<div />', { class: 'mb-1' }).append($sidebar_mini_checkbox).append('<span>Nav Mini</span>')
   $container.append($sidebar_mini_container)
 
   var $sidebar_mini_md_checkbox = $('<input />', {
@@ -21119,7 +21119,7 @@ return jQuery;
       $('body').removeClass('sidebar-mini-md')
     }
   })
-  var $sidebar_mini_md_container = $('<div />', { class: 'mb-1' }).append($sidebar_mini_md_checkbox).append('<span>Sidebar Mini MD</span>')
+  var $sidebar_mini_md_container = $('<div />', { class: 'mb-1' }).append($sidebar_mini_md_checkbox).append('<span>Nav Mini MD</span>')
   $container.append($sidebar_mini_md_container)
 
   var $sidebar_mini_xs_checkbox = $('<input />', {
@@ -21134,7 +21134,7 @@ return jQuery;
       $('body').removeClass('sidebar-mini-xs')
     }
   })
-  var $sidebar_mini_xs_container = $('<div />', { class: 'mb-1' }).append($sidebar_mini_xs_checkbox).append('<span>Sidebar Mini XS</span>')
+  var $sidebar_mini_xs_container = $('<div />', { class: 'mb-1' }).append($sidebar_mini_xs_checkbox).append('<span>Nav Mini XS</span>')
   $container.append($sidebar_mini_xs_container)
 
   var $flat_sidebar_checkbox = $('<input />', {
@@ -21302,7 +21302,7 @@ return jQuery;
       $('.nav-sidebar').removeClass('text-sm')
     }
   })
-  var $text_sm_sidebar_container = $('<div />', { class: 'mb-1' }).append($text_sm_sidebar_checkbox).append('<span>Sidebar Nav</span>')
+  var $text_sm_sidebar_container = $('<div />', { class: 'mb-1' }).append($text_sm_sidebar_checkbox).append('<span>Nav Nav</span>')
   $container.append($text_sm_sidebar_container)
 
   var $text_sm_footer_checkbox = $('<input />', {
@@ -21463,7 +21463,7 @@ return jQuery;
 
   $container.append($navbar_variants)
 
-  // Sidebar Colors
+  // Nav Colors
 
   $container.append('<h6>Accent Color Variants</h6>')
   var $accent_variants = $('<div />', {
@@ -21492,7 +21492,7 @@ return jQuery;
   // $accent_variants.find('option.' + active_accent_color).prop('selected', true)
   // $accent_variants.removeClass().addClass('custom-select mb-3 text-light border-0 ').addClass(active_accent_color)
 
-  $container.append('<h6>Dark Sidebar Variants</h6>')
+  $container.append('<h6>Dark Nav Variants</h6>')
   var $sidebar_variants_dark = $('<div />', {
     class: 'd-flex'
   })
@@ -21525,7 +21525,7 @@ return jQuery;
   $sidebar_dark_variants.find('option.' + active_sidebar_dark_color).prop('selected', true)
   $sidebar_dark_variants.removeClass().addClass('custom-select mb-3 text-light border-0 ').addClass(active_sidebar_dark_color)
 
-  $container.append('<h6>Light Sidebar Variants</h6>')
+  $container.append('<h6>Light Nav Variants</h6>')
   var $sidebar_variants_light = $('<div />', {
     class: 'd-flex'
   })

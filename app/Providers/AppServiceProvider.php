@@ -2,10 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Contacts;
-use App\Models\Social;
 use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 

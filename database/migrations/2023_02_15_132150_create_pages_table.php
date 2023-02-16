@@ -20,7 +20,7 @@ class CreatePagesTable extends Migration
 			$table->text('seo_title');
 			$table->text('seo_description');
 			$table->text('seo_keywords');
-			$table->text('content');
+			$table->text('content')->nullable();
             $table->timestamps();
         });
     }
