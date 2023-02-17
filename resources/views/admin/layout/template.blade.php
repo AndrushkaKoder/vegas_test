@@ -24,7 +24,7 @@
     <aside class="control-sidebar control-sidebar-dark"></aside>
 
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="{{ asset('assets/_admin/js/admin.js') }}"></script>
 <script src="{{ asset('assets/_admin/js/main.js') }}"></script>
 </body>

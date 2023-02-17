@@ -74,5 +74,20 @@ trait FileTrait
 	}
 
 
+	public function saveUserFile($file){
+
+		$object = $this;
+		$id = $object->id;
+		$fileName = $file->getClientOriginalName();
+		$path = str_replace('\\', '/', public_path("/assets/frontend/files/userfiles/$id"));
+
+		if(!is_dir($path)){
+			File::makeDirectory($path, 0755, true, true);
+		}
+		$file->move($path, $fileName);
+
+
+	}
+
 }
 

@@ -16,7 +16,7 @@ Route::middleware('admin')->group(function () {
 	Route::resource('services', ServicesController::class);
 	Route::resource('feedback', FeedbackController::class)->only(['index', 'show', 'destroy', 'update']);
 	Route::resource('pages', PagesController::class);
-	Route::any('feedback/update/{id}', [FeedbackController::class, 'changeChecked'])->name('checked');
+	Route::post('feedback/{id}/change_checked', [FeedbackController::class, 'changeChecked'])->name('checked');
 });
 
 Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('admin.login');

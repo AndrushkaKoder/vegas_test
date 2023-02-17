@@ -18,8 +18,10 @@ class Page extends Model
 		'content'
 	];
 
-	public static function whereUrl($url): \Illuminate\Database\Eloquent\Builder
+	public function getUrl()
 	{
-		return Page::query()->where('uri', $url);
+		if ($this->uri == '/') return $this->uri;
+
+		return '/'.$this->uri;
 	}
 }

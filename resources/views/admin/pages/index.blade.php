@@ -30,7 +30,6 @@
 										<th style="width: 180px">СЕО заголовок</th>
 										<th style="width: 280px">СЕО описание</th>
 										<th style="width: 180px">Ключевые слова</th>
-										<th style="width: 260px">Содержание</th>
 										<th style="width: 150px">действия</th>
 									</tr>
 									</thead>
@@ -43,12 +42,17 @@
 											<td>{!! $item->seo_title !!}</td>
 											<td>{{ $item->seo_description }}</td>
 											<td>{{ $item->seo_keywords }}</td>
-											<td>{!! $item->content !!}</td>
 											<td>
 												<div class="admin_action d-flex justify-content-around">
+													@if($url = $item->getUrl())
+													<a href="{{ $url }}" target="_blank">
+														<i class="nav-icon fas fa-share"></i>
+													</a>
+													@endif
 													<a href="{{ route('admin.pages.edit', $item->id) }}">
 														<i class="nav-icon fas fa-pen"></i>
 													</a>
+
 													<div class="admin_action">
 														<a class="admin_btn_delete"
 														   href="{{ route('admin.pages.destroy', $item->id) }}">

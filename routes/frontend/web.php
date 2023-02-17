@@ -24,5 +24,10 @@ Route::get('/services/{slug}', [IndexController::class, 'show'])->name('services
 
 Route::post('send', [SendEmailController::class, 'sendEmail']);
 
+Route::get('about', [PageController::class, 'about'])->name('about');
+Route::post('about', [PageController::class, 'aboutData'])->name('about');
+
 Route::get('{uri}', [PageController::class, 'showPage'])
-	->where('uri', '.*');
+	->where('uri', '.*')->name('showPage');
+
+

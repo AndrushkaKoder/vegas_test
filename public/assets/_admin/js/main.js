@@ -42,8 +42,7 @@ if (adminBtnDelete) {
 	}
 }
 
-let deleteButton = document.querySelectorAll('.admin_edit_img_delete'), //Кнопки удаления картинок
-	imgAction = document.querySelector('.admin_edit_img'); //div куда залетает форма при удалении картинки
+let deleteButton = document.querySelectorAll('.admin_edit_img_delete'); //Кнопки удаления картинок
 
 for (let btn of deleteButton) {
 	btn.addEventListener('click', () => {
@@ -63,33 +62,36 @@ for (let btn of deleteButton) {
 	});
 }
 
-
 //Просмотр feedback
+let feedbackItem = document.querySelectorAll('.feedback_item');
+let checkButton = document.querySelectorAll('.admin_feedback_check');
 
-let checkButton = document.querySelector('.admin_feedback_check');
-if(checkButton){
-	checkButton.addEventListener('click', (e)=>{
-		let form = document.createElement('form');
-		let csrf = document.createElement('input');
-		let hidden = document.createElement('input');
-		form.method = 'post';
-		form.action = checkButton.getAttribute('href');
-		adminAction.append(form);
-		adminAction.append(csrf);
-		hidden.name = '_method';
-		hidden.value = 'update';
-		adminAction.append(hidden);
-		csrf.value = App.csrf;
-		form.append(checkButton)
-		form.submit();
-		e.preventDefault();
-	});
+if (checkButton) {
+
+	checkButton.forEach((el, i) => {
+		el.addEventListener('click', (e) => {
+			e.preventDefault();
+			let action = el.getAttribute('href');
+			let checked = parseInt(el.getAttribute('data-checked'));
+			checked = 1 - checked;
+			el.dataset.checked = checked;
+
+			let params = {
+				checked: checked
+			};
+
+			axios.post(action, params)
+				.then(function () {
+					feedbackItem[i].classList.toggle('feedback_checked')
+				})
+				.catch(function (error) {
+					console.error(error)
+				})
+		})
+	})
 }
 
-
-
 //показать сео параметры
-
 let seoButton = document.querySelector('.admin_edit_seo_btn'),
 	seoBlock = document.querySelector('.admin_edit_seo');
 if (seoButton) {
@@ -99,9 +101,7 @@ if (seoButton) {
 	});
 }
 
-
 //Ининциализация редактора текста
-
 tinymce.init({
 	selector: 'textarea.edit_content',
 });

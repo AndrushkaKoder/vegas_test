@@ -65,4 +65,7 @@ class PagesController extends Controller
 
 		return redirect()->route('admin.pages.index')->with('success', "Страница $page->title была удалена");
 	}
+
+
+
 }

@@ -12,7 +12,7 @@ class IndexController extends Controller
 
 	public function index()
 	{
-		$page = Page::whereUrl('/')->firstOrFail();
+		$page = Page::whereUri('/')->firstOrFail();
 		return view('frontend.home.index', compact('page'));
 	}
 

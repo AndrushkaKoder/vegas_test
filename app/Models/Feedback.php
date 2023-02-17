@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\FileTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
@@ -10,11 +11,15 @@ class Feedback extends Model
 {
 	use HasFactory;
 
+	use FileTrait;
+
 	protected $fillable = [
 		'user_name',
 		'user_phone',
 		'user_email',
-		'user_data'
+		'user_data',
+		'checked',
+		'feedback_type_id'
 	];
 
 	protected $casts = [
@@ -45,9 +50,6 @@ class Feedback extends Model
 			'user_name' => 'required',
 			'user_phone' => 'required',
 			'user_data' => 'array'
-		], [
-			'user_name.required' => 'asdfadsf',
-			'user_phone.required' => 'asdfadsf',
 		]);
 
 		if ($validator->fails()) {
@@ -58,9 +60,9 @@ class Feedback extends Model
 		$item = new Feedback();
 		$item->feedback_type_id = $feedbackType ? $feedbackType->id : 0;
 		$item->fill([
-			'user_name' => request('user_name'),
-			'user_phone' => request('user_phone'),
-			'user_email' => request('user_email'),
+			'user_name' => request('user_name', ''),
+			'user_phone' => request('user_phone', ''),
+			'user_email' => request('user_email', ''),
 			'user_data' => $res
 		])->save();
 
