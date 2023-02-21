@@ -10,3 +10,14 @@
 		{{ $message }}
 	</div>
 @endif
+
+@push('head')
+<script>
+	let adminAlert = document.querySelector('.admin_alert')
+	if (adminAlert) {
+		setTimeout(() => {
+			adminAlert.remove();
+		}, 3000)
+	}
+</script>
+@endpush

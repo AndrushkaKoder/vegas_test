@@ -5,6 +5,9 @@
 <script src="https://cdn.tiny.cloud/1/fd1uumiezzxqhh56gch6t8v79q15h9nddotxwhk018d23gmd/tinymce/5/tinymce.min.js" referrerpolicy=""></script>
 <link rel="stylesheet" href="{{asset('assets/_admin/css/admin.css')}}">
 <link rel="stylesheet" href="{{ asset('assets/_admin/css/main.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/_admin/css/nestable.css') }}">
+
+
 
 <script>
 	window.App = {

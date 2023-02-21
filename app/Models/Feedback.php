@@ -33,11 +33,11 @@ class Feedback extends Model
 	}
 
 
-	public static function makeNew($type, $data, $fields)
+	public static function makeNew($type, $data, $fields) //Обратная связь, $data, value = text
 	{
 		$res = [];
 
-		foreach ($fields as $fieldName => $fieldTitle) { //'user_name' => 'услуга'
+		foreach ($fields as $fieldName => $fieldTitle) {
 			if (isset($data[$fieldName])) {
 				$res[] = [
 					'title' => $fieldTitle,

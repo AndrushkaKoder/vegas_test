@@ -22,10 +22,10 @@ Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::get('/services/{slug}', [IndexController::class, 'show'])->name('services.show');
 
-Route::post('send', [SendEmailController::class, 'sendEmail']);
+Route::post('/send/service', [SendEmailController::class, 'sendEmail'])->name('sendEmailService');
+Route::post('/send/about', [SendEmailController::class, 'sendEmailAbout'])->name('sendEmailAbout');
 
 Route::get('about', [PageController::class, 'about'])->name('about');
-Route::post('about', [PageController::class, 'aboutData'])->name('about');
 
 Route::get('{uri}', [PageController::class, 'showPage'])
 	->where('uri', '.*')->name('showPage');

@@ -108,3 +108,62 @@ tinymce.init({
 
 
 
+
+
+
+
+
+//sortable навигация
+// let nestedSortables = document.querySelectorAll('.nested-sortable');
+// for (let i = 0; i < nestedSortables.length; i++) {
+// 	let options = {
+// 		group: 'share',
+// 		animation: 100
+// 	};
+//
+// 	let events = [
+// 		'onEnd',
+// 	]
+// 	events.forEach(function (name) {
+//
+// 		options[name] = function () {
+// 			let dataNum = document.querySelectorAll('#nestedDemo > [data-num]');
+// 			let result = [];
+// 			for (el of dataNum) {
+// 				let children = [];
+// 				let dataNumInner = el.querySelectorAll(':scope > .nested-sortable > [data-num]')
+// 				if (dataNumInner.length) {
+// 					for (let innerEl of dataNumInner) {
+// 						children.push({
+// 							id: innerEl.getAttribute('data-num'),
+// 						})
+// 					}
+// 				}
+//
+// 				result.push({
+// 					id: el.getAttribute('data-num'),
+// 					children: children
+// 				})
+// 			}
+//
+// 			let navAction = document.querySelector('[data-send]');
+// 			navAction = navAction.getAttribute('data-send')
+// 			console.log(navAction)
+//
+//
+// 			console.log(result)
+// 			axios.post(navAction, {data: result}).then(function (response) {
+// 				console.log(response)
+//
+// 			}).catch(function (error) {
+// 				console.error(error)
+// 			})
+//
+//
+// 		};
+// 	});
+//
+// 	let s = Sortable.create(nestedSortables[i], options);
+// }
+
+

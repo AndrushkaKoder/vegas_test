@@ -52,11 +52,24 @@
 							@endforeach
 
 						</div>
+						@if($item->files->count())
+							<div class="mb-3 d-flex flex-column align-items-center">
+								<p style="text-decoration: underline">Файлы от пользователя</p>
+								<ul>
+									@foreach($item->files as $file)
+									<li class="list-unstyled"><a href="{{ $file->getPath() }}">{{ $file->filename
+									}}</a></li>
+									@endforeach
+								</ul>
+
+							</div>
+						@endif
 						<div class="mb-3 d-flex justify-content-between">
 							<a class="btn btn-success" href="tel:{{$item->user_phone}}">Позвонить
 								отправителю</a>
 							@if($item->user_email)
-								<a class="btn btn-primary" href="mailto:{{$item->user_email}}">Написать отправителю</a>
+								<a class="btn btn-primary" href="mailto:{{$item->user_email}}">Написать
+									отправителю</a>
 							@endif
 							<div class="admin_action">
 								<a href="{{ route('admin.feedback.destroy', $item->id) }}"

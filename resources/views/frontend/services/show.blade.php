@@ -35,7 +35,7 @@
 				<p class="text-center">Чтобы заказать услугу <strong>{{$page->title}}</strong> оставьте Ваш телефон и мы
 					свяжемся с
 					вами</p>
-				<form class="inside_form" action="/send" method="post">
+				<form class="inside_form" action="{{ route('frontend.sendEmailService') }}" method="post">
 					@csrf
 					<input type="hidden" name="service"
 					       value="{{ $page->id }}">

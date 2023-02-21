@@ -3,6 +3,8 @@
 <head>
 	@include('frontend.layout.meta')
 	<title>{{ $page->seo_title }}</title>
+
+	@stack('head')
 </head>
 <body>
 

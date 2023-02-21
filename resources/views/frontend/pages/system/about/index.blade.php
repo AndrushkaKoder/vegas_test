@@ -14,7 +14,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-12 d-flex justify-content-center">
-							<form action="{{ route('frontend.about') }}" method="post"
+							<form action="{{ route('frontend.sendEmailAbout') }}" method="post"
 							      class="d-flex flex-column text-center" enctype="multipart/form-data">
 								@csrf
 								<div class="mb-3">
@@ -34,7 +34,7 @@
 								</div>
 								<div class="mb-3">
 									<label class="form-check-label" for="text">Сообщение</label>
-									<textarea name="text" id="text" cols="50" rows="10" class="form-control"
+									<textarea name="user_feedback" id="text" cols="50" rows="10" class="form-control"
 									          required></textarea>
 								</div>
 								<div class="mb-3 form-check">

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\FeedbackController;
 use App\Http\Controllers\Admin\PagesController;
+use App\Http\Controllers\Admin\NavController;
 
 
 Route::middleware('admin')->group(function () {
@@ -17,6 +18,8 @@ Route::middleware('admin')->group(function () {
 	Route::resource('feedback', FeedbackController::class)->only(['index', 'show', 'destroy', 'update']);
 	Route::resource('pages', PagesController::class);
 	Route::post('feedback/{id}/change_checked', [FeedbackController::class, 'changeChecked'])->name('checked');
+	Route::get('/nav', [NavController::class, 'index'])->name('nav');
+	Route::post('/nav/update', [NavController::class, 'updateAjax'])->name('navUpdate');
 });
 
 Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('admin.login');
