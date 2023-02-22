@@ -21,6 +21,7 @@
         "sass-loader": "^11.0.1"
     },
     "dependencies": {
+        "jquery-nestable": "^0.8.0",
         "sortablejs": "^1.15.0"
     }
 }

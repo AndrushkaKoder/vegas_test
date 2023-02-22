@@ -26,13 +26,13 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script src="{{ asset('assets/_admin/js/navigation_nestable.js') }}"></script>
-<script src="{{ asset('assets/_admin/js/jquery.nestable.js') }}"></script>
 {{--<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>--}}
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script src="{{ asset('assets/_admin/js/admin.js') }}"></script>
 <script src="{{ asset('assets/_admin/js/main.js') }}"></script>
+{{--<script src="{{ asset('assets/_admin/js/navigation_nestable.js') }}"></script>--}}
+<script src="{{ mix('assets/_admin/js/app.js') }}"></script>
 
 
 </body>

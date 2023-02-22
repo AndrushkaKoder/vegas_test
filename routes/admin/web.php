@@ -14,12 +14,16 @@ use App\Http\Controllers\Admin\NavController;
 Route::middleware('admin')->group(function () {
 	Route::get('/', [IndexController::class, 'index'])->name('index');
 	Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
 	Route::resource('services', ServicesController::class);
+
 	Route::resource('feedback', FeedbackController::class)->only(['index', 'show', 'destroy', 'update']);
+	Route::post('feedback/{id}/change_checked', [FeedbackController::class, 'changeChecked'])->name('feedback.checked');
+
 	Route::resource('pages', PagesController::class);
-	Route::post('feedback/{id}/change_checked', [FeedbackController::class, 'changeChecked'])->name('checked');
+
 	Route::get('/nav', [NavController::class, 'index'])->name('nav');
-	Route::post('/nav/update', [NavController::class, 'updateAjax'])->name('navUpdate');
+	Route::post('/nav/change_structure', [NavController::class, 'change_structure'])->name('nav.change_structure');
 });
 
 Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('admin.login');

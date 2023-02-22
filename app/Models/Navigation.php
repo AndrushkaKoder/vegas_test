@@ -26,4 +26,22 @@ class Navigation extends Model
 	{
 		return $this->hasMany(self::class, 'parent_id');
 	}
+
+	public function childrenSorted()
+	{
+		return $this->children()->sSorted();
+	}
+
+	public function scopeSFirstLevel($query, $first = true)
+	{
+		if ($first)
+			return $query->where('parent_id', '0');
+
+		return $query->where('parent_id', '!=', '0');
+	}
+
+	public function scopeSSorted($query, $order = 'asc')
+	{
+		return $query->orderBy('position', $order);
+	}
 }
