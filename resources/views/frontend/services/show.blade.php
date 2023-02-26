@@ -2,15 +2,13 @@
 
 @section('content')
 
-	@include('frontend.services.widgets._list', ['activeService' => $page])
-
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row mt-5">
-			<div class="col-lg-6 col-md-12 inside_img">
+			<div class="col-lg-6 col-md-12 inside_img mb-5 d-flex flex-column justify-content-center">
 
 				@if($img = $page->getImg('inner'))
-					<img src="{{ $img->getPath() }}" alt="photo" width="100%"
-					     height="405">
+					<img src="{{ $img->getPath() }}" alt="photo" width="80%"
+					     height="405" style="margin: 0 auto">
 				@else
 					<div style="background: black; width: 100%; height: 405px">.</div>
 				@endif
@@ -29,13 +27,14 @@
 				</div>
 			</div>
 
-			<div class="col-lg-6 col-md-12">
+			<div class="col-lg-4 col-md-12">
 
 				<h4 class="text-center">Заказать услугу</h4>
 				<p class="text-center">Чтобы заказать услугу <strong>{{$page->title}}</strong> оставьте Ваш телефон и мы
 					свяжемся с
 					вами</p>
-				<form class="inside_form" action="{{ route('frontend.sendEmailService') }}" method="post">
+				<form class="inside_form" style="width: 80%" action="{{ route('frontend.sendEmailService') }}"
+				      method="post">
 					@csrf
 					<input type="hidden" name="service"
 					       value="{{ $page->id }}">
@@ -59,6 +58,9 @@
 
 					<button type="submit" class="btn btn-success mt-3">Заказать звонок</button>
 				</form>
+			</div>
+			<div class="col-lg-1">
+				@include('frontend.services.widgets._list', ['activeService' => $page])
 			</div>
 
 		</div>

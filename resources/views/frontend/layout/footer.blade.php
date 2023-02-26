@@ -1,8 +1,7 @@
 <div class="container-fluid">
-    <hr>
-    <p class="float-end mb-1">
-        <a href="#">Наверх</a>
-    </p>
-    <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/5.2/getting-started/introduction/">getting started guide</a>.</p>
+	<div class="row">
+		<div class="col-12 text-white text-center">
+			<p class="mt-3">production by Andrew Kolmakov and Vegas studio {{ date('Y') }}</p>
+		</div>
+	</div>
 </div>

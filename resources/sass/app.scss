@@ -8,47 +8,110 @@
 @import '~bootstrap/scss/bootstrap';
 
 
-
-.card_description{
-    max-height: 40px;
-    overflow: hidden;
+.card_description {
+	max-height: 40px;
+	overflow: hidden;
 }
 
-.show{
-    max-height: fit-content;
+.show {
+	max-height: fit-content;
 }
 
-.inside_img{
-    width: 50%;
-    margin: auto;
+.inside_img {
+	width: 50%;
+	margin: auto;
 }
 
-.card_inside_title{
-    font-size: 30px;
-    font-weight: bold;
+.card_inside_title {
+	font-size: 30px;
+	font-weight: bold;
 }
 
-.card_inside_short_content{
-    font-size: 22px;
+.card_inside_short_content {
+	font-size: 22px;
 }
 
-.card_inside_content{
-    font-size: 18px;
+.card_inside_content {
+	font-size: 18px;
 }
 
-.inside_form{
-    width: 50%;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+.inside_form {
+	width: 50%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 
+}
+
+.admin_create_alert {
+	position: absolute;
+	top: 10%;
+	left: 37%;
+	z-index: 99999;
+	width: 30%;
+	text-align: center;
+}
+
+.more_widget {
+	margin: 0;
+}
+
+.more_widget li {
+	font-size: 16px;
+	text-decoration: none !important;
+}
+
+.more_widget li a {
+	text-decoration: none;
+	color: gray;
+}
+
+.active a {
+	color: white !important;
+}
+//выпадающее меню в хедер
+
+
+.nav-item{
+	position: relative;
+
+	a{
+		font-size: 18px;
+		color: white;
+	}
+}
+
+.nav-list{
+	display: none;
+	position: absolute;
+	width: 280px;
+	background: white;
+	border-radius: 5px;
+	z-index: 999;
+	float: right;
+	padding: 5px;
+	box-shadow: 1px 16px 8px 0px rgba(34, 60, 80, 0.2);
+	li > a{
+		color: black;
+	}
+}
+.nav-list li{
+	list-style: none;
+}
+
+.nav-item:hover .nav-list {
+	display: block;
+}
+
+.nav-link:hover{
+	color: gray;
 }
 
 
 
-@media  screen and (max-width: 991px) {
-  .inside_img{
-      width: 100%;
-  }
+@media screen and (max-width: 991px) {
+	.inside_img {
+		width: 100%;
+	}
 }

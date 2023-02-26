@@ -12,6 +12,12 @@
 				</div>
 
 				<div class="row">
+					<div class="col-12 mb-3">
+						<a href="{{ route('admin.nav.create') }}" class="btn btn-success">Создать новую страницу</a>
+					</div>
+				</div>
+
+				<div class="row">
 					<div class="col-12">
 						<div class="cf nestable-lists">
 							<div class="dd nestable" data-send="{{ route('admin.nav.change_structure') }}">

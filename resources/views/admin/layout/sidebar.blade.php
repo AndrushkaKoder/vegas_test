@@ -48,7 +48,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="{{ route('admin.nav') }}" class="nav-link">
+					<a href="{{ route('admin.nav.index') }}" class="nav-link">
 						<i class="nav-icon fas fa-compass"></i>
 						<p>Навигация</p>
 					</a>

@@ -20,6 +20,8 @@ use App\Http\Controllers\Frontend\PageController;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
+Route::get('services', [IndexController::class, 'services'])->name('services');
+
 Route::get('/services/{slug}', [IndexController::class, 'show'])->name('services.show');
 
 Route::post('/send/service', [SendEmailController::class, 'sendEmail'])->name('sendEmailService');

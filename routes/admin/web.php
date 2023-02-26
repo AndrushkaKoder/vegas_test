@@ -22,7 +22,7 @@ Route::middleware('admin')->group(function () {
 
 	Route::resource('pages', PagesController::class);
 
-	Route::get('/nav', [NavController::class, 'index'])->name('nav');
+	Route::resource('nav', NavController::class);
 	Route::post('/nav/change_structure', [NavController::class, 'change_structure'])->name('nav.change_structure');
 });
 

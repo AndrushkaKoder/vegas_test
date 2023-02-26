@@ -14,7 +14,8 @@ class Navigation extends Model
 	protected $fillable = [
 		'title',
 		'url',
-		'parent_id'
+		'parent_id',
+		'position'
 	];
 
 	public function parent()
@@ -43,5 +44,13 @@ class Navigation extends Model
 	public function scopeSSorted($query, $order = 'asc')
 	{
 		return $query->orderBy('position', $order);
+	}
+
+	public static function getNav()
+	{
+		return self::query()
+			->sFirstLevel()
+			->sSorted()
+			->get();
 	}
 }

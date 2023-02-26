@@ -18,35 +18,53 @@ class NavController extends Controller
 		return view('admin.nav.index', compact('items'));
 	}
 
+	public function edit($id)
+	{
+		$item = Navigation::query()->findOrFail($id);
+
+		return view('admin.nav.edit', compact('item'));
+	}
+
 
 	public function create()
 	{
-		//
+		return view('admin.nav.create');
 	}
 
 
-	public function show($id)
+
+	public function update($id): \Illuminate\Http\RedirectResponse
 	{
-		//
+		$page = Navigation::query()->findOrFail($id);
+		$page->update(request()->all());
+
+		return redirect()->back()->with('success', 'Данные о странице обновлены');
 	}
 
-
-	public function edit($id)
+	public function store(): \Illuminate\Http\RedirectResponse
 	{
-		//
+		request()->validate([
+			'title' => 'required',
+			'url' => 'required'
+		]);
+
+		Navigation::query()->create([
+			'title' => request()->title,
+			'url' => request()->url,
+			'position' => 0,
+			'parent_id' => 0
+		]);
+		return redirect()->route('admin.nav.index')->with('success', 'Страница добавлена');
 	}
 
 
-	public function destroy($id)
+	public function destroy($id): \Illuminate\Http\RedirectResponse
 	{
-		//
+		Navigation::query()->findOrFail($id)->delete();
+
+		return redirect()->route('admin.nav.index')->with('success', 'Страница удалена');
 	}
 
-
-	public function store()
-	{
-
-	}
 
 	public function change_structure()
 	{

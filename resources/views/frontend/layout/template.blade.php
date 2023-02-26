@@ -14,11 +14,11 @@
 
 @include('frontend.layout.alert')
 
-<main style="min-height: 100vh">
+<main style="min-height: 85vh">
 	@yield('content')
 </main>
 
-<footer>
+<footer class="bg-dark">
 	@include('frontend.layout.footer')
 </footer>
 

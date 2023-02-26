@@ -38,7 +38,7 @@
 												<i class="nav-icon fas fa-phone" style="color: black;
 												font-size:25px"></i>
 											</a>
-											<a href="{{ route('admin.checked', $item->id) }}"
+											<a href="{{ route('admin.feedback.checked', $item->id) }}"
 											   class="admin_feedback_check" data-checked="{{ $item->checked }}">
 												<i class="nav-icon fas fa-check-square" style="color: black;
 											font-size:25px"></i>
