@@ -54,16 +54,16 @@
 <div class="navbar navbar-dark bg-dark shadow-sm">
 	<div class="container">
 
-		@if($navigation = \App\Models\Navigation::getNav())
+		@if($navigation)
 			<ul class="nav">
 				@foreach($navigation as $item)
 					<li class="nav-item">
-						<a class="nav-link" href="{{ $item->url }}">{{ $item->title }}</a>
+						<a class="nav-link" href="{{ $item->getNavPath() }}">{{ $item->title }}</a>
 						@if($item->childrenSorted->count())
 							<ul class="nav-list">
 								@foreach($item->childrenSorted as $child)
 								<li class="nav-item">
-									<a class="nav-link" href="{{ $child->url }}">{{ $child->title }}</a>
+									<a class="nav-link" href="{{ $child->getNavPath() }}">{{ $child->title }}</a>
 								</li>
 								@endforeach
 							</ul>

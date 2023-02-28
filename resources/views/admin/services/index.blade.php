@@ -8,8 +8,7 @@
 
 				<div class="row">
 					<div class="col-6 mt-5">
-						<a href="{{ route('admin.services.create') }}" class="btn btn-success" style="border-radius:
-						20px">Создать сервис</a>
+						<a href="{{ route('admin.services.create') }}" class="btn btn-success">Новая услуга</a>
 					</div>
 				</div>
 

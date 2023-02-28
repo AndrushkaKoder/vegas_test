@@ -16,9 +16,11 @@ class CreateNavigationsTable extends Migration
         Schema::create('navigations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->integer('parent_id');
 			$table->integer('position');
+			$table->integer('navigable_id')->nullable();
+			$table->string('navigable_type')->nullable();
             $table->timestamps();
         });
     }

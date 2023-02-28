@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
 	protected $fillable = [
 		'uri',
@@ -22,6 +22,11 @@ class Page extends Model
 	{
 		if ($this->uri == '/') return $this->uri;
 
-		return '/'.$this->uri;
+		return '/' . $this->uri;
+	}
+
+	public function navigation()
+	{
+		return $this->morphOne(Navigation::class, 'navigable');
 	}
 }

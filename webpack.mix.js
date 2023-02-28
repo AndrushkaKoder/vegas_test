@@ -10,32 +10,17 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-
+//frontend
 mix.js('resources/frontend/js/app.js', 'public/frontend/js/main.js')
 	.sass('resources/sass/app.scss', 'public/assets/frontend/css')
 	.sourceMaps();
 
-mix.styles([
-	'resources/admin/plugins/fontawesome-free/css/all.css',
-	'resources/admin/css/adminlte.css',
-	'resources/admin/css/nestable.css',
-	'resources/admin/css/admin.css',
-], 'public/assets/_admin/css/app.css')
 
-mix.scripts([
-	'resources/admin/plugins/jquery/jquery.js',
-	'resources/admin/plugins/bootstrap/js/bootstrap.bundle.js',
-	'resources/admin/js/adminlte.js',
-	'resources/admin/js/demo.js',
-	'resources/admin/js/dashboard.js'
-], 'public/assets/_admin/js/admin.js');
+//admin
+mix.js('resources/admin/js/app.js', 'public/assets/_admin/js/app.js')
+	.sass('resources/admin/css/app.scss', 'public/assets/_admin/css');
+
 
 mix.copyDirectory('resources/admin/plugins/fontawesome-free/webfonts', 'public/assets/_admin/webfonts');
-
 mix.copyDirectory('resources/admin/img', 'public/assets/_admin/img');
 
-mix.copyDirectory('resources/admin/css/adminlte.css.map', 'public/assets/_admin/css');
-
-mix.copyDirectory('resources/admin/js/adminlte.js.map', 'public/assets/_admin/js');
-
-mix.js('resources/admin/js/app.js', 'public/assets/_admin/js/').version();

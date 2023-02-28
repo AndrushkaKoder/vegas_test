@@ -7,13 +7,13 @@
 
 				<div class="row">
 					<div class="col-12 d-flex justify-content-center">
-						<h1>Список страниц</h1>
+						<h1>Навигация</h1>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-12 mb-3">
-						<a href="{{ route('admin.nav.create') }}" class="btn btn-success">Создать новую страницу</a>
+						<a href="{{ route('admin.nav.create') }}" class="btn btn-success">Создать пункт навигации</a>
 					</div>
 				</div>
 

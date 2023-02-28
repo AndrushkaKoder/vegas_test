@@ -17,16 +17,6 @@ class IndexController extends Controller
 		return view('frontend.home.index', compact('page'));
 	}
 
-	public function services(){
-		$page = Page::whereUri('services')->firstOrFail();
-		return view('frontend.services.index', compact('page'));
-	}
-
-	public function show($slug)
-	{
-		$page = Service::query()->where('slug', $slug)->firstOrFail();
-		return view('frontend.services.show', compact('page'));
-	}
 
 }
 

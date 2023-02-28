@@ -14,7 +14,7 @@
 
 @include('frontend.layout.alert')
 
-<main style="min-height: 85vh">
+<main style="min-height: 100vh">
 	@yield('content')
 </main>
 
@@ -22,6 +22,6 @@
 	@include('frontend.layout.footer')
 </footer>
 
-<script src="{{asset('frontend/js/main.js')}}"></script>
+<script src="{{mix('frontend/js/main.js')}}"></script>
 </body>
 </html>

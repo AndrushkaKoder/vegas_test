@@ -7,5 +7,5 @@
 			<a href="{{ route('admin.index') }}" class="nav-link">Главная страница</a>
 		</li>
 	</ul>
-	<a href="{{ route('admin.logout') }}" class="btn btn-success m-3">Выйти</a>
+	<a href="{{ route('admin.logout') }}" class="btn btn-dark m-3"><i class="nav-icon fas fa-power-off"></i></a>
 </nav>

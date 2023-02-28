@@ -32,13 +32,13 @@
 				<li class="nav-item">
 					<a href="{{ route('admin.pages.index') }}" class="nav-link">
 						<i class="nav-icon fas fa-list"></i>
-						<p>Приложение</p>
+						<p>Страницы</p>
 					</a>
 				</li>
 				<li class="nav-item">
 					<a href="{{ route('admin.services.index') }}" class="nav-link">
-						<i class="nav-icon fas fa-pen"></i>
-						<p>Сервисы</p>
+						<i class="nav-icon fas fa-wrench"></i>
+						<p>Услуги</p>
 					</a>
 				</li>
 				<li class="nav-item">

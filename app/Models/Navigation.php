@@ -15,8 +15,19 @@ class Navigation extends Model
 		'title',
 		'url',
 		'parent_id',
-		'position'
+		'position',
+		'navigable_id',
+		'navigable_type'
 	];
+
+	public function __construct(array $attributes = [])
+	{
+		$this->setRawAttributes([
+			'parent_id' => 0,
+		]);
+
+		parent::__construct($attributes);
+	}
 
 	public function parent()
 	{
@@ -46,11 +57,20 @@ class Navigation extends Model
 		return $query->orderBy('position', $order);
 	}
 
-	public static function getNav()
+//	Полиморфная связь навигации
+
+	public function navigable()
 	{
-		return self::query()
-			->sFirstLevel()
-			->sSorted()
-			->get();
+		return $this->morphTo();
 	}
+
+	public function getNavPath()
+	{
+		if ($this->navigable) {
+			return $this->navigable->uri;
+		}
+
+		return $this->url;
+	}
+
 }

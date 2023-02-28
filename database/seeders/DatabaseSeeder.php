@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
 		$this->call(FeedbackSeeder::class);
 		$this->call(FeedBackTypesSeeder::class);
 		$this->call(PagesSeeder::class);
+		$this->call(NavSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

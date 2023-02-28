@@ -30,6 +30,11 @@ class Service extends Model
 		});
 	}
 
+	public function navigation()
+	{
+		return $this->morphOne(Navigation::class, 'navigable');
+	}
+
 
 
 }

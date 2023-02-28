@@ -1,3 +1,8 @@
+@import "../plugins/fontawesome-free/css/all.css";
+@import "vendor/adminlte.css";
+@import "vendor/nestable.css";
+
+
 
 .socialite { display: block; float: left; height: 35px; }
 
@@ -93,4 +98,22 @@
 .nestable_action{
 	font-size: 16px;
 	margin: 0 10px;
+}
+
+//navigations
+
+/*.url_item{
+	display: none;
+}*/
+.bind_item{
+	//display: none;
+}
+.active_item{
+	display: block!important;
+}
+.bind_pages_item{
+	display: none;
+}
+.bind_services_item{
+	display: none;
 }
