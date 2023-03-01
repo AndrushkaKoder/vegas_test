@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\FeedbackController;
 use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\NavController;
+use App\Http\Controllers\Admin\SettingsController;
 
 
 Route::middleware('admin')->group(function () {
@@ -24,6 +25,8 @@ Route::middleware('admin')->group(function () {
 
 	Route::resource('nav', NavController::class);
 	Route::post('/nav/change_structure', [NavController::class, 'change_structure'])->name('nav.change_structure');
+
+	Route::resource('settings', SettingsController::class);
 });
 
 Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('admin.login');

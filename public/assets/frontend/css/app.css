@@ -10819,6 +10819,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+::-webkit-scrollbar {
+  display: none;
+}
+
 .card_description {
   max-height: 40px;
   overflow: hidden;

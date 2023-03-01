@@ -1,3 +1,4 @@
+//Инициализация nestable для навигации
 $(document).ready(function () {
 	$('.nestable').nestable({
 		maxDepth: 5,
@@ -8,17 +9,13 @@ $(document).ready(function () {
 		console.log(data)
 		const wrapper = document.querySelector('.nestable');
 
-		if(wrapper){
+		if (wrapper) {
 			const action = wrapper.getAttribute('data-send');
 
 			axios.post(action, {data: data}).then(function (response) {
 			}).catch(function (error) {
 				console.error(error)
 			})
-
 		}
-
-
-
 	});
 })

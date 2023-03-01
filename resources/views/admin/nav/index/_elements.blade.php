@@ -11,13 +11,13 @@
 				<a href="{{ route('admin.nav.edit', $item->id) }}" class="nestable_action">
 					<i class="nav-icon fas fa-pen"></i>
 				</a>
-				<a class="admin_btn_delete nestable_action" href="{{ route('admin.nav.destroy', $item->id) }}" >
+				<a class="admin_btn_delete nestable_action" href="{{ route('admin.nav.destroy', $item->id) }}">
 					<i class="nav-icon fas fa-trash"></i>
 				</a>
 			</div>
 
 			@if($item->childrenSorted->count())
-				@include('admin.nav._elements', ['items' => $item->childrenSorted])
+				@include('admin.nav.index._elements', ['items' => $item->childrenSorted])
 			@endif
 		</li>
 	@endforeach

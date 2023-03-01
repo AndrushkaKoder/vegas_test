@@ -51,7 +51,9 @@ class SendEmailController extends Controller
 
 		$this->mailTo($feedback);
 
-		$feedback->saveFile('file', request()->file('file'));
+		if(!empty(request()->file('file'))){
+			$feedback->saveFile('file', request()->file('file'));
+		}
 
 		$message = request()->file() ? 'Спасибо за отзыв. Мы просмотрим Ваше вложение' : 'Спасибо за ваш отзыв';
 

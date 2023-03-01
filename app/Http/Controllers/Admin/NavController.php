@@ -3,13 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Feedback;
-use App\Models\Files;
 use App\Models\Navigation;
 use App\Models\Page;
 use App\Models\Service;
-use Illuminate\Validation\Rule;
-use function GuzzleHttp\Promise\all;
 
 class NavController extends Controller
 {
@@ -21,40 +17,39 @@ class NavController extends Controller
 			->sSorted()
 			->get();
 
-		return view('admin.nav.index', compact('items'));
+		return view('admin.nav.index.index', compact('items'));
 	}
 
 
 	public function edit($id)
 	{
-		$a=1;
-		$groups = $this->groupsForNav();
 		$action = 'admin.nav.update';
-		$navigation = Navigation::query()->findOrFail($id);
+		/** @var Navigation $item */
+		$item = Navigation::query()->findOrFail($id);
+		$groups = $this->getNavigableGroups($item);
 
-//		dd($this->groupsForNav())
-		return view('admin.nav.edit', compact('navigation', 'action', 'groups'));
+		return view('admin.nav.edit.edit', compact('item', 'action', 'groups'));
 	}
 
 
 	public function create()
 	{
 		$action = 'admin.nav.store';
-		$navigation = new Navigation();
+		/** @var Navigation $item */
+		$item = new Navigation();
+		$groups = $this->getNavigableGroups($item);
 
-		$groups = $this->groupsForNav();
-
-		return view('admin.nav.edit', compact('navigation', 'groups', 'action'));
+		return view('admin.nav.edit.edit', compact('item', 'groups', 'action'));
 	}
 
 
 	public function update($id): \Illuminate\Http\RedirectResponse
 	{
-		$navigation = Navigation::query()->findOrFail($id);
+		$item = Navigation::query()->findOrFail($id);
+		$item->fill($this->getFillData());
+		$item->save();
 
-		$navigation->fill($this->addNavigationData());
-		$navigation->save();
-		return redirect()->route('admin.nav.edit', $navigation->id)->with('success', 'Данные о ссылке обновлены');
+		return redirect()->route('admin.nav.edit', $item->id)->with('success', 'Данные о ссылке обновлены');
 	}
 
 
@@ -64,11 +59,11 @@ class NavController extends Controller
 			'title' => 'required',
 		]);
 
-		$navigation = new Navigation();
-		$navigation->fill($this->addNavigationData());
-		$navigation->save();
+		$item = new Navigation();
+		$item->fill($this->getFillData());
+		$item->save();
 
-		return redirect()->route('admin.nav.edit', $navigation->id)->with('success', 'Навигационная ссылка добавлена');
+		return redirect()->route('admin.nav.edit', $item->id)->with('success', 'Навигационная ссылка добавлена');
 	}
 
 
@@ -97,26 +92,34 @@ class NavController extends Controller
 					changeStruct($value['children'], $id);
 				}
 			}
-
-		};
+		}
 
 		changeStruct(request()->data, 0);
 	}
 
 
-	public function groupsForNav()
+	public function getNavigableGroups(Navigation $navigation)
 	{
-		return [
+		$a=1;
+		$groups = [
 			Page::class => ['title' => 'Страницы', 'items' => Page::all(),],
 			Service::class => ['title' => 'Услуги', 'items' => Service::all(),],
-			//Feedback::class => ['title' => 'Фидбек', 'items' => Feedback::all(),],
 		];
 
+		foreach ($groups as $className => $group) {
+			$loopFirst = $className == array_key_first($groups);
+			$groups[$className]['show'] = (!$navigation->exists && $loopFirst)
+				|| ($navigation->exists &&
+					(($navigation->navigable_type && $navigation->navigable_type == $className) || $loopFirst)
+				);
+		}
+
+		return $groups;
 	}
 
 
-	private function addNavigationData(){
-
+	private function getFillData()
+	{
 		$object_type = request('bind_to');
 		$object_id = intval(request("bind_to_item.{$object_type}"));
 
@@ -141,6 +144,5 @@ class NavController extends Controller
 		}
 		return $fill;
 	}
-
 
 }

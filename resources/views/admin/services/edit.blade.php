@@ -19,13 +19,13 @@
 								<div class="mb-3">
 									<label for="edit_title" class="form-label">Название</label>
 									<input type="text" name="title" class="form-control" id="edit_title"
-									       value="{{ $service->title }}">
+									       value="{{ $service->title ?? old('title') }}">
 								</div>
 								<div class="mb-3">
 									<label for="edit_short_content" class="form-label">Короткое описание</label>
 									<input type="text" name="short_content" class="form-control"
 									       id="edit_short_content"
-									       value="{{ $service->short_content }}">
+									       value="{{ $service->short_content ?? old('short_content') }}">
 								</div>
 								<button type="button" class="btn btn-primary admin_edit_seo_btn">
 									Показать СЕО параметры</button>
@@ -34,19 +34,19 @@
 										<label for="edit_short_content" class="form-label">СЕО заголовок</label>
 										<input type="text" name="seo_title" class="form-control"
 										       id="edit_short_content"
-										       value="{{ $service->seo_title }}">
+										       value="{{ $service->seo_title ?? old('seo_title')  }}">
 									</div>
 									<div class="mb-3">
 										<label for="edit_short_content" class="form-label">СЕО описание</label>
 										<input type="text" name="seo_description" class="form-control"
 										       id="edit_short_content"
-										       value="{{ $service->seo_description }}">
+										       value="{{ $service->seo_description ?? old('seo_description') }}">
 									</div>
 									<div class="mb-3">
 										<label for="edit_short_content" class="form-label">СЕО ключеые слова</label>
 										<input type="text" name="seo_keywords" class="form-control"
 										       id="edit_short_content"
-										       value="{{ $service->seo_keywords }}">
+										       value="{{ $service->seo_keywords ?? old('seo_keywords') }}">
 									</div>
 								</div>
 								<div class="admin_edit_images d-flex justify-content-between">

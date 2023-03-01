@@ -29,7 +29,7 @@
 				<h4 class="text-white">Наши социальные сети</h4>
 				<ul class="list-unstyled">
 
-					@if(!empty($vk = \App\Models\Params::getValue('vk')))
+					@if(!empty($vk = \App\Models\Params::getValue('VK')))
 						<li>
 							<a href="{{ $vk }}" style="text-decoration: none"
 							   class="text-white" target="_blank">VK
@@ -37,7 +37,7 @@
 						</li>
 					@endif
 
-					@if(!empty($twitter = \App\Models\Params::getValue('twitter')))
+					@if(!empty($twitter = \App\Models\Params::getValue('OK')))
 						<li>
 							<a href="{{ $twitter }}" style="text-decoration: none"
 							   class="text-white" target="_blank">Twitter

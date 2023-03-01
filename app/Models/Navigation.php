@@ -10,6 +10,9 @@ class Navigation extends Model
 	use HasFactory;
 
 	public $timestamps = false;
+	/**
+	 * @var mixed
+	 */
 
 	protected $fillable = [
 		'title',

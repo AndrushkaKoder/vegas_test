@@ -1,7 +1,7 @@
 @extends('frontend.layout.template')
 
 @section('content')
-<div class="title_content bg-dark text-white" style="min-height: 700px">
+<div class="title_content bg-dark text-white" style="min-height: 100vh">
 	<div class="container">
 		<div class="row">
 			<div class="col-12 text-center text-white" style="margin: 20% auto">

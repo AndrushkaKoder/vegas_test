@@ -24,5 +24,14 @@ return [
 		'seo_description' => 'информация о контактах' ,
 		'seo_keywords' => 'телефон, почта, адрес, карта',
 		'content' => "<h1>Контакты</h1>"
+	],
+	[
+		'uri' => 'services',
+		'title' => 'Услуги',
+		'seo_title' => 'Страница услуг',
+		'seo_description' => 'Страница услуг' ,
+		'seo_keywords' => 'Страница услуг',
+		'content' => ""
 	]
+
 ];

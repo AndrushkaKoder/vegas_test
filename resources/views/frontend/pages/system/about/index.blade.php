@@ -14,35 +14,60 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-12 d-flex justify-content-center">
-							<form action="{{ route('frontend.sendEmailAbout') }}" method="post"
-							      class="d-flex flex-column text-center" enctype="multipart/form-data">
-								@csrf
-								<div class="mb-3">
-									<label for="" class="form-label">Имя</label>
-									<input type="text" name="user_name" class="form-control" id="name"
-									       value="{{ old('name')}}" required>
-								</div>
-								<div class="mb-3">
-									<label for="email" class="form-label">Почта</label>
-									<input type="email" name="user_email" class="form-control" id="email"
-									       value="{{old('user_email')}}" required>
-								</div>
-								<div class="mb-3">
-									<label for="email" class="form-label">Телефон</label>
-									<input type="tel" name="user_phone" class="form-control" id="email"
-									       value="{{old('user_email')}}" required>
-								</div>
-								<div class="mb-3">
-									<label class="form-check-label" for="text">Сообщение</label>
-									<textarea name="user_feedback" id="text" cols="50" rows="10" class="form-control"
-									          required></textarea>
-								</div>
-								<div class="mb-3 form-check">
-									<input type="file" name="file">
-								</div>
 
-								<button type="submit" class="btn btn-primary">Отправить</button>
-							</form>
+							{{ Form::open(['route' =>  'frontend.sendEmailAbout',
+ 											'method' => 'post',
+ 											'class' => 'd-flex flex-column text-center',
+ 											'files' => 'true']) }}
+
+							<div class="mb-3">
+								{{ Form::label('name', 'Имя', ['class' => 'form-label']) }}
+								{{ Form::text('user_name', '', [
+								 'class' => 'form-control',
+								 'id' => 'name',
+								 'required' => '',
+								 'placeholder' => 'Ваше имя']) }}
+							</div>
+
+							<div class="mb-3">
+								{{ Form::label('email', 'Электронная почта', ['class' => 'form-label']) }}
+								{{ Form::email('user_email', '', [
+								 'class' => 'form-control',
+ 							 	'id' => 'email',
+ 							 	'required' => '',
+ 							 	'placeholder' => 'email'
+								]) }}
+							</div>
+
+							<div class="mb-3">
+								{{ Form::label('phone', 'Телефон', ['class' => 'form-label']) }}
+								{{ Form::tel('user_phone', '', [
+								 'class' => 'form-control',
+ 							 	'id' => 'phone',
+ 							 	'required' => '',
+ 							 	'placeholder' => 'мобильный'
+								]) }}
+							</div>
+
+							<div class="mb-3">
+								{{ Form::textarea('user_feedback', '', ['class'=> 'form-control',
+								'id' => 'feedback',
+								'cols' => 50,
+								'rows' => 10,
+								'required' => '',
+								'placeholder' => 'Ваши пожелания для нас']) }}
+							</div>
+
+							<div class="mb-3 form-check">
+								{{ Form::file('file') }}
+							</div>
+
+							<div class="mb-3">
+								{{ Form::submit('Отправить', ['class' => 'btn btn-primary']) }}
+							</div>
+
+							{{ Form::close() }}
+
 						</div>
 					</div>
 				</div>

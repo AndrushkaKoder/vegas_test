@@ -21,7 +21,7 @@
 					<div class="col-12">
 						<div class="cf nestable-lists">
 							<div class="dd nestable" data-send="{{ route('admin.nav.change_structure') }}">
-								@include('admin.nav._elements', ['items' => $items])
+								@include('admin.nav.index._elements', ['items' => $items])
 							</div>
 						</div>
 					</div>
@@ -30,5 +30,4 @@
 			</div>
 		</section>
 	</div>
-
 @endsection
