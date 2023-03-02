@@ -4,10 +4,10 @@
 		<div class="admin_edit_img">
 			<img src="{{ $file->getPath() }}"
 			     width="270" height="200" alt="#" class="admin_edit_img_item mb-2">
-			<button type="button" class="admin_edit_img_delete">Удалить</button>
-			<input type="hidden" name="delete_files[{{ $name }}]" class="delete_toggler"
-			       value="0">
+			{{ Form::button('Удалить', ['class' => 'admin_edit_img_delete']) }}
+			{{ Form::hidden("delete_files[{$name} ]", '0', ['class' => 'delete_toggler']) }}
 		</div>
 	@endif
-	<input type="file" name="files_image[{{ $name }}]" class="form-control" style="width:92%">
+	{{ Form::file("files_image[{$name}]", ['class' => 'form-control']) }}
+	{{--	<input type="file" name="files_image[{{ $name }}]" class="form-control" style="width:92%">--}}
 </div>

@@ -11,32 +11,30 @@ class PagesController extends Controller
 
 	public function index()
 	{
-		$pages = Page::all();
+		$items = Page::all();
 
-		return view('admin.pages.index', compact('pages'));
+		return view('admin.pages.index.index', compact('items'));
 	}
 
 
 	public function create()
 	{
-		return view('admin.pages.create');
+		$item = new Page();
+
+		$action = 'admin.pages.store';
+
+		return view('admin.pages.edit.edit', compact('item' , 'action'));
 	}
 
 
-	public function store(Request $request)
+	public function store()
 	{
-		$request->validate([
-			'title' => 'required',
-			'seo_title' => 'required',
-			'seo_description' => 'required',
-			'seo_keywords' => 'required',
-		]);
-
+		$this->validateData();
 
 		$page = new Page();
-		$page->fill($request->all())->save();
+		$page->fill(request()->all())->save();
 
-		return redirect()->route('admin.pages.index')->with('success', "Страница $page->title добавлена");
+		return redirect()->route('admin.pages.edit', $page->id)->with('success', "Страница $page->title добавлена");
 	}
 
 
@@ -44,28 +42,42 @@ class PagesController extends Controller
 	{
 		$item = Page::query()->find($id);
 
-		return view('admin.pages.edit', compact('item'));
+		$action = 'admin.pages.update';
+
+		return view('admin.pages.edit.edit', compact('item', 'action'));
 	}
 
 
-	public function update(Request $request, $id)
+	public function update($id)
 	{
-		$page = Page::query()->find($id);
-		$page->update($request->all());
+		$this->validateData();
+
+		$item = Page::query()->find($id);
+
+		$item->update(request()->all());
 
 
-		return redirect()->route('admin.pages.index')->with('success', "Страница $page->title изменена");
+		return redirect()->route('admin.pages.edit', $item->id)->with('success', "Страница изменена");
 	}
 
 
 	public function destroy($id)
 	{
-		$page = Page::query()->findOrFail($id);
+		$item = Page::query()->findOrFail($id);
 		Page::query()->findOrFail($id)->delete();
 
-		return redirect()->route('admin.pages.index')->with('success', "Страница $page->title была удалена");
+		return redirect()->route('admin.pages.index')->with('success', "Страница $item->title была удалена");
 	}
 
 
+	protected function validateData(){
+		return request()->validate([
+			'uri' => 'required',
+			'title' => 'required',
+			'seo_title' => 'required',
+			'seo_description' => 'required',
+			'seo_keywords' => 'required',
+		]);
+	}
 
 }

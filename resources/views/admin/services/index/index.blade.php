@@ -21,7 +21,7 @@
 								</div>
 
 								<div class="card-body">
-									@include('admin.services._table')
+									@include('admin.services.edit._table')
 								</div>
 
 								<div class="card-footer clearfix d-flex justify-content-center">

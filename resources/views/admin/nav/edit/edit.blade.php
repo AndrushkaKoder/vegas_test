@@ -2,24 +2,36 @@
 
 
 @section('content')
-	<div class="content-wrapper">
+	<div class="content-wrapper position-relative">
 		<section class="content">
 			<div class="container">
-				<div class="row">
+
+				<div class="row position-absolute" style="z-index: 999" >
 					@if($item->exists)
-						<div class="col-12 mt-3">
-							<a href="{{ route('admin.nav.create') }}" class="btn btn-success">Создать пункт
-								навигации</a>
+						<div class="col-12 d-flex justify-content-end mt-2">
+							<a href="{{ route('admin.nav.create') }}" class="btn btn-success">
+								<i class="nav-icon fas fa-plus" style="color: black;
+												font-size:25px"></i>
+							</a>
+
+							<div class="admin_action ml-3">
+								<a href="{{ route('admin.nav.destroy', $item->id) }}"
+								   class="admin_btn_delete btn btn-danger" style="background: red">
+									<i class="nav-icon fas fa-trash" style="color: black;
+												font-size:25px"></i>
+								</a>
+							</div>
 						</div>
 					@endif
 				</div>
+
 				<div class="row">
 					<div class="col-12 text-center">
 						<h1>{{  $item->title ?? 'Новая навигация'}}</h1>
 					</div>
 
 
-					{{ Form::model($item, ['route'=>[$action, $item->id],'class' => 'navigationForm',]) }}
+					{{ Form::model($item, ['route'=> [$action, $item->id], 'class' => 'navigationForm',]) }}
 
 					@if($item->exists)
 						@method('put')
@@ -40,15 +52,16 @@
 						@include('admin.nav.edit._bind_url')
 						@include('admin.nav.edit._bind_relation')
 
-						{{ Form::hidden('url_check', '0', ['data-check']) }}
+						{{ Form::hidden('url_check', '1', ['data-check']) }}
 						<div class="col-12 d-flex justify-content-between">
 							{{ Form::submit('Сохранить', ['class' => 'btn btn-success']) }}
+
 							<a href="{{ route('admin.nav.index') }}" class="btn btn-dark">Отмена</a>
 						</div>
 					</div>
 					{{ Form::close() }}
-
 				</div>
+
 			</div>
 		</section>
 	</div>

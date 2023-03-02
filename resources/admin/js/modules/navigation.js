@@ -13,11 +13,10 @@ if (btnContainer) {
 				urlItem.classList.add('active_item')
 				bindItem.classList.remove('active_item')
 				bindItem.style.display = 'none'
-				urlInput.setAttribute('required', 'true')
+				// urlInput.setAttribute('required', '')
 				urlCheck.value = 1
 				console.log("hello")
 			} else if (btn.hasAttribute('data-bind')) {
-				//urlInput.value = '';
 				urlCheck.value = 0
 				urlInput.removeAttribute('required')
 				urlItem.classList.remove('active_item')

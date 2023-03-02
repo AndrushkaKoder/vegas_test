@@ -28,6 +28,7 @@ class NavController extends Controller
 		$item = Navigation::query()->findOrFail($id);
 		$groups = $this->getNavigableGroups($item);
 
+
 		return view('admin.nav.edit.edit', compact('item', 'action', 'groups'));
 	}
 
@@ -45,6 +46,15 @@ class NavController extends Controller
 
 	public function update($id): \Illuminate\Http\RedirectResponse
 	{
+
+		$validate = [
+			'title' => 'required',
+			'url' => request()->url_check == '1' ? 'required' : ''
+		];
+
+
+		request()->validate($validate);
+
 		$item = Navigation::query()->findOrFail($id);
 		$item->fill($this->getFillData());
 		$item->save();
@@ -55,9 +65,11 @@ class NavController extends Controller
 
 	public function store(): \Illuminate\Http\RedirectResponse
 	{
-		request()->validate([
+		$validate = [
 			'title' => 'required',
-		]);
+			'url' => request()->url_check == '1' ? 'required' : ''
+		];
+		request()->validate($validate);
 
 		$item = new Navigation();
 		$item->fill($this->getFillData());
@@ -100,7 +112,6 @@ class NavController extends Controller
 
 	public function getNavigableGroups(Navigation $navigation)
 	{
-		$a=1;
 		$groups = [
 			Page::class => ['title' => 'Страницы', 'items' => Page::all(),],
 			Service::class => ['title' => 'Услуги', 'items' => Service::all(),],
@@ -110,7 +121,10 @@ class NavController extends Controller
 			$loopFirst = $className == array_key_first($groups);
 			$groups[$className]['show'] = (!$navigation->exists && $loopFirst)
 				|| ($navigation->exists &&
-					(($navigation->navigable_type && $navigation->navigable_type == $className) || $loopFirst)
+					(
+						($navigation->navigable_type && $navigation->navigable_type == $className)
+						|| (!$navigation->navigable_type && $loopFirst)
+					)
 				);
 		}
 

@@ -13,7 +13,7 @@
 				</div>
 
 				<div class="row">
-					@if($pages->count())
+					@if($items->count())
 						<div class="col-12 mt-5">
 							<div class="card">
 								<div class="card-header">
@@ -33,7 +33,7 @@
 									</tr>
 									</thead>
 									<tbody>
-									@foreach($pages as $item)
+									@foreach($items as $item)
 										<tr>
 											<td>{{ $item->id }}</td>
 											<td>{{ $item->uri }}</td>
@@ -44,9 +44,9 @@
 											<td>
 												<div class="admin_action d-flex justify-content-around">
 													@if($url = $item->getUrl())
-													<a href="{{ $url }}" target="_blank">
-														<i class="nav-icon fas fa-share"></i>
-													</a>
+														<a href="{{ $url }}" target="_blank">
+															<i class="nav-icon fas fa-share"></i>
+														</a>
 													@endif
 													<a href="{{ route('admin.pages.edit', $item->id) }}">
 														<i class="nav-icon fas fa-pen"></i>

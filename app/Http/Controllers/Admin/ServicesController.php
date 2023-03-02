@@ -13,7 +13,7 @@ class ServicesController extends Controller
 			->orderBy('id', 'desc')
 			->paginate(10);
 
-		return view('admin.services.index', compact('services'));
+		return view('admin.services.index.index', compact('services'));
 	}
 
 	public function create()
@@ -21,7 +21,7 @@ class ServicesController extends Controller
 		$service = new Service();
 		$action = 'admin.services.store';
 		$method = 'POST';
-		return view('admin.services.edit', compact('service', 'action', 'method'));
+		return view('admin.services.edit.edit', compact('service', 'action', 'method'));
 	}
 
 	public function store(): \Illuminate\Http\RedirectResponse
@@ -44,7 +44,7 @@ class ServicesController extends Controller
 		$service = Service::query()->findOrFail($id);
 		$action = 'admin.services.update';
 		$method = 'GET';
-		return view('admin.services.edit', compact('service', 'action', 'method'));
+		return view('admin.services.edit.edit', compact('service', 'action', 'method'));
 	}
 
 
