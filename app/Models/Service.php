@@ -18,7 +18,8 @@ class Service extends Model
 		'content',
 		'seo_title',
 		'seo_description',
-		'seo_keywords'
+		'seo_keywords',
+		'position'
 	];
 
 	protected static function booted()
@@ -33,6 +34,11 @@ class Service extends Model
 	public function navigation()
 	{
 		return $this->morphOne(Navigation::class, 'navigable');
+	}
+
+	public function scopeSSorted($query, $order = 'asc')
+	{
+		return $query->orderBy('position', $order);
 	}
 
 

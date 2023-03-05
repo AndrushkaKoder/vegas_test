@@ -7,7 +7,8 @@
 				<div class="card mt-3">
 					<h3 class="m-3 text-center">{{ $service->title ?? 'Создать сервис' }} </h3>
 
-					{{ Form::model($service, ['route'=> [$action, $service->id], 'class' => 'admin_edit_form',]) }}
+					{{ Form::model($service, ['route'=> [$action, $service->id], 'class' => 'admin_edit_form',
+					'files' => true]) }}
 
 					@if($service->exists)
 						@method('put')

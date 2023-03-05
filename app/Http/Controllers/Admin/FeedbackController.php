@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Feedback;
-use App\Models\Files;
-use Faker\Core\File;
-use Illuminate\Support\Facades\Storage;
+use App\Models\FeedbackType;
+
 
 class FeedbackController extends Controller
 {
@@ -17,7 +16,13 @@ class FeedbackController extends Controller
 			->orderBy('id', 'desc')
 			->paginate(10);
 
-		return view('admin.feedback.index', compact('items'));
+		if(request()->has('category')){
+			$items = $this->sortFeedback();
+		}
+
+		$feedbackType = FeedbackType::all();
+
+		return view('admin.feedback.index', compact('items', 'feedbackType'));
 	}
 
 
@@ -42,5 +47,14 @@ class FeedbackController extends Controller
 		$item = Feedback::query()->findOrFail($id);
 		$item->update(request()->only('checked'));
 	}
+
+
+	public function sortFeedback()
+	{
+		return Feedback::query()
+			->orderBy('id', 'desc')
+			->whereIn('feedback_type_id', request('category'))->paginate(10);
+	}
+
 }
 

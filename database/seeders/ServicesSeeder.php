@@ -18,7 +18,7 @@ class ServicesSeeder extends Seeder
     {
         $data = include storage_path("seed/services/services.php");
 
-        foreach ($data as $item) {
+        foreach ($data as $i => $item) {
             /** @var Service $service */
             $service = Service::query()->create([
                 'title' => $item['title'],
@@ -27,6 +27,7 @@ class ServicesSeeder extends Seeder
                 'seo_title' => $item['seo_title'],
                 'seo_description' => $item['seo_description'],
                 'seo_keywords' => $item['seo_keywords'],
+				'position' => $i
             ]);
 
             foreach ($item['images'] as $name => $filename) {

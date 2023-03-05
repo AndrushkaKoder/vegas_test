@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Third Party Header
+    | Third Party AdminHeader
     |--------------------------------------------------------------------------
     |
     | This file is for storing the credentials for third party services such

@@ -82,6 +82,10 @@ class Feedback extends Model
 		return $res;
 	}
 
+	public function feedbackFilters(){
+
+		$feedbackType = $this->feedbackType->title;
+	}
 
 }
 

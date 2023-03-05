@@ -9,11 +9,11 @@ class ServicesController extends Controller
 {
 	public function index()
 	{
-		$services = Service::query()
-			->orderBy('id', 'desc')
+		$items = Service::query()
+			->sSorted()
 			->paginate(10);
 
-		return view('admin.services.index.index', compact('services'));
+		return view('admin.services.index.index', compact('items'));
 	}
 
 	public function create()
@@ -26,12 +26,10 @@ class ServicesController extends Controller
 
 	public function store(): \Illuminate\Http\RedirectResponse
 	{
+
 		$this->serviceValidate();
-
 		$service = new Service();
-
 		$service->fill(request()->all())->save();
-
 		$this->saveImages($service);
 
 		return redirect()->route('admin.services.edit', $service->id)
@@ -50,14 +48,17 @@ class ServicesController extends Controller
 
 	public function update(int $id): \Illuminate\Http\RedirectResponse
 	{
+//		dd(request()->all());
 		$this->serviceValidate();
 
 		/** @var Service $service */
 		$service = Service::query()->findOrFail($id);
 		$service->update(request()->all());
 
+//		dd($service);
 		$this->saveImages($service);
 		$this->deleteImages($service);
+
 
 		return redirect()->route('admin.services.edit', $service->id)->with('success', 'Данные обновлены');
 	}
@@ -71,10 +72,8 @@ class ServicesController extends Controller
 
 	public function saveImages(Service $service)
 	{
-		if (request()->has('files_image')) {
-			foreach (request('files_image') as $name => $obj) {
-				$service->saveFile($name, $obj);
-			}
+		foreach ((array) request()->file('files_image') as $name => $obj) {
+			$service->saveFile($name, $obj);
 		}
 	}
 
@@ -99,4 +98,20 @@ class ServicesController extends Controller
 			'outer' => 'image',
 		]);
 	}
+
+
+	public function structure()
+	{
+		$data = request('data');
+
+		foreach ($data as $key => $value) {
+			$id = $value['id'];
+			$position = $key;
+
+			Service::query()->where('id', $id)->update([
+				'position' => $position,
+			]);
+		}
+	}
+
 }

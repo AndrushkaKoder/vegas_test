@@ -20,8 +20,10 @@ Route::middleware('admin')->group(function () {
 
 	Route::resource('feedback', FeedbackController::class)->only(['index', 'show', 'destroy', 'update']);
 	Route::post('feedback/{id}/change_checked', [FeedbackController::class, 'changeChecked'])->name('feedback.checked');
+//	Route::post('feedback/sortFeedback', [FeedbackController::class, 'sortFeedback'])->name('feedback.sortFeedback');
 
 	Route::resource('pages', PagesController::class);
+	Route::post('services/structure', [ServicesController::class, 'structure'])->name('services.structure');
 
 	Route::resource('nav', NavController::class);
 	Route::post('/nav/change_structure', [NavController::class, 'change_structure'])->name('nav.change_structure');

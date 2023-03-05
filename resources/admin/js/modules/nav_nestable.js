@@ -1,22 +1,22 @@
-//Инициализация nestable для навигации
+//Инициализация nestable для услуг
 $(document).ready(function () {
-	$('.nestable').nestable({
-		maxDepth: 5,
-	});
+	$('.services_nestable').nestable({
+		maxDepth: 1,
+	})
 
-	$('.nestable').on('change', function () {
+	$('.services_nestable').on('change', function () {
 		let data = $(this).nestable('serialize');
-		console.log(data)
-		const wrapper = document.querySelector('.nestable');
 
+		const wrapper = document.querySelector('.services_nestable');
 		if (wrapper) {
 			const action = wrapper.getAttribute('data-send');
 
 			axios.post(action, {data: data}).then(function (response) {
 				console.log(response)
 			}).catch(function (error) {
-				// console.error(error)
+				console.error(error)
 			})
 		}
 	});
-})
+
+});
