@@ -116,7 +116,7 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `services`
+-- Структура таблицы `service`
 --
 
 CREATE TABLE `services` (
@@ -131,7 +131,7 @@ CREATE TABLE `services` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `services`
+-- Дамп данных таблицы `service`
 --
 
 INSERT INTO `services` (`id`, `title`, `short_content`, `content`, `img`, `created_at`, `updated_at`, `slug`) VALUES
@@ -251,7 +251,7 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Индексы таблицы `services`
+-- Индексы таблицы `service`
 --
 ALTER TABLE `services`
   ADD PRIMARY KEY (`id`);
@@ -304,7 +304,7 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT для таблицы `services`
+-- AUTO_INCREMENT для таблицы `service`
 --
 ALTER TABLE `services`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;

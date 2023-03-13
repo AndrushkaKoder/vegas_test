@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class HelperServiceProvider extends ServiceProvider
 {
 	/**
-	 * Register services.
+	 * Register service.
 	 *
 	 * @return void
 	 */
@@ -17,7 +17,7 @@ class HelperServiceProvider extends ServiceProvider
 	}
 
 	/**
-	 * Bootstrap services.
+	 * Bootstrap service.
 	 *
 	 * @return \Illuminate\Contracts\Auth\Authenticatable
 	 */

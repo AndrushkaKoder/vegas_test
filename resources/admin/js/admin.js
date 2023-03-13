@@ -15040,7 +15040,7 @@ return jQuery;
   var SELECTOR_DATA_TOGGLE$2 = '[data-toggle="dropdown"]';
   var SELECTOR_FORM_CHILD = '.dropdown form';
   var SELECTOR_MENU = '.dropdown-menu';
-  var SELECTOR_NAVBAR_NAV = '.navbar-nav';
+  var SELECTOR_NAVBAR_NAV = '.navbar-navigation';
   var SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)';
   var PLACEMENT_TOP = 'top-start';
   var PLACEMENT_TOPEND = 'top-end';
@@ -17133,9 +17133,9 @@ return jQuery;
   var METHOD_OFFSET = 'offset';
   var METHOD_POSITION = 'position';
   var SELECTOR_DATA_SPY = '[data-spy="scroll"]';
-  var SELECTOR_NAV_LIST_GROUP$1 = '.nav, .list-group';
-  var SELECTOR_NAV_LINKS = '.nav-link';
-  var SELECTOR_NAV_ITEMS = '.nav-item';
+  var SELECTOR_NAV_LIST_GROUP$1 = '.navigation, .list-group';
+  var SELECTOR_NAV_LINKS = '.navigation-link';
+  var SELECTOR_NAV_ITEMS = '.navigation-item';
   var SELECTOR_LIST_ITEMS = '.list-group-item';
   var SELECTOR_DROPDOWN$1 = '.dropdown';
   var SELECTOR_DROPDOWN_ITEMS = '.dropdown-item';
@@ -17316,9 +17316,9 @@ return jQuery;
       } else {
         // Set triggered link as active
         $link.addClass(CLASS_NAME_ACTIVE$1); // Set triggered links parents as active
-        // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
+        // With both <ul> and <navigation> markup a parent is the previous sibling of any navigation ancestor
 
-        $link.parents(SELECTOR_NAV_LIST_GROUP$1).prev(SELECTOR_NAV_LINKS + ", " + SELECTOR_LIST_ITEMS).addClass(CLASS_NAME_ACTIVE$1); // Handle special case when .nav-link is inside .nav-item
+        $link.parents(SELECTOR_NAV_LIST_GROUP$1).prev(SELECTOR_NAV_LINKS + ", " + SELECTOR_LIST_ITEMS).addClass(CLASS_NAME_ACTIVE$1); // Handle special case when .navigation-link is inside .navigation-item
 
         $link.parents(SELECTOR_NAV_LIST_GROUP$1).prev(SELECTOR_NAV_ITEMS).children(SELECTOR_NAV_LINKS).addClass(CLASS_NAME_ACTIVE$1);
       }
@@ -17420,7 +17420,7 @@ return jQuery;
   var EVENT_SHOWN$1 = "shown" + EVENT_KEY$1;
   var EVENT_CLICK_DATA_API = "click" + EVENT_KEY$1 + DATA_API_KEY;
   var SELECTOR_DROPDOWN = '.dropdown';
-  var SELECTOR_NAV_LIST_GROUP = '.nav, .list-group';
+  var SELECTOR_NAV_LIST_GROUP = '.navigation, .list-group';
   var SELECTOR_ACTIVE = '.active';
   var SELECTOR_ACTIVE_UL = '> li > .active';
   var SELECTOR_DATA_TOGGLE = '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]';
@@ -18699,7 +18699,7 @@ return jQuery;
         this._element.parents(SELECTOR_DROPDOWN_MENU).first().find('.show').removeClass('show').hide();
       }
 
-      this._element.parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function () {
+      this._element.parents('li.navigation-item.dropdown.show').on('hidden.bs.dropdown', function () {
         $__default["default"]('.dropdown-submenu .show').removeClass('show').hide();
       });
     };
@@ -19057,17 +19057,17 @@ return jQuery;
   var SELECTOR_DATA_TOGGLE_FULLSCREEN = '[data-widget="iframe-fullscreen"]';
   var SELECTOR_CONTENT_WRAPPER = '.content-wrapper';
   var SELECTOR_CONTENT_IFRAME = SELECTOR_CONTENT_WRAPPER + " iframe";
-  var SELECTOR_TAB_NAV = SELECTOR_CONTENT_WRAPPER + ".iframe-mode .nav";
-  var SELECTOR_TAB_NAVBAR_NAV = SELECTOR_CONTENT_WRAPPER + ".iframe-mode .navbar-nav";
-  var SELECTOR_TAB_NAVBAR_NAV_ITEM = SELECTOR_TAB_NAVBAR_NAV + " .nav-item";
-  var SELECTOR_TAB_NAVBAR_NAV_LINK = SELECTOR_TAB_NAVBAR_NAV + " .nav-link";
+  var SELECTOR_TAB_NAV = SELECTOR_CONTENT_WRAPPER + ".iframe-mode .navigation";
+  var SELECTOR_TAB_NAVBAR_NAV = SELECTOR_CONTENT_WRAPPER + ".iframe-mode .navbar-navigation";
+  var SELECTOR_TAB_NAVBAR_NAV_ITEM = SELECTOR_TAB_NAVBAR_NAV + " .navigation-item";
+  var SELECTOR_TAB_NAVBAR_NAV_LINK = SELECTOR_TAB_NAVBAR_NAV + " .navigation-link";
   var SELECTOR_TAB_CONTENT = SELECTOR_CONTENT_WRAPPER + ".iframe-mode .tab-content";
   var SELECTOR_TAB_EMPTY = SELECTOR_TAB_CONTENT + " .tab-empty";
   var SELECTOR_TAB_LOADING = SELECTOR_TAB_CONTENT + " .tab-loading";
   var SELECTOR_TAB_PANE = SELECTOR_TAB_CONTENT + " .tab-pane";
-  var SELECTOR_SIDEBAR_MENU_ITEM = '.main-sidebar .nav-item > a.nav-link';
+  var SELECTOR_SIDEBAR_MENU_ITEM = '.main-sidebar .navigation-item > a.navigation-link';
   var SELECTOR_SIDEBAR_SEARCH_ITEM = '.sidebar-search-results .list-group-item';
-  var SELECTOR_HEADER_MENU_ITEM = '.main-header .nav-item a.nav-link';
+  var SELECTOR_HEADER_MENU_ITEM = '.main-header .navigation-item a.navigation-link';
   var SELECTOR_HEADER_DROPDOWN_ITEM = '.main-header a.dropdown-item';
   var CLASS_NAME_IFRAME_MODE$1 = 'iframe-mode';
   var CLASS_NAME_FULLSCREEN_MODE = 'iframe-mode-fullscreen';
@@ -19133,7 +19133,7 @@ return jQuery;
         navId += "-" + Math.floor(Math.random() * 1000);
       }
 
-      var newNavItem = "<li class=\"nav-item\" role=\"presentation\"><a href=\"#\" class=\"btn-iframe-close\" data-widget=\"iframe-close\" data-type=\"only-this\"><i class=\"fas fa-times\"></i></a><a class=\"nav-link\" data-toggle=\"row\" id=\"" + navId + "\" href=\"#" + tabId + "\" role=\"tab\" aria-controls=\"" + tabId + "\" aria-selected=\"false\">" + title + "</a></li>";
+      var newNavItem = "<li class=\"navigation-item\" role=\"presentation\"><a href=\"#\" class=\"btn-iframe-close\" data-widget=\"iframe-close\" data-type=\"only-this\"><i class=\"fas fa-times\"></i></a><a class=\"navigation-link\" data-toggle=\"row\" id=\"" + navId + "\" href=\"#" + tabId + "\" role=\"tab\" aria-controls=\"" + tabId + "\" aria-selected=\"false\">" + title + "</a></li>";
       $__default["default"](SELECTOR_TAB_NAVBAR_NAV).append(unescape(escape(newNavItem)));
       var newTabItem = "<div class=\"tab-pane fade\" id=\"" + tabId + "\" role=\"tabpanel\" aria-labelledby=\"" + navId + "\"><iframe src=\"" + link + "\"></iframe></div>";
       $__default["default"](SELECTOR_TAB_CONTENT).append(unescape(escape(newTabItem)));
@@ -19255,10 +19255,10 @@ return jQuery;
         $__default["default"](SELECTOR_TAB_PANE + ":not(.active)").remove();
       } else if (type == 'only-this') {
         var $navClose = $__default["default"](element);
-        var $navItem = $navClose.parent('.nav-item');
+        var $navItem = $navClose.parent('.navigation-item');
         var $navItemParent = $navItem.parent();
         var navItemIndex = $navItem.index();
-        var tabId = $navClose.siblings('.nav-link').attr('aria-controls');
+        var tabId = $navClose.siblings('.navigation-link').attr('aria-controls');
         $navItem.remove();
         $__default["default"]("#" + tabId).remove();
 
@@ -19266,7 +19266,7 @@ return jQuery;
           $__default["default"](SELECTOR_TAB_EMPTY).show();
         } else {
           var prevNavItemIndex = navItemIndex - 1;
-          this.switchTab($navItemParent.children().eq(prevNavItemIndex).find('a.nav-link'));
+          this.switchTab($navItemParent.children().eq(prevNavItemIndex).find('a.navigation-link'));
         }
       } else {
         var _$navItem = $__default["default"](SELECTOR_TAB_NAVBAR_NAV_ITEM + ".active");
@@ -19284,7 +19284,7 @@ return jQuery;
         } else {
           var _prevNavItemIndex = _navItemIndex - 1;
 
-          this.switchTab(_$navItemParent.children().eq(_prevNavItemIndex).find('a.nav-link'));
+          this.switchTab(_$navItemParent.children().eq(_prevNavItemIndex).find('a.navigation-link'));
         }
       }
     };
@@ -19455,7 +19455,7 @@ return jQuery;
       });
       $sidebarMenuItem.each(function (i, e) {
         $__default["default"](e).addClass('active');
-        $__default["default"](e).parents('.nav-treeview').prevAll('.nav-link').addClass('active');
+        $__default["default"](e).parents('.navigation-treeview').prevAll('.navigation-link').addClass('active');
       });
     };
 
@@ -20026,13 +20026,13 @@ return jQuery;
   var CLASS_NAME_OPEN$2 = 'sidebar-search-open';
   var CLASS_NAME_ICON_SEARCH = 'fa-search';
   var CLASS_NAME_ICON_CLOSE = 'fa-times';
-  var CLASS_NAME_HEADER = 'nav-header';
+  var CLASS_NAME_HEADER = 'navigation-header';
   var CLASS_NAME_SEARCH_RESULTS = 'sidebar-search-results';
   var CLASS_NAME_LIST_GROUP = 'list-group';
   var SELECTOR_DATA_WIDGET$1 = '[data-widget="sidebar-search"]';
-  var SELECTOR_SIDEBAR = '.main-sidebar .nav-sidebar';
-  var SELECTOR_NAV_LINK = '.nav-link';
-  var SELECTOR_NAV_TREEVIEW = '.nav-treeview';
+  var SELECTOR_SIDEBAR = '.main-sidebar .navigation-sidebar';
+  var SELECTOR_NAV_LINK = '.navigation-link';
+  var SELECTOR_NAV_TREEVIEW = '.navigation-treeview';
   var SELECTOR_SEARCH_INPUT$1 = SELECTOR_DATA_WIDGET$1 + " .form-control";
   var SELECTOR_SEARCH_BUTTON = SELECTOR_DATA_WIDGET$1 + " .btn";
   var SELECTOR_SEARCH_ICON = SELECTOR_SEARCH_BUTTON + " i";
@@ -20747,9 +20747,9 @@ return jQuery;
   var EVENT_EXPANDED = "expanded" + EVENT_KEY;
   var EVENT_COLLAPSED = "collapsed" + EVENT_KEY;
   var EVENT_LOAD_DATA_API = "load" + EVENT_KEY;
-  var SELECTOR_LI = '.nav-item';
-  var SELECTOR_LINK = '.nav-link';
-  var SELECTOR_TREEVIEW_MENU = '.nav-treeview';
+  var SELECTOR_LI = '.navigation-item';
+  var SELECTOR_LINK = '.navigation-link';
+  var SELECTOR_TREEVIEW_MENU = '.navigation-treeview';
   var SELECTOR_OPEN = '.menu-open';
   var SELECTOR_DATA_WIDGET = '[data-widget="treeview"]';
   var CLASS_NAME_OPEN = 'menu-open';
@@ -20935,13 +20935,7 @@ return jQuery;
 (function ($) {
   'use strict'
 
-  setTimeout(function () {
-    if (window.___browserSync___ === undefined && Number(localStorage.getItem('AdminLTE:Demo:MessageShowed')) < Date.now()) {
-      localStorage.setItem('AdminLTE:Demo:MessageShowed', (Date.now()) + (15 * 60 * 1000))
-      // eslint-disable-next-line no-alert
-      alert('You load AdminLTE\'s "demo.js", \nthis file is only created for testing purposes!')
-    }
-  }, 1000)
+
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
@@ -21140,13 +21134,13 @@ return jQuery;
   var $flat_sidebar_checkbox = $('<input />', {
     type: 'checkbox',
     value: 1,
-    checked: $('.nav-sidebar').hasClass('nav-flat'),
+    checked: $('.navigation-sidebar').hasClass('nav-flat'),
     class: 'mr-1'
   }).on('click', function () {
     if ($(this).is(':checked')) {
-      $('.nav-sidebar').addClass('nav-flat')
+      $('.navigation-sidebar').addClass('nav-flat')
     } else {
-      $('.nav-sidebar').removeClass('nav-flat')
+      $('.navigation-sidebar').removeClass('nav-flat')
     }
   })
   var $flat_sidebar_container = $('<div />', { class: 'mb-1' }).append($flat_sidebar_checkbox).append('<span>Nav Flat Style</span>')
@@ -21155,13 +21149,13 @@ return jQuery;
   var $legacy_sidebar_checkbox = $('<input />', {
     type: 'checkbox',
     value: 1,
-    checked: $('.nav-sidebar').hasClass('nav-legacy'),
+    checked: $('.navigation-sidebar').hasClass('nav-legacy'),
     class: 'mr-1'
   }).on('click', function () {
     if ($(this).is(':checked')) {
-      $('.nav-sidebar').addClass('nav-legacy')
+      $('.navigation-sidebar').addClass('nav-legacy')
     } else {
-      $('.nav-sidebar').removeClass('nav-legacy')
+      $('.navigation-sidebar').removeClass('nav-legacy')
     }
   })
   var $legacy_sidebar_container = $('<div />', { class: 'mb-1' }).append($legacy_sidebar_checkbox).append('<span>Nav Legacy Style</span>')
@@ -21170,13 +21164,13 @@ return jQuery;
   var $compact_sidebar_checkbox = $('<input />', {
     type: 'checkbox',
     value: 1,
-    checked: $('.nav-sidebar').hasClass('nav-compact'),
+    checked: $('.navigation-sidebar').hasClass('nav-compact'),
     class: 'mr-1'
   }).on('click', function () {
     if ($(this).is(':checked')) {
-      $('.nav-sidebar').addClass('nav-compact')
+      $('.navigation-sidebar').addClass('nav-compact')
     } else {
-      $('.nav-sidebar').removeClass('nav-compact')
+      $('.navigation-sidebar').removeClass('nav-compact')
     }
   })
   var $compact_sidebar_container = $('<div />', { class: 'mb-1' }).append($compact_sidebar_checkbox).append('<span>Nav Compact</span>')
@@ -21185,13 +21179,13 @@ return jQuery;
   var $child_indent_sidebar_checkbox = $('<input />', {
     type: 'checkbox',
     value: 1,
-    checked: $('.nav-sidebar').hasClass('nav-child-indent'),
+    checked: $('.navigation-sidebar').hasClass('nav-child-indent'),
     class: 'mr-1'
   }).on('click', function () {
     if ($(this).is(':checked')) {
-      $('.nav-sidebar').addClass('nav-child-indent')
+      $('.navigation-sidebar').addClass('nav-child-indent')
     } else {
-      $('.nav-sidebar').removeClass('nav-child-indent')
+      $('.navigation-sidebar').removeClass('nav-child-indent')
     }
   })
   var $child_indent_sidebar_container = $('<div />', { class: 'mb-1' }).append($child_indent_sidebar_checkbox).append('<span>Nav Child Indent</span>')
@@ -21200,13 +21194,13 @@ return jQuery;
   var $child_hide_sidebar_checkbox = $('<input />', {
     type: 'checkbox',
     value: 1,
-    checked: $('.nav-sidebar').hasClass('nav-collapse-hide-child'),
+    checked: $('.navigation-sidebar').hasClass('nav-collapse-hide-child'),
     class: 'mr-1'
   }).on('click', function () {
     if ($(this).is(':checked')) {
-      $('.nav-sidebar').addClass('nav-collapse-hide-child')
+      $('.navigation-sidebar').addClass('nav-collapse-hide-child')
     } else {
-      $('.nav-sidebar').removeClass('nav-collapse-hide-child')
+      $('.navigation-sidebar').removeClass('nav-collapse-hide-child')
     }
   })
   var $child_hide_sidebar_container = $('<div />', { class: 'mb-1' }).append($child_hide_sidebar_checkbox).append('<span>Nav Child Hide on Collapse</span>')
@@ -21293,13 +21287,13 @@ return jQuery;
   var $text_sm_sidebar_checkbox = $('<input />', {
     type: 'checkbox',
     value: 1,
-    checked: $('.nav-sidebar').hasClass('text-sm'),
+    checked: $('.navigation-sidebar').hasClass('text-sm'),
     class: 'mr-1'
   }).on('click', function () {
     if ($(this).is(':checked')) {
-      $('.nav-sidebar').addClass('text-sm')
+      $('.navigation-sidebar').addClass('text-sm')
     } else {
-      $('.nav-sidebar').removeClass('text-sm')
+      $('.navigation-sidebar').removeClass('text-sm')
     }
   })
   var $text_sm_sidebar_container = $('<div />', { class: 'mb-1' }).append($text_sm_sidebar_checkbox).append('<span>Nav Nav</span>')
@@ -21629,7 +21623,7 @@ $(function () {
   // $('.connectedSortable').sortable({
   //   placeholder: 'sort-highlight',
   //   connectWith: '.connectedSortable',
-  //   handle: '.card-header, .nav-tabs',
+  //   handle: '.card-header, .navigation-tabs',
   //   forcePlaceholderSize: true,
   //   zIndex: 999999
   // })

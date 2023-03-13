@@ -22,7 +22,7 @@ class CreateServicesTable extends Migration
 			$table->text('seo_title');
 			$table->text('seo_description');
 			$table->text('seo_keywords');
-			$table->integer('position');
+			$table->integer('position')->default(0);
             $table->timestamps();
         });
     }

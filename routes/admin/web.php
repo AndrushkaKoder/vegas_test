@@ -12,28 +12,24 @@ use App\Http\Controllers\Admin\NavController;
 use App\Http\Controllers\Admin\SettingsController;
 
 
-Route::middleware('admin')->group(function () {
+Route::middleware('admin_auth')->group(function () {
 	Route::get('/', [IndexController::class, 'index'])->name('index');
 	Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
-	Route::resource('services', ServicesController::class);
+	Route::resource('service', ServicesController::class);
+	Route::post('service/structure', [ServicesController::class, 'structure'])->name('service.structure');
 
 	Route::resource('feedback', FeedbackController::class)->only(['index', 'show', 'destroy', 'update']);
-	Route::post('feedback/{id}/change_checked', [FeedbackController::class, 'changeChecked'])->name('feedback.checked');
-//	Route::post('feedback/sortFeedback', [FeedbackController::class, 'sortFeedback'])->name('feedback.sortFeedback');
+	Route::post('feedback/{id}/toggle_param/{param}', [FeedbackController::class, 'toggle_param'])->name('feedback.toggle_param');
 
-	Route::resource('pages', PagesController::class);
-	Route::post('services/structure', [ServicesController::class, 'structure'])->name('services.structure');
+	Route::resource('page', PagesController::class);
 
-	Route::resource('nav', NavController::class);
-	Route::post('/nav/change_structure', [NavController::class, 'change_structure'])->name('nav.change_structure');
+	Route::resource('navigation', NavController::class);
+	Route::post('/navigation/change_structure', [NavController::class, 'change_structure'])->name('navigation.change_structure');
 
 	Route::resource('settings', SettingsController::class);
 });
 
-Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('admin.login');
+Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('admin_not_auth');
 Route::post('login', [AuthController::class, 'auth'])->name('auth');
-
-
-
 

@@ -3,9 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Navigation extends Model
+class Navigation extends BaseModel
 {
 	use HasFactory;
 
@@ -55,17 +54,14 @@ class Navigation extends Model
 		return $query->where('parent_id', '!=', '0');
 	}
 
-	public function scopeSSorted($query, $order = 'asc')
-	{
-		return $query->orderBy('position', $order);
-	}
 
 //	Полиморфная связь навигации
 
 	public function navigable()
 	{
-		return $this->morphTo();
+		return $this->morphTo('navigable_type');
 	}
+
 
 	public function getNavPath()
 	{

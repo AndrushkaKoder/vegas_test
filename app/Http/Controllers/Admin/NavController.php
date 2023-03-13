@@ -2,111 +2,39 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Navigation;
 use App\Models\Page;
 use App\Models\Service;
 
-class NavController extends Controller
+class NavController extends BaseCrudController
 {
+	protected $model = Navigation::class;
+	protected $sortable = true;
 
-	public function index()
+	public function getQuery()
 	{
-		$items = Navigation::query()
-			->sFirstLevel()
-			->sSorted()
-			->get();
-
-		return view('admin.nav.index.index', compact('items'));
+		return parent::getQuery()->sFirstLevel();
 	}
 
-
-	public function edit($id)
+	public function getValidationRules()
 	{
-		$action = 'admin.nav.update';
-		/** @var Navigation $item */
-		$item = Navigation::query()->findOrFail($id);
-		$groups = $this->getNavigableGroups($item);
-
-
-		return view('admin.nav.edit.edit', compact('item', 'action', 'groups'));
-	}
-
-
-	public function create()
-	{
-		$action = 'admin.nav.store';
-		/** @var Navigation $item */
-		$item = new Navigation();
-		$groups = $this->getNavigableGroups($item);
-
-		return view('admin.nav.edit.edit', compact('item', 'groups', 'action'));
-	}
-
-
-	public function update($id): \Illuminate\Http\RedirectResponse
-	{
-
-		$validate = [
+		return [
 			'title' => 'required',
 			'url' => request()->url_check == '1' ? 'required' : ''
 		];
-
-
-		request()->validate($validate);
-
-		$item = Navigation::query()->findOrFail($id);
-		$item->fill($this->getFillData());
-		$item->save();
-
-		return redirect()->route('admin.nav.edit', $item->id)->with('success', 'Данные о ссылке обновлены');
 	}
 
-
-	public function store(): \Illuminate\Http\RedirectResponse
+	public function getParams($method, $item = null)
 	{
-		$validate = [
-			'title' => 'required',
-			'url' => request()->url_check == '1' ? 'required' : ''
-		];
-		request()->validate($validate);
+		$params = parent::getParams($method, $item);
 
-		$item = new Navigation();
-		$item->fill($this->getFillData());
-		$item->save();
-
-		return redirect()->route('admin.nav.edit', $item->id)->with('success', 'Навигационная ссылка добавлена');
-	}
-
-
-	public function destroy($id): \Illuminate\Http\RedirectResponse
-	{
-		Navigation::query()->findOrFail($id)->delete();
-
-		return redirect()->route('admin.nav.index')->with('success', 'Навигационная ссылка удалена');
-	}
-
-
-	public function change_structure()
-	{
-		function changeStruct($data, $parent_id)
-		{
-			foreach ($data as $key => $value) {
-				$position = $key;
-				$id = $value['id'];
-
-				Navigation::query()->where('id', $id)->update([
-					'position' => $position,
-					'parent_id' => $parent_id
-				]);
-
-				if (isset($value['children']) && !empty($value['children'])) {
-					changeStruct($value['children'], $id);
-				}
-			}
+		if (in_array($method, ['edit', 'create'])) {
+			$params = [
+				'navigableGroups' => $this->getNavigableGroups($item)
+			];
 		}
 
-		changeStruct(request()->data, 0);
+		return $params;
 	}
 
 
@@ -131,8 +59,7 @@ class NavController extends Controller
 		return $groups;
 	}
 
-
-	private function getFillData()
+	public function getFillData()
 	{
 		$object_type = request('bind_to');
 		$object_id = intval(request("bind_to_item.{$object_type}"));
@@ -140,7 +67,7 @@ class NavController extends Controller
 		$fill = request()->only([
 				'title',
 			]) + [
-				'position' => Navigation::max('position') + 1,
+				'position' => $this->getModel()::max('position') + 1,
 			];
 
 		if (request('url_check') === '0') {
@@ -156,6 +83,7 @@ class NavController extends Controller
 				'url' => request('url'),
 			];
 		}
+
 		return $fill;
 	}
 

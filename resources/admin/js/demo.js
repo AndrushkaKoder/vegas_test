@@ -215,13 +215,13 @@
   var $flat_sidebar_checkbox = $('<input />', {
     type: 'checkbox',
     value: 1,
-    checked: $('.nav-sidebar').hasClass('nav-flat'),
+    checked: $('.navigation-sidebar').hasClass('nav-flat'),
     class: 'mr-1'
   }).on('click', function () {
     if ($(this).is(':checked')) {
-      $('.nav-sidebar').addClass('nav-flat')
+      $('.navigation-sidebar').addClass('nav-flat')
     } else {
-      $('.nav-sidebar').removeClass('nav-flat')
+      $('.navigation-sidebar').removeClass('nav-flat')
     }
   })
   var $flat_sidebar_container = $('<div />', { class: 'mb-1' }).append($flat_sidebar_checkbox).append('<span>Nav Flat Style</span>')
@@ -230,13 +230,13 @@
   var $legacy_sidebar_checkbox = $('<input />', {
     type: 'checkbox',
     value: 1,
-    checked: $('.nav-sidebar').hasClass('nav-legacy'),
+    checked: $('.navigation-sidebar').hasClass('nav-legacy'),
     class: 'mr-1'
   }).on('click', function () {
     if ($(this).is(':checked')) {
-      $('.nav-sidebar').addClass('nav-legacy')
+      $('.navigation-sidebar').addClass('nav-legacy')
     } else {
-      $('.nav-sidebar').removeClass('nav-legacy')
+      $('.navigation-sidebar').removeClass('nav-legacy')
     }
   })
   var $legacy_sidebar_container = $('<div />', { class: 'mb-1' }).append($legacy_sidebar_checkbox).append('<span>Nav Legacy Style</span>')
@@ -245,13 +245,13 @@
   var $compact_sidebar_checkbox = $('<input />', {
     type: 'checkbox',
     value: 1,
-    checked: $('.nav-sidebar').hasClass('nav-compact'),
+    checked: $('.navigation-sidebar').hasClass('nav-compact'),
     class: 'mr-1'
   }).on('click', function () {
     if ($(this).is(':checked')) {
-      $('.nav-sidebar').addClass('nav-compact')
+      $('.navigation-sidebar').addClass('nav-compact')
     } else {
-      $('.nav-sidebar').removeClass('nav-compact')
+      $('.navigation-sidebar').removeClass('nav-compact')
     }
   })
   var $compact_sidebar_container = $('<div />', { class: 'mb-1' }).append($compact_sidebar_checkbox).append('<span>Nav Compact</span>')
@@ -260,13 +260,13 @@
   var $child_indent_sidebar_checkbox = $('<input />', {
     type: 'checkbox',
     value: 1,
-    checked: $('.nav-sidebar').hasClass('nav-child-indent'),
+    checked: $('.navigation-sidebar').hasClass('nav-child-indent'),
     class: 'mr-1'
   }).on('click', function () {
     if ($(this).is(':checked')) {
-      $('.nav-sidebar').addClass('nav-child-indent')
+      $('.navigation-sidebar').addClass('nav-child-indent')
     } else {
-      $('.nav-sidebar').removeClass('nav-child-indent')
+      $('.navigation-sidebar').removeClass('nav-child-indent')
     }
   })
   var $child_indent_sidebar_container = $('<div />', { class: 'mb-1' }).append($child_indent_sidebar_checkbox).append('<span>Nav Child Indent</span>')
@@ -275,13 +275,13 @@
   var $child_hide_sidebar_checkbox = $('<input />', {
     type: 'checkbox',
     value: 1,
-    checked: $('.nav-sidebar').hasClass('nav-collapse-hide-child'),
+    checked: $('.navigation-sidebar').hasClass('nav-collapse-hide-child'),
     class: 'mr-1'
   }).on('click', function () {
     if ($(this).is(':checked')) {
-      $('.nav-sidebar').addClass('nav-collapse-hide-child')
+      $('.navigation-sidebar').addClass('nav-collapse-hide-child')
     } else {
-      $('.nav-sidebar').removeClass('nav-collapse-hide-child')
+      $('.navigation-sidebar').removeClass('nav-collapse-hide-child')
     }
   })
   var $child_hide_sidebar_container = $('<div />', { class: 'mb-1' }).append($child_hide_sidebar_checkbox).append('<span>Nav Child Hide on Collapse</span>')
@@ -368,13 +368,13 @@
   var $text_sm_sidebar_checkbox = $('<input />', {
     type: 'checkbox',
     value: 1,
-    checked: $('.nav-sidebar').hasClass('text-sm'),
+    checked: $('.navigation-sidebar').hasClass('text-sm'),
     class: 'mr-1'
   }).on('click', function () {
     if ($(this).is(':checked')) {
-      $('.nav-sidebar').addClass('text-sm')
+      $('.navigation-sidebar').addClass('text-sm')
     } else {
-      $('.nav-sidebar').removeClass('text-sm')
+      $('.navigation-sidebar').removeClass('text-sm')
     }
   })
   var $text_sm_sidebar_container = $('<div />', { class: 'mb-1' }).append($text_sm_sidebar_checkbox).append('<span>Nav Nav</span>')

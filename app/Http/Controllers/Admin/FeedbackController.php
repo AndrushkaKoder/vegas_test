@@ -2,59 +2,76 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Feedback;
 use App\Models\FeedbackType;
 
-
-class FeedbackController extends Controller
+class FeedbackController extends BaseCrudController
 {
+	protected $model = Feedback::class;
 
-	public function index()
+	public function afterShow($item)
 	{
-		$items = Feedback::query()
-			->orderBy('id', 'desc')
-			->paginate(10);
-
-		if(request()->has('category')){
-			$items = $this->sortFeedback();
-		}
-
-		$feedbackType = FeedbackType::all();
-
-		return view('admin.feedback.index', compact('items', 'feedbackType'));
-	}
-
-
-	public function show($id)
-	{
-		$item = Feedback::find($id);
 		$item->update(['checked' => 1]);
-
-		return view('admin.feedback.show', compact('item'));
 	}
 
-
-	public function destroy($id)
+	public function getFilterData()
 	{
-		Feedback::find($id)->delete();
+		return [
+			[
+				'label' => 'Категории',
+				'name' => 'category',
+				'data' => ['-1' => 'Не выбрано'] + FeedbackType::query()->pluck('title', 'id')->toArray(),
+				'callback' => function ($query, $value) {
+					return $query->sHasCategories($value);
+				},
+			],
+			[
+				'label' => 'Телефон',
+				'name' => 'phone',
+				'data' => ['-1' => 'Не выбрано', '0' => 'Без телефона', '1' => 'С телефоном'],
+				'callback' => function ($query, $value) {
+					return $query->sHasPhone($value);
+				},
 
-		return redirect()->route('admin.feedback.index')->with('success', 'Заявка удалена');
+			],
+			[
+				'label' => 'Почта',
+				'name' => 'email',
+				'data' => ['-1' => 'Не выбрано', '0' => 'Без почты', '1' => 'С почтой'],
+				'callback' => function ($query, $value) {
+					return $query->sHasEmail($value);
+				},
+			],
+			[
+				'label' => 'Прочитано',
+				'name' => 'checked',
+				'data' => ['-1' => 'Не выбрано', '0' => 'Непрочитано', '1' => 'Прочитано'],
+				'callback' => function ($query, $value) {
+					return $query->sHasChecked($value);
+				},
+			],
+		];
 	}
 
-	public function changeChecked($id)
+	public function getSortData()
 	{
-		$item = Feedback::query()->findOrFail($id);
-		$item->update(request()->only('checked'));
+		return [
+			[
+				'label' => 'Сортировка',
+				'name' => 'sort',
+				'data' => [
+					'id-desc' => 'Сначала новые',
+					'id-asc' => 'Сначала старые',
+					'user_name-asc' => 'Имя А-Я',
+					'user_name-desc' => 'Имя Я-А',
+				],
+				'default_selected' => 'id-desc',
+				'callback' => function ($query, $value) {
+					return $query->sSort($value);
+				},
+			]
+		];
 	}
-
-
-	public function sortFeedback()
-	{
-		return Feedback::query()
-			->orderBy('id', 'desc')
-			->whereIn('feedback_type_id', request('category'))->paginate(10);
-	}
-
 }
+
 

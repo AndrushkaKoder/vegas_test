@@ -13,23 +13,7 @@
 <div class="container">
 	<div class="row">
 
-		@if($errors->any())
-			<div class="alert alert-danger login_alert admin_alert" role="alert">
-				<ul>
-					@foreach($errors->all() as $item)
-						<li>{{ $item }}</li>
-					@endforeach
-				</ul>
-			</div>
-		@endif
-
-		@if(session('error'))
-				<div class="alert alert-danger login_alert admin_alert" role="alert">
-					<ul>
-						<li>{{ session('error') }}</li>
-					</ul>
-				</div>
-		@endif
+		@include('frontend.layout.alert')
 
 		<div class="col-12">
 			<form action="{{ route('admin.auth') }}" method="post" class="login_form">

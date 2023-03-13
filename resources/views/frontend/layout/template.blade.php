@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 	@include('frontend.layout.meta')
-	<title>{{ $page->seo_title }}</title>
+	<title>{{ $page->getSeoTitle() }}</title>
 
 	@stack('head')
 </head>

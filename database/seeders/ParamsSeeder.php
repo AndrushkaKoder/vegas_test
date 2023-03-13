@@ -14,7 +14,7 @@ class ParamsSeeder extends Seeder
 	 */
 	public function run()
 	{
-		$data = include 'storage/seed/services/params.php';
+		$data = include storage_path('/seed/params/params.php');
 
 		foreach ($data as $key => $value) {
 			Params::query()->create([

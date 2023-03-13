@@ -1,9 +1,9 @@
 <div class="collapse bg-dark" id="navbarHeader">
 	<div class="container">
-		<div class="row">
+		<div class="row pt-3">
 
 
-			<div class="col-sm-4 offset-md-1 py-4">
+			<div class="col-sm-4 offset-md-1">
 				<h4 class="text-white">Связаться с нами</h4>
 				<ul class="list-unstyled">
 
@@ -25,7 +25,7 @@
 				</ul>
 			</div>
 
-			<div class="col-sm-4 offset-md-1 py-4">
+			<div class="col-sm-4 offset-md-1">
 				<h4 class="text-white">Наши социальные сети</h4>
 				<ul class="list-unstyled">
 
@@ -46,6 +46,12 @@
 					@endif
 
 				</ul>
+
+			</div>
+			<div class="col-2">
+				<a class="nav-link" href="{{ route('frontend.login.index') }}" style="color: white; font-size: 20px">
+					<i class="far fa-user"></i> Личный кабинет
+				</a>
 			</div>
 		</div>
 
@@ -72,6 +78,7 @@
 				@endforeach
 			</ul>
 		@endif
+
 
 
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"

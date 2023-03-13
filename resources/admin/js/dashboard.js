@@ -14,7 +14,7 @@ $(function () {
   $('.connectedSortable').sortable({
     placeholder: 'sort-highlight',
     connectWith: '.connectedSortable',
-    handle: '.card-header, .nav-tabs',
+    handle: '.card-header, .navigation-tabs',
     forcePlaceholderSize: true,
     zIndex: 999999
   })

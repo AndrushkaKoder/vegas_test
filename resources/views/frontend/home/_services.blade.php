@@ -1,8 +1,8 @@
-@if($services->count())
-	@foreach($services as $item)
+@if($items->count())
+	@foreach($items as $item)
 		<div class="col">
 			<div class="card shadow-sm">
-				<a href="{{route('frontend.services.show', [$item->slug])}}">
+				<a href="{{route('frontend.service.show', [$item->slug])}}">
 
 					@if ($img = $item->getImg('outer'))
 						<img src="{{ $img->getPath() }}" alt="photo" width="100%" height="225">
@@ -16,7 +16,7 @@
 					<h4>{{$item->title}}</h4>
 					<div class="card_description mb-3">
 						<p>{{$item->short_content}}</p>
-						<a href="{{route('frontend.services.show', [$item->slug])}}">Перейти к
+						<a href="{{route('frontend.service.show', [$item->slug])}}">Перейти к
 							услуге</a>
 					</div>
 

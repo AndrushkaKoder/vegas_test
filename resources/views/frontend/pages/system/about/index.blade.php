@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<h1>{{ $page->title }}</h1>
+				<h1>{{ $page->getSeoH1() }}</h1>
 			</div>
 			<hr>
 			<div class="col-12">
@@ -15,7 +15,7 @@
 					<div class="row">
 						<div class="col-12 d-flex justify-content-center">
 
-							{{ Form::open(['route' =>  'frontend.sendEmailAbout',
+							{{ Form::open(['route' => 'frontend.sendEmailAbout',
  											'method' => 'post',
  											'class' => 'd-flex flex-column text-center',
  											'files' => 'true']) }}

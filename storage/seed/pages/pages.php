@@ -4,7 +4,7 @@ return [
 	[
 		'uri' => '/',
 		'title' => 'Домашняя страница',
-		'seo_title' => 'Домашняя страница',
+		'seo_title' => '',
 		'seo_description' => 'Главная страница сервиса услуг' ,
 		'seo_keywords' => 'Услуги, качественные услуги, недорого, быстро',
 		'content' => ''
@@ -26,7 +26,7 @@ return [
 		'content' => "<h1>Контакты</h1>"
 	],
 	[
-		'uri' => 'services',
+		'uri' => 'service',
 		'title' => 'Услуги',
 		'seo_title' => 'Страница услуг',
 		'seo_description' => 'Страница услуг' ,

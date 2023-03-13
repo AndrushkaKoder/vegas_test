@@ -9,7 +9,7 @@ class ServicesList
 {
 	public function compose(View $view){
 
-		$view->with('services', $this->getItems());
+		$view->with('service', $this->getItems());
 	}
 
 	public function getItems(){

@@ -3,11 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use App\Traits\FileTrait;
 
-class Service extends Model
+class Service extends BaseModel
 {
 	use HasFactory;
 	use FileTrait;
@@ -36,11 +35,27 @@ class Service extends Model
 		return $this->morphOne(Navigation::class, 'navigable');
 	}
 
-	public function scopeSSorted($query, $order = 'asc')
+
+	public function getSeoTitle()
 	{
-		return $query->orderBy('position', $order);
+		if ($s = $this->seo_title) return $s;
+		return "Услуги {$this->title} в Калуге - " . Params::getValue('sitename');
 	}
 
+	public function getSeoDescription()
+	{
+		if ($description = $this->seo_description) return $description;
+		return 'Описание услуги xxxx ' . $this->description . ' в городе Калуга';
+	}
 
+	public function getSeoKeywords()
+	{
+		return $this->seo_keywords;
+	}
+
+	public function getSeoH1()
+	{
+		return $this->title;
+	}
 
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -45,13 +46,19 @@ class SettingsController extends Controller
 			'password' => 'required|min:3',
 		]);
 
-		if(request('password') === request('password_repeat')){
+		if (request('password') === request('password_repeat')) {
 			$fill = request()->only([
 				'login', 'password'
 			]);
 			$admin->fill($fill);
 			$admin->save();
-		} else{
+
+			if (request()->has('photo')) {
+				$admin->saveFile('admin',request()->photo);
+			}
+
+
+		} else {
 			return redirect()->back()->with('success', 'Пароли не совпадают');
 		}
 
@@ -63,4 +70,5 @@ class SettingsController extends Controller
 	{
 		//
 	}
+
 }

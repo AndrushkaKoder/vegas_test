@@ -844,7 +844,7 @@
         this._element.parents(SELECTOR_DROPDOWN_MENU).first().find('.show').removeClass('show').hide();
       }
 
-      this._element.parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function () {
+      this._element.parents('li.navigation-item.dropdown.show').on('hidden.bs.dropdown', function () {
         $__default["default"]('.dropdown-submenu .show').removeClass('show').hide();
       });
     };
@@ -1202,17 +1202,17 @@
   var SELECTOR_DATA_TOGGLE_FULLSCREEN = '[data-widget="iframe-fullscreen"]';
   var SELECTOR_CONTENT_WRAPPER = '.content-wrapper';
   var SELECTOR_CONTENT_IFRAME = SELECTOR_CONTENT_WRAPPER + " iframe";
-  var SELECTOR_TAB_NAV = SELECTOR_CONTENT_WRAPPER + ".iframe-mode .nav";
-  var SELECTOR_TAB_NAVBAR_NAV = SELECTOR_CONTENT_WRAPPER + ".iframe-mode .navbar-nav";
-  var SELECTOR_TAB_NAVBAR_NAV_ITEM = SELECTOR_TAB_NAVBAR_NAV + " .nav-item";
-  var SELECTOR_TAB_NAVBAR_NAV_LINK = SELECTOR_TAB_NAVBAR_NAV + " .nav-link";
+  var SELECTOR_TAB_NAV = SELECTOR_CONTENT_WRAPPER + ".iframe-mode .navigation";
+  var SELECTOR_TAB_NAVBAR_NAV = SELECTOR_CONTENT_WRAPPER + ".iframe-mode .navbar-navigation";
+  var SELECTOR_TAB_NAVBAR_NAV_ITEM = SELECTOR_TAB_NAVBAR_NAV + " .navigation-item";
+  var SELECTOR_TAB_NAVBAR_NAV_LINK = SELECTOR_TAB_NAVBAR_NAV + " .navigation-link";
   var SELECTOR_TAB_CONTENT = SELECTOR_CONTENT_WRAPPER + ".iframe-mode .tab-content";
   var SELECTOR_TAB_EMPTY = SELECTOR_TAB_CONTENT + " .tab-empty";
   var SELECTOR_TAB_LOADING = SELECTOR_TAB_CONTENT + " .tab-loading";
   var SELECTOR_TAB_PANE = SELECTOR_TAB_CONTENT + " .tab-pane";
-  var SELECTOR_SIDEBAR_MENU_ITEM = '.main-sidebar .nav-item > a.nav-link';
+  var SELECTOR_SIDEBAR_MENU_ITEM = '.main-sidebar .navigation-item > a.navigation-link';
   var SELECTOR_SIDEBAR_SEARCH_ITEM = '.sidebar-search-results .list-group-item';
-  var SELECTOR_HEADER_MENU_ITEM = '.main-header .nav-item a.nav-link';
+  var SELECTOR_HEADER_MENU_ITEM = '.main-header .navigation-item a.navigation-link';
   var SELECTOR_HEADER_DROPDOWN_ITEM = '.main-header a.dropdown-item';
   var CLASS_NAME_IFRAME_MODE$1 = 'iframe-mode';
   var CLASS_NAME_FULLSCREEN_MODE = 'iframe-mode-fullscreen';
@@ -1278,7 +1278,7 @@
         navId += "-" + Math.floor(Math.random() * 1000);
       }
 
-      var newNavItem = "<li class=\"nav-item\" role=\"presentation\"><a href=\"#\" class=\"btn-iframe-close\" data-widget=\"iframe-close\" data-type=\"only-this\"><i class=\"fas fa-times\"></i></a><a class=\"nav-link\" data-toggle=\"row\" id=\"" + navId + "\" href=\"#" + tabId + "\" role=\"tab\" aria-controls=\"" + tabId + "\" aria-selected=\"false\">" + title + "</a></li>";
+      var newNavItem = "<li class=\"navigation-item\" role=\"presentation\"><a href=\"#\" class=\"btn-iframe-close\" data-widget=\"iframe-close\" data-type=\"only-this\"><i class=\"fas fa-times\"></i></a><a class=\"navigation-link\" data-toggle=\"row\" id=\"" + navId + "\" href=\"#" + tabId + "\" role=\"tab\" aria-controls=\"" + tabId + "\" aria-selected=\"false\">" + title + "</a></li>";
       $__default["default"](SELECTOR_TAB_NAVBAR_NAV).append(unescape(escape(newNavItem)));
       var newTabItem = "<div class=\"tab-pane fade\" id=\"" + tabId + "\" role=\"tabpanel\" aria-labelledby=\"" + navId + "\"><iframe src=\"" + link + "\"></iframe></div>";
       $__default["default"](SELECTOR_TAB_CONTENT).append(unescape(escape(newTabItem)));
@@ -1400,10 +1400,10 @@
         $__default["default"](SELECTOR_TAB_PANE + ":not(.active)").remove();
       } else if (type == 'only-this') {
         var $navClose = $__default["default"](element);
-        var $navItem = $navClose.parent('.nav-item');
+        var $navItem = $navClose.parent('.navigation-item');
         var $navItemParent = $navItem.parent();
         var navItemIndex = $navItem.index();
-        var tabId = $navClose.siblings('.nav-link').attr('aria-controls');
+        var tabId = $navClose.siblings('.navigation-link').attr('aria-controls');
         $navItem.remove();
         $__default["default"]("#" + tabId).remove();
 
@@ -1411,7 +1411,7 @@
           $__default["default"](SELECTOR_TAB_EMPTY).show();
         } else {
           var prevNavItemIndex = navItemIndex - 1;
-          this.switchTab($navItemParent.children().eq(prevNavItemIndex).find('a.nav-link'));
+          this.switchTab($navItemParent.children().eq(prevNavItemIndex).find('a.navigation-link'));
         }
       } else {
         var _$navItem = $__default["default"](SELECTOR_TAB_NAVBAR_NAV_ITEM + ".active");
@@ -1429,7 +1429,7 @@
         } else {
           var _prevNavItemIndex = _navItemIndex - 1;
 
-          this.switchTab(_$navItemParent.children().eq(_prevNavItemIndex).find('a.nav-link'));
+          this.switchTab(_$navItemParent.children().eq(_prevNavItemIndex).find('a.navigation-link'));
         }
       }
     };
@@ -1600,7 +1600,7 @@
       });
       $sidebarMenuItem.each(function (i, e) {
         $__default["default"](e).addClass('active');
-        $__default["default"](e).parents('.nav-treeview').prevAll('.nav-link').addClass('active');
+        $__default["default"](e).parents('.navigation-treeview').prevAll('.navigation-link').addClass('active');
       });
     };
 
@@ -2171,13 +2171,13 @@
   var CLASS_NAME_OPEN$2 = 'sidebar-search-open';
   var CLASS_NAME_ICON_SEARCH = 'fa-search';
   var CLASS_NAME_ICON_CLOSE = 'fa-times';
-  var CLASS_NAME_HEADER = 'nav-header';
+  var CLASS_NAME_HEADER = 'navigation-header';
   var CLASS_NAME_SEARCH_RESULTS = 'sidebar-search-results';
   var CLASS_NAME_LIST_GROUP = 'list-group';
   var SELECTOR_DATA_WIDGET$1 = '[data-widget="sidebar-search"]';
-  var SELECTOR_SIDEBAR = '.main-sidebar .nav-sidebar';
-  var SELECTOR_NAV_LINK = '.nav-link';
-  var SELECTOR_NAV_TREEVIEW = '.nav-treeview';
+  var SELECTOR_SIDEBAR = '.main-sidebar .navigation-sidebar';
+  var SELECTOR_NAV_LINK = '.navigation-link';
+  var SELECTOR_NAV_TREEVIEW = '.navigation-treeview';
   var SELECTOR_SEARCH_INPUT$1 = SELECTOR_DATA_WIDGET$1 + " .form-control";
   var SELECTOR_SEARCH_BUTTON = SELECTOR_DATA_WIDGET$1 + " .btn";
   var SELECTOR_SEARCH_ICON = SELECTOR_SEARCH_BUTTON + " i";
@@ -2892,9 +2892,9 @@
   var EVENT_EXPANDED = "expanded" + EVENT_KEY;
   var EVENT_COLLAPSED = "collapsed" + EVENT_KEY;
   var EVENT_LOAD_DATA_API = "load" + EVENT_KEY;
-  var SELECTOR_LI = '.nav-item';
-  var SELECTOR_LINK = '.nav-link';
-  var SELECTOR_TREEVIEW_MENU = '.nav-treeview';
+  var SELECTOR_LI = '.navigation-item';
+  var SELECTOR_LINK = '.navigation-link';
+  var SELECTOR_TREEVIEW_MENU = '.navigation-treeview';
   var SELECTOR_OPEN = '.menu-open';
   var SELECTOR_DATA_WIDGET = '[data-widget="treeview"]';
   var CLASS_NAME_OPEN = 'menu-open';

@@ -11,11 +11,17 @@
 					</div>
 					<div class="col-6">
 						<div class="admin_photo_wrapper">
-							<div class="img"  style="background: black">.</div>
+							@if($img = currentAdmin()->getImg('admin'))
+								<img src="{{ $img->getPath() }}" alt="photo" width="100%"
+								     height="300" style="margin: 0 auto; border-radius: 10px; object-fit: cover">
+							@else
+								<div style="background: black; width: 100%; height: 405px">.</div>
+							@endif
 						</div>
 					</div>
 					<div class="col-6">
-						<form action="{{ route('admin.settings.update', currentAdmin()->id) }}" method="post">
+						<form action="{{ route('admin.settings.update', currentAdmin()->id) }}" method="post"
+						      enctype="multipart/form-data">
 							@csrf
 							@method('put')
 

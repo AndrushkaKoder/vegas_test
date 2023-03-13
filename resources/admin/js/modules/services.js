@@ -25,10 +25,12 @@ function deleteElement(appendParent, action, value = null) {
 }
 
 //Слушатели события на кнопках удаления сервиса и картинки
+
 if (adminBtnDelete) {
 	for (let btn of adminBtnDelete) {
 		btn.addEventListener('click', (e) => {
 			e.preventDefault();
+			console.log('hello')
 			deleteElement(adminAction, btn.getAttribute('href'));
 		});
 	}

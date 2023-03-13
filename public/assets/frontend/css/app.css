@@ -10921,6 +10921,15 @@ textarea.form-control-lg {
   color: gray;
 }
 
+.admin_create_alert {
+  position: absolute;
+  top: 10%;
+  left: 37%;
+  z-index: 99999;
+  width: 30%;
+  text-align: center;
+}
+
 @media screen and (max-width: 991px) {
   .inside_img {
     width: 100%;

@@ -20,7 +20,7 @@ class ComposerServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		View::composer('frontend.layout.header', Header::class);
-		View::composer('frontend.services.widgets._list',ServicesList::class );
-		View::composer('admin.layout.header', AdminHeader::class);
+		View::composer('frontend.service.widgets._list',ServicesList::class );
+		View::composer('admin.layout.sidebar', AdminHeader::class);
 	}
 }
