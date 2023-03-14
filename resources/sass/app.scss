@@ -74,19 +74,20 @@
 .active a {
 	color: white !important;
 }
+
 //выпадающее меню в хедер
 
 
-.nav-item{
+.nav-item {
 	position: relative;
 
-	a{
+	a {
 		font-size: 18px;
 		color: white;
 	}
 }
 
-.nav-list{
+.nav-list {
 	display: none;
 	position: absolute;
 	width: 280px;
@@ -96,11 +97,13 @@
 	float: right;
 	padding: 5px;
 	box-shadow: 1px 16px 8px 0px rgba(34, 60, 80, 0.2);
-	li > a{
+
+	li > a {
 		color: black;
 	}
 }
-.nav-list li{
+
+.nav-list li {
 	list-style: none;
 }
 
@@ -108,18 +111,60 @@
 	display: block;
 }
 
-.nav-link:hover{
+.nav-link:hover {
 	color: gray;
 }
 
 
-.admin_create_alert{
+.admin_create_alert {
 	position: absolute;
 	top: 10%;
 	left: 37%;
 	z-index: 99999;
 	width: 30%;
 	text-align: center;
+}
+
+.aside_wrapper {
+	background: #fcfaf2;
+	box-shadow: 4px 10px 8px 0px rgba(34, 60, 80, 0.2);
+
+	.aside_wrapper_header {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 20px;
+	}
+
+	.aside_wrapper_content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 200px;
+		justify-content: space-around;
+		text-align: center;
+
+		ul {
+			width: 100%;
+			padding: 0;
+
+			li {
+				font-size: 20px;
+				list-style: none;
+				margin: 10px 0;
+
+				a {
+					color: black;
+				}
+			}
+		}
+		form{
+			width: 50%;
+			button{
+				width: 100%;
+			}
+		}
+	}
 }
 
 

@@ -2,6 +2,6 @@
 
 @section('account-content')
 
-	<h1>Ваш аккаунт</h1>
+	<h1>История заказов</h1>
 
 @endsection

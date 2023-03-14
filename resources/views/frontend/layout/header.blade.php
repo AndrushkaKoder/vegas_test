@@ -49,9 +49,18 @@
 
 			</div>
 			<div class="col-2">
-				<a class="nav-link" href="{{ route('frontend.login.index') }}" style="color: white; font-size: 20px">
-					<i class="far fa-user"></i> Личный кабинет
-				</a>
+				@if(\Illuminate\Support\Facades\Auth::check())
+					<a href="{{ route('user.index') }}" class="nav-link" style="color: white; font-size: 20px">
+						<i class="far fa-user"></i>
+						{{ user()->name }}
+					</a>
+				@else
+					<div class="lk_login">
+						<a class="nav-link" href="{{ route('frontend.login') }}" style="color: white; font-size: 20px">
+							<i class="far fa-user"></i> Личный кабинет
+						</a>
+					</div>
+				@endif
 			</div>
 		</div>
 
@@ -68,9 +77,9 @@
 						@if($item->childrenSorted->count())
 							<ul class="nav-list">
 								@foreach($item->childrenSorted as $child)
-								<li class="nav-item">
-									<a class="nav-link" href="{{ $child->getNavPath() }}">{{ $child->title }}</a>
-								</li>
+									<li class="nav-item">
+										<a class="nav-link" href="{{ $child->getNavPath() }}">{{ $child->title }}</a>
+									</li>
 								@endforeach
 							</ul>
 						@endif
@@ -78,7 +87,6 @@
 				@endforeach
 			</ul>
 		@endif
-
 
 
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"

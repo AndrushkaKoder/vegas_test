@@ -10930,6 +10930,43 @@ textarea.form-control-lg {
   text-align: center;
 }
 
+.aside_wrapper {
+  background: #fcfaf2;
+  box-shadow: 4px 10px 8px 0px rgba(34, 60, 80, 0.2);
+}
+.aside_wrapper .aside_wrapper_header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.aside_wrapper .aside_wrapper_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 200px;
+  justify-content: space-around;
+  text-align: center;
+}
+.aside_wrapper .aside_wrapper_content ul {
+  width: 100%;
+  padding: 0;
+}
+.aside_wrapper .aside_wrapper_content ul li {
+  font-size: 20px;
+  list-style: none;
+  margin: 10px 0;
+}
+.aside_wrapper .aside_wrapper_content ul li a {
+  color: black;
+}
+.aside_wrapper .aside_wrapper_content form {
+  width: 50%;
+}
+.aside_wrapper .aside_wrapper_content form button {
+  width: 100%;
+}
+
 @media screen and (max-width: 991px) {
   .inside_img {
     width: 100%;

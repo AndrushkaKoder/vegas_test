@@ -18,9 +18,11 @@
 	@yield('content')
 </main>
 
-<footer class="bg-dark">
-	@include('frontend.layout.footer')
-</footer>
+@if(empty($hideFooter))
+	<footer class="bg-dark">
+		@include('frontend.layout.footer')
+	</footer>
+@endif
 
 <script src="{{mix('frontend/js/main.js')}}"></script>
 </body>

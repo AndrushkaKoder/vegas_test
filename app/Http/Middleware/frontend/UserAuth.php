@@ -20,7 +20,7 @@ class UserAuth
 		if (Auth::guard('user')->user()) {
 			return $next($request);
 		} else {
-			return redirect()->route('user.login');
+			return redirect()->route('frontend.login');
 		}
 
 	}
