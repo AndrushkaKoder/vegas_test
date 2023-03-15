@@ -28,8 +28,8 @@ class RegisterController extends Controller
 	public function showRegistrationForm()
 	{
 		return view('auth.register', ['page' => new Page([
-			'title' => 'Регистрация',
-		]),
+				'title' => 'Регистрация',
+			]),
 		]);
 	}
 
