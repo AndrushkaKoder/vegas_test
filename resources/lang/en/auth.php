@@ -13,9 +13,8 @@ return [
     |
     */
 
-    'failed' => 'Убедитесь в правильности логина и пароля',
-    'password' => 'Неверный пароль, повторите ввод',
-//    'throttle' => 'Слишком много попыток входа. Повторите попытку через :seconds секунд.',
-    'throttle' => 'Слишком много попыток входа. Повторите попытку через 10 секунд.',
+    'failed' => 'Make sure your login and password are correct',
+    'password' => 'Wrong password, please try again',
+    'throttle' => 'Too many login attempts. Try again in 10 seconds.',
 
 ];

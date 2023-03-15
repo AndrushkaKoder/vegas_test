@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 
 class Navigation extends BaseModel
 {
@@ -59,15 +60,19 @@ class Navigation extends BaseModel
 
 	public function navigable()
 	{
-		return $this->morphTo('navigable_type');
+		return $this->morphTo('navigable');
 	}
 
 
 	public function getNavPath()
 	{
 		if ($this->navigable) {
-			return $this->navigable->uri;
+			if (method_exists($this->navigable, 'getUrl'))
+				return $this->navigable->getUrl();
 		}
+
+		if(!Str::startsWith($this->url,'http') && !Str::startsWith($this->url, '/'))
+			return '/' . $this->url;
 
 		return $this->url;
 	}

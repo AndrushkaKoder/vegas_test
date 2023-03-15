@@ -44,9 +44,7 @@ class User extends Authenticatable
 		'email_verified_at' => 'datetime',
 	];
 
-
-//	Код из интернета
-	/*public function sendPasswordResetNotification($token)
+	public function sendPasswordResetNotification($token)
 	{
 		$notification = new ResetPassword($token);
 		$notification->createUrlUsing(function ($user, $token) {
@@ -56,8 +54,6 @@ class User extends Authenticatable
 			]));
 		});
 		$this->notify($notification);
-	}*/
-//	Код из интернета
-
+	}
 
 }

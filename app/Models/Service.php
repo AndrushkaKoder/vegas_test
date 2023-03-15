@@ -18,7 +18,8 @@ class Service extends BaseModel
 		'seo_title',
 		'seo_description',
 		'seo_keywords',
-		'position'
+		'position',
+		'slug',
 	];
 
 	protected static function booted()
@@ -57,5 +58,11 @@ class Service extends BaseModel
 	{
 		return $this->title;
 	}
+
+	public function getUrl()
+	{
+		return route('frontend.service.show', $this->slug);
+	}
+
 
 }
