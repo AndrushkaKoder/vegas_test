@@ -181,9 +181,9 @@ class BaseCrudController extends Controller
 
 	public function toggle_param($id, $param)
 	{
-		$param = 1 - $param;
 		$item = $this->model::query()->findOrFail($id);
-		$item->update(['checked' => $param]);
+		$value = 1 - $item->getAttribute($param);
+		$item->update([$param => $value]);
 	}
 
 	private function modelName(): string
@@ -219,19 +219,6 @@ class BaseCrudController extends Controller
 		return [];
 	}
 
-	public function structure()
-	{
-		$data = request('data');
-		foreach ($data as $key => $value) {
-			$id = $value['id'];
-			$position = $key;
-
-			$this->getModel()::query()->where('id', $id)->update([
-				'position' => $position,
-			]);
-		}
-	}
-
 	public function saveImages($item)
 	{
 		if (request()->has('files_image'))
@@ -259,10 +246,16 @@ class BaseCrudController extends Controller
 				$position = $key;
 				$id = $value['id'];
 
-				$model::query()->where('id', $id)->update([
+				$update = [
 					'position' => $position,
-					'parent_id' => $parent_id
-				]);
+				];
+
+				$modelItem = new $model;
+				if ($modelItem->isFillable('parent_id')) {
+					$update['parent_id'] = $parent_id;
+				}
+
+				$model::query()->where('id', $id)->update($update);
 
 				if (isset($value['children']) && !empty($value['children'])) {
 					changeStruct($value['children'], $id, $model);

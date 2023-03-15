@@ -10967,6 +10967,17 @@ textarea.form-control-lg {
   width: 100%;
 }
 
+.swiper {
+  height: 100vh;
+  width: 100%;
+}
+.swiper .swiper-slide {
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 @media screen and (max-width: 991px) {
   .inside_img {
     width: 100%;

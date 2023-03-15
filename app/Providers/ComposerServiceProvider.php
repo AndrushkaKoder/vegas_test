@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Composer\Frontend\Home\Header;
+use App\Http\Composer\Frontend\Home\Slider;
 use App\Http\Composer\Frontend\Services\ServicesList;
 use App\Http\Composer\admin\header\AdminHeader;
 use Illuminate\Support\ServiceProvider;
@@ -22,5 +23,6 @@ class ComposerServiceProvider extends ServiceProvider
 		View::composer('frontend.layout.header', Header::class);
 		View::composer('frontend.service.widgets._list',ServicesList::class );
 		View::composer('admin.layout.sidebar', AdminHeader::class);
+		View::composer('frontend.home.index', Slider::class);
 	}
 }

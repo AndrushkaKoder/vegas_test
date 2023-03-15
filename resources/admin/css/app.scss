@@ -37,13 +37,18 @@
 
 .admin_edit_img{
 	position: relative;
-	width: 271px;
+	max-width: 293px;
 	height: 200px;
+	margin: auto;
 }
 .admin_edit_img_item{
 	object-fit: cover;
 	width: 100%;
 	height: 100%;
+}
+#input_file{
+	max-width: 80%;
+	margin: auto;
 }
 .admin_edit_img_delete{
 	position: absolute;
@@ -59,6 +64,22 @@
 	width: 270px;
 	height: 200px;
 	background: gray;
+}
+
+.admin_action_buttons{
+	position: fixed;
+	right: 0;
+	z-index: 999;
+	padding: 20px;
+	background: linear-gradient(166deg, rgba(131,58,180,0.9445028011204482) 0%, rgba(228,94,96,1) 49%, rgba(232,96,92,0.9248949579831933) 70%);
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+
+	a{
+		margin: 0 10px;
+	}
 }
 
 /*стили для изменения картинок*/
@@ -131,7 +152,5 @@
 }
 
 .navigationForm{
-	width: 60%;
-	margin: 0 auto;
 }
 

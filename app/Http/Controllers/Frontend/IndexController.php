@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Navigation;
 use App\Models\Page;
-use App\Models\Service;
 
 
 class IndexController extends Controller

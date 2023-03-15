@@ -7,21 +7,23 @@
 
 				<div class="row">
 					<div class="col-12 d-flex justify-content-center">
-						<h1>Услуги</h1>
+						<h1>Слайды</h1>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-12 mb-3">
-						<a href="{{ route('admin.service.create') }}" class="btn btn-success">Новая услуга</a>
+						<a href="{{ route('admin.slider.create') }}" class="btn btn-success">Создать слайд</a>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-12">
 						<div class="cf nestable-lists">
-							<div class="dd services_nestable" data-send="{{ route('admin.service.change_structure') }}">
-								@include('admin.service.index.table._table', [$items])
+							<div class="dd nestable" data-send="{{ route('admin.slider.change_structure') }}">
+
+								@include('admin.slider.index.table._elements')
+
 							</div>
 						</div>
 					</div>
@@ -31,5 +33,3 @@
 		</section>
 	</div>
 @endsection
-
-

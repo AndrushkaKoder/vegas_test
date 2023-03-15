@@ -8,6 +8,5 @@
 			{{ Form::hidden("delete_files[{$name}]", '0', ['class' => 'delete_toggler']) }}
 		</div>
 	@endif
-	{{ Form::file("files_image[$name]", ['class' => 'form-control']) }}
-	{{--	<input type="file" name="files_image[{{ $name }}]" class="form-control" style="width:92%">--}}
+	{{ Form::file("files_image[$name]", ['class' => 'form-control', 'id' => 'input_file']) }}
 </div>

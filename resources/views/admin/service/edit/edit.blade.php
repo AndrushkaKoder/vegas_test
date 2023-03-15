@@ -15,7 +15,7 @@
 					@endif
 
 					<div class="row">
-						<div class="col-6">
+						<div class="col-xl-8 col-sm-12">
 
 							<div class="mb-3">
 								{{Form::label('Название', '', ['class' => 'form-label'])}}
@@ -27,9 +27,37 @@
 								{{ Form::text('short_content' , null, ['class' => 'form-control' ]) }}
 							</div>
 
-							{{ Form::button('Показать СЕО параметры', [
-								'class' => 'btn btn-primary mb-3 admin_edit_seo_btn'])
-								}}
+							<div class="mb-3">
+								{{ Form::label('Описание', '', ['class' => 'form-label']) }}
+								{{ Form::textarea('content',
+								null,
+								['class' => 'edit_content',
+								'cols' => '10',
+								'rows' => '17'])
+								 }}
+							</div>
+						</div>
+
+						<div class="col-xl-4 col-sm-12">
+
+							<div class="admin_edit_images">
+								@include('admin.elements._img_uploader', [
+									'title' => 'Внутренняя картинка',
+									'name' => 'inner',
+									'file' => $item->getImg('inner')
+								])
+								@include('admin.elements._img_uploader', [
+									'title' => 'Внешняя картинка',
+									'name' => 'outer',
+									'file' => $item->getImg('outer')
+								])
+							</div>
+
+							<div class="mb-3 d-flex justify-content-center">
+								{{ Form::button('Показать СЕО параметры', [
+							'class' => 'btn btn-primary mb-3 admin_edit_seo_btn'])
+							}}
+							</div>
 
 							<div class="admin_edit_seo">
 								<div class="mb-3">
@@ -46,35 +74,12 @@
 									{{Form::label('SEO ключеые слова', '', ['class' => 'form-label'])}}
 									{{ Form::text('seo_keywords' , null, ['class' => 'form-control' ]) }}
 								</div>
+							</div>
 
+							<div class="admin_action_buttons">
+								{{ Form::submit('Подтвердить', ['class' => 'btn btn-success']) }}
+								<a href="{{ route('admin.service.index') }}" class="btn btn-dark">Отменить</a>
 							</div>
-							<div class="admin_edit_images d-flex justify-content-between">
-								@include('admin.elements._img_uploader', [
-									'title' => 'Внутренняя картинка',
-									'name' => 'inner',
-									'file' => $item->getImg('inner')
-								])
-								@include('admin.elements._img_uploader', [
-									'title' => 'Внешняя картинка',
-									'name' => 'outer',
-									'file' => $item->getImg('outer')
-								])
-							</div>
-						</div>
-						<div class="col-6">
-							<div class="mb-3">
-								{{ Form::label('Описание', '', ['class' => 'form-label']) }}
-								{{ Form::textarea('content',
-								null,
-								['class' => 'edit_content',
-								'cols' => '10',
-								'rows' => '17'])
-								 }}
-							</div>
-						</div>
-						<div class="col-12 d-flex justify-content-between">
-							{{ Form::submit('Подтвердить', ['class' => 'btn btn-success']) }}
-							<a href="{{ route('admin.service.index') }}" class="btn btn-dark">Отменить</a>
 						</div>
 					</div>
 					{{ Form::close() }}
