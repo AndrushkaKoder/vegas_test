@@ -7,6 +7,42 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * App\Models\Feedback
+ *
+ * @property int $id
+ * @property string $user_name
+ * @property string $user_phone
+ * @property string|null $user_email
+ * @property array $user_data
+ * @property int $feedback_type_id
+ * @property int $checked
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\FeedbackType|null $feedbackType
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Files> $files
+ * @property-read int|null $files_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback sHasCategories($category)
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback sHasChecked($checked)
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback sHasEmail($email)
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback sHasPhone($phone)
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback sHasSearch($search)
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback sSort($sort)
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModel sSorted($order = 'asc')
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback whereChecked($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback whereFeedbackTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback whereUserData($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback whereUserEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback whereUserName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Feedback whereUserPhone($value)
+ * @mixin \Eloquent
+ */
 class Feedback extends BaseModel
 {
 	use HasFactory;

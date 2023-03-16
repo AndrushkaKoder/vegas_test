@@ -184,6 +184,7 @@ class BaseCrudController extends Controller
 		$item = $this->model::query()->findOrFail($id);
 		$value = 1 - $item->getAttribute($param);
 		$item->update([$param => $value]);
+		return compact('value');
 	}
 
 	private function modelName(): string

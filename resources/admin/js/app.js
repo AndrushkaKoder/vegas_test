@@ -9,6 +9,7 @@ require('./modules/tinymce')
 require('./modules/alert')
 require('./modules/feedback_sort')
 require('./admin')
+require('./modules/button_toggle')
 
 
 

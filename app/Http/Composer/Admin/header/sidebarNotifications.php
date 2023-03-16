@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Composer\admin\header;
+namespace App\Http\Composer\Admin\header;
 
 use App\Models\Feedback;
 use Illuminate\View\View;
 
-class AdminHeader
+class sidebarNotifications
 {
 	public function compose(View $view)
 	{

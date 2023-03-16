@@ -15,7 +15,7 @@ class Slider
 	{
 		return \App\Models\Slider::query()
 			->where('visible', 1)
-
+			->sSorted()
 			->get();
 	}
 }

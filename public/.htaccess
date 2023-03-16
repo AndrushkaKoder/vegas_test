@@ -5,7 +5,7 @@
 
     RewriteEngine On
 
-    # Handle Authorization AdminHeader
+    # Handle Authorization sidebarNotifications
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 

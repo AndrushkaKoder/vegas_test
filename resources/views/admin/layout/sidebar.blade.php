@@ -9,21 +9,18 @@
 
 	<!-- Nav -->
 	<div class="sidebar">
-			<div class="user-panel d-flex justify-content-between align-items-center">
-				<div class="image" style="width: 50%;">
-					@if($img = currentAdmin()->getImg('admin'))
+		<div class="user-panel d-flex justify-content-between align-items-center">
+			<div class="image" style="width: 50%;">
+				@if($img = currentAdmin()->getImg('admin'))
 					<img src="{{ $img->getPath() }}" class="p-2" style="width: 100%; border-radius: 12px">
-					@endif
-				</div>
-				<div class="info">
-					<p class="admin_name">
-						{{ currentAdmin()->login }}
-					</p>
-				</div>
+				@endif
 			</div>
-
-
-
+			<div class="info">
+				<p class="admin_name">
+					{{ currentAdmin()->login }}
+				</p>
+			</div>
+		</div>
 
 
 		<!-- Nav Menu -->
@@ -46,7 +43,13 @@
 					<a href="{{ route('admin.feedback.index') }}" class="nav-link">
 						<i class="nav-icon fas fa-microphone"></i>
 						<p>Обратная связь
-							@if(!empty($notifications))<span>+{{ $notifications->count() }}</span> @endif
+							@if(!empty($notifications))
+								<span>
+								@if($notifications->count() !== 0)
+										+{{ $notifications->count() }}
+									@endif
+							</span>
+							@endif
 						</p>
 					</a>
 				</li>

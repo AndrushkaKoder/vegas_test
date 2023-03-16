@@ -28,6 +28,11 @@
 							</div>
 
 							<div class="mb-3">
+								{{Form::label('Текст кнопки', '', ['class' => 'form-label'])}}
+								{{ Form::text('button' , null, ['class' => 'form-control' ]) }}
+							</div>
+
+							<div class="mb-3">
 								{{ Form::label('Описание', '', ['class' => 'form-label']) }}
 								{{ Form::textarea('content',
 								null,

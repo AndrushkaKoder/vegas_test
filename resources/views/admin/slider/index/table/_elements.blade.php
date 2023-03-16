@@ -4,6 +4,10 @@
 			<div class="dd-handle" style="height: 50px">{{ $item->title }}</div>
 			<div class="admin_action d-flex justify-content-around" style="float: right; position: relative; top:
 			-40px">
+				@include('admin.elements._btn_toggle_visible', [
+					'route' => 'admin.slider.toggle_params',
+					'item' => $item,
+				])
 				<a href="{{ route('admin.slider.edit', $item->id) }}" class="nestable_action">
 					<i class="nav-icon fas fa-pen"></i>
 				</a>

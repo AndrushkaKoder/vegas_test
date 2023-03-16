@@ -10882,16 +10882,22 @@ textarea.form-control-lg {
   color: gray;
 }
 
+.current {
+  border-bottom: 1px solid white;
+}
+
 .active a {
   color: white !important;
 }
 
 .nav-item {
   position: relative;
+  margin: 0 10px;
 }
 .nav-item a {
   font-size: 18px;
   color: white;
+  padding: 5px;
 }
 
 .nav-list {

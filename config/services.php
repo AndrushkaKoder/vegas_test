@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Third Party AdminHeader
+    | Third Party sidebarNotifications
     |--------------------------------------------------------------------------
     |
     | This file is for storing the credentials for third party service such

@@ -72,13 +72,14 @@
 		@if($navigation)
 			<ul class="nav">
 				@foreach($navigation as $item)
-					<li class="nav-item">
+					<li class="nav-item {{ hclass($item->isCurrent(request()), 'current') }}">
 						<a class="nav-link" href="{{ $item->getNavPath() }}">{{ $item->title }}</a>
 						@if($item->childrenSorted->count())
 							<ul class="nav-list">
 								@foreach($item->childrenSorted as $child)
 									<li class="nav-item">
-										<a class="nav-link" href="{{ $child->getNavPath() }}">{{ $child->title }}</a>
+										<a class="nav-link" href="{{ $child->getNavPath() }}">
+											{{ $child->title }}</a>
 									</li>
 								@endforeach
 							</ul>

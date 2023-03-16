@@ -3,26 +3,16 @@ let feedbackItem = document.querySelectorAll('.feedback_item');
 let checkButton = document.querySelectorAll('.admin_feedback_check');
 
 if (checkButton) {
-
 	checkButton.forEach((el, i) => {
-		el.addEventListener('click', (e) => {
+		el.addEventListener('toggled', (e) => {
 			e.preventDefault();
-			let action = el.getAttribute('href');
-			let checked = parseInt(el.getAttribute('data-checked'));
-			checked = 1 - checked;
-			el.dataset.checked = checked;
+			console.log(e.detail.value);
 
-			let params = {
-				checked: checked
-			};
-
-			axios.post(action, params)
-				.then(function () {
-					feedbackItem[i].classList.toggle('feedback_checked')
-				})
-				.catch(function (error) {
-					console.error(error)
-				})
+			if (e.detail.value === 0) {
+				feedbackItem[i].classList.remove('feedback_checked')
+			} else if (e.detail.value === 1) {
+				feedbackItem[i].classList.add('feedback_checked')
+			}
 		})
 	})
 }
