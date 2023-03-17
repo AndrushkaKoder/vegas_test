@@ -128,6 +128,13 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/barryvdh/laravel-ide-helper" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/barryvdh/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/itsgoingd/clockwork" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/imagine/imagine" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/orchestra/support-core" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/orchestra/support-providers" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/orchestra/contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/orchestra/imagine" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/statamic/stringy" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/image" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

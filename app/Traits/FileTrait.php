@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Models\Files;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 trait FileTrait
 {
@@ -14,49 +15,72 @@ trait FileTrait
 	}
 
 
-	public function getImg($name)
+	public function getImg($name, $size = 'medium')
 	{
-		return $this->files->where('name', $name)->first();
+		return $this->files
+			->where('name', $name)
+			->where('size', $size)
+			->first();
 	}
 
 
-	private function getDirectoryPath($class, $id, $name, $filename = null)
+	private function getDirectoryPath($class, $id, $name, $size = null, $filename = null)
 	{
-		return str_replace('\\', '/', public_path("/assets/frontend/files/$class/$id/$name/$filename"));
+		$dir = public_path("assets/frontend/files/$class/$id/" . implode('/', array_filter([
+				$name,
+				$size,
+				$filename,
+			])));
+		return str_replace('\\', '/', $dir);
 	}
 
 	public function saveFile($name, $filepath) //inner, "D:\OpenServer\userdata\temp\upload\php3B09.tmp"
 	{
+		$a = 1;
 		$object = $this;
 		$class = get_class($object);
 		$id = $object->id;
 		$copyToDir = $this->getDirectoryPath($class, $id, $name);
 
 		if (!is_dir($copyToDir)) {
-			File::makeDirectory($copyToDir, 0755, true, true);
+			File::makeDirectory($copyToDir, 0755, true, true); //Если нет директории, создаем
 		}
 
 		if (is_object($filepath) && $filepath instanceof UploadedFile) {
 			/** @var $filepath UploadedFile */
 			$fileName = $filepath->getClientOriginalName();
-			$filepath->move($copyToDir, $fileName);
-
+			$tmpFilePath = "$copyToDir/$fileName";
+			$filepath->move($copyToDir, $tmpFilePath);
 		} else if (is_string($filepath) && mb_strpos($filepath, 'https://') !== 0) {
 			$fileName = File::basename($filepath);
-			$copyToFile = "$copyToDir/$fileName";
-			File::copy($filepath, $copyToFile);
-
+			$tmpFilePath = "$copyToDir/$fileName";
+			File::copy($filepath, $tmpFilePath);
 		} else {
 			$content = file_get_contents($filepath); //контент внутри файла
 			$fileName = File::basename($filepath); //как он будет называться
-			file_put_contents($copyToDir . "/" . $fileName, $content);
+			$tmpFilePath = "$copyToDir/$fileName";
+			file_put_contents($tmpFilePath, $content);
+		}
+
+		$sizes = [
+			'medium' => ['resize' => []],
+			'small' => ['resize' => []],
+		];
+		foreach ($sizes as $size => $config) {
+			$this->resizeImage(
+				$tmpFilePath,
+				$this->getDirectoryPath($class, $id, $name, $size, $fileName),
+				$config
+			);
 		}
 
 		$object->files()->updateOrCreate([
 			'name' => $name,
+			'size' => 'medium'
 		], [
 			'filename' => $fileName,
 		]);
+
 	}
 
 
@@ -74,20 +98,18 @@ trait FileTrait
 	}
 
 
-//	public function saveUserFile($file){
-//
-//		$object = $this;
-//		$id = $object->id;
-//		$fileName = $file->getClientOriginalName();
-//		$path = str_replace('\\', '/', public_path("/assets/frontend/files/userfiles/$id"));
-//
-//		if(!is_dir($path)){
-//			File::makeDirectory($path, 0755, true, true);
-//		}
-//		$file->move($path, $fileName);
-//
-//
-//	}
+	public function resizeImage($filepath, $saveToFile, $config)
+	{
+		$dir = File::dirname($saveToFile);
+		if (!is_dir($dir)) {
+			File::makeDirectory($dir, 0755, true, true);
+		}
+
+		$image = Image::make($filepath);
+		$image->resize(100, 50);
+		$image->save($saveToFile);
+	}
+
 
 }
 

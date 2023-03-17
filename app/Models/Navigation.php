@@ -111,28 +111,18 @@ class Navigation extends BaseModel
 
 	public function isCurrent($request)
 	{
-		$flag = false;
-		if($request->is($this->url))
-			$flag = true;
+		if (request()->path() === $this->getNavPath()) {
+			return true;
+		}
 
-		foreach ($this->children as $item){
-			if($request->is($item->url)){
-				$flag = true;
+		foreach ($this->childrenSorted as $item) {
+
+			if (($request->path() === $item->url) || (str_contains($item->getNavPath(), $request->path())
+					&& $request->path() !== '/')) {
+				return true;
 			}
 		}
 
-//		$flag = false;
-//
-//		if ($request->is($this->url)) {
-//			$flag = true;
-//		} else {
-//			foreach ($this->children as $item) {
-//				if ($request->is($this->url && (str_contains($item->url, $this->url))))
-//					$flag = true;
-//			}
-//		}
-//
-		return $flag;
+		return false;
 	}
-
 }

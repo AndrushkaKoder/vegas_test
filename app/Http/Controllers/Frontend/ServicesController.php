@@ -10,7 +10,7 @@ class ServicesController extends Controller
 {
 	public function index(){
 		$page = Page::whereUri('service')->firstOrFail();
-		$items = Service::all();
+		$items = Service::with('files')->get();
 		return view('frontend.service.index', compact('page', 'items'));
 	}
 

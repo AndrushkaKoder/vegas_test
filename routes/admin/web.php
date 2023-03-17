@@ -33,6 +33,8 @@ Route::middleware('admin_auth')->group(function () {
 	Route::resource('slider',SliderController::class);
 	Route::post('/slider/change_structure', [SliderController::class, 'change_structure'])->name('slider.change_structure');
 	Route::post('slider/{id}/toggle_params/{param}', [SliderController::class, 'toggle_param'])->name('slider.toggle_params');
+
+	Route::get('/imagine', [\App\Http\Controllers\Admin\UploadController::class, 'processImage'])->name('imagine');
 });
 
 Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('admin_not_auth');

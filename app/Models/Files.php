@@ -37,8 +37,11 @@ class Files extends BaseModel
 
 	protected $fillable = [
 		'name',
-		'filename'
+		'filename',
+		'size'
 	];
+
+//	protected $with = [''];
 
 	public function object(): \Illuminate\Database\Eloquent\Relations\MorphTo
 	{

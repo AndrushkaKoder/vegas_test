@@ -162,6 +162,7 @@ return [
 		Illuminate\Validation\ValidationServiceProvider::class,
 		Illuminate\View\ViewServiceProvider::class,
 		Clockwork\Support\Laravel\ClockworkServiceProvider::class,
+		Orchestra\Imagine\ImagineServiceProvider::class,
 
 
 		/*
@@ -234,6 +235,8 @@ return [
 		'Validator' => Illuminate\Support\Facades\Validator::class,
 		'View' => Illuminate\Support\Facades\View::class,
 		'Clockwork' => Clockwork\Support\Laravel\Facade::class,
+		'Imagine' => Orchestra\Imagine\Facade::class,
+
 
 		'Form' => \Collective\Html\FormFacade::class,
 		'Html' => \Collective\Html\HtmlFacade::class

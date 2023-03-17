@@ -48,6 +48,19 @@ class Service extends BaseModel
 	use HasFactory;
 	use FileTrait;
 
+	protected $imageSize = [
+		'inner' => [
+			'name' => 'medium',
+			'height' => '800',
+			'width' => '600'
+		],
+		'outer' => [
+			'name' => 'small',
+			'height' => '100',
+			'width' => '100'
+		]
+	];
+
 	protected $fillable = [
 		'title',
 		'short_content',
