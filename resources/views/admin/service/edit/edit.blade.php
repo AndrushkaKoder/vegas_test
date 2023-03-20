@@ -44,12 +44,12 @@
 								@include('admin.elements._img_uploader', [
 									'title' => 'Внутренняя картинка',
 									'name' => 'inner',
-									'file' => $item->getImg('inner')
+									'filepath' => $item->getImgPath('inner', 'medium')
 								])
 								@include('admin.elements._img_uploader', [
 									'title' => 'Внешняя картинка',
 									'name' => 'outer',
-									'file' => $item->getImg('outer')
+									'filepath' => $item->getImgPath('outer', 'medium')
 								])
 							</div>
 

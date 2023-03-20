@@ -10875,11 +10875,14 @@ textarea.form-control-lg {
 .more_widget li {
   font-size: 16px;
   text-decoration: none !important;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .more_widget li a {
   text-decoration: none;
-  color: gray;
+  color: black;
 }
 
 .current {
@@ -10887,7 +10890,7 @@ textarea.form-control-lg {
 }
 
 .active a {
-  color: white !important;
+  color: lightgray !important;
 }
 
 .nav-item {
@@ -10971,6 +10974,11 @@ textarea.form-control-lg {
 }
 .aside_wrapper .aside_wrapper_content form button {
   width: 100%;
+}
+
+.no_photo_outer {
+  background-size: cover;
+  background-position: center;
 }
 
 .swiper {

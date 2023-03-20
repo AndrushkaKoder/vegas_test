@@ -48,5 +48,23 @@ class Slider extends BaseModel
 		'button'
 	];
 
+	protected $configSizeImages = [
+		'medium' => [
+			'resize' => ['width' => '1920', 'height' => '1080'],
+			'ratio' => true
+		],
+		'small' => [
+			'resize' => ['width' => '50', 'height' => '50'],
+			'ratio' => false
+		],
+	];
+
+	public function scopeSSliderWithPhoto($query){
+
+		if($this->imageable_id){
+			return $query;
+		}
+	}
+
 
 }

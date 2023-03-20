@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
 		$this->call(FeedBackTypesSeeder::class);
 		$this->call(PagesSeeder::class);
 		$this->call(NavSeeder::class);
+		$this->call(SliderSeeder::class);
 
 	}
 }

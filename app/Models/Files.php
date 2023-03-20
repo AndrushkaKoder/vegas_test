@@ -38,19 +38,17 @@ class Files extends BaseModel
 	protected $fillable = [
 		'name',
 		'filename',
-		'size'
 	];
 
-//	protected $with = [''];
 
 	public function object(): \Illuminate\Database\Eloquent\Relations\MorphTo
 	{
 		return $this->morphTo();
 	}
 
-	public function getPath($relative = true)
+	public function getPath($size, $relative = true)
 	{
-		$path = "/assets/frontend/files/$this->imageable_type/$this->imageable_id/$this->name/$this->filename";
+		$path = "/assets/frontend/files/$this->imageable_type/$this->imageable_id/$this->name/$size/$this->filename";
 		$path = str_replace('\\', '/', $path);
 
 		if ($relative) {

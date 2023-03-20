@@ -11,8 +11,8 @@
 					</div>
 					<div class="col-6">
 						<div class="admin_photo_wrapper">
-							@if($img = currentadmin()->getImg('admin'))
-								<img src="{{ $img->getPath() }}" alt="photo" width="100%"
+							@if($img = currentadmin()->getImgPath('admin', 'medium'))
+								<img src="{{ $img }}" alt="photo" width="100%"
 								     height="300" style="margin: 0 auto; border-radius: 10px; object-fit: cover">
 							@else
 								<div style="background: black; width: 100%; height: 405px">.</div>

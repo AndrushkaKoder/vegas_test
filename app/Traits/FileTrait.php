@@ -9,20 +9,35 @@ use Intervention\Image\Facades\Image;
 
 trait FileTrait
 {
+	protected $baseConfigSizeImages = [
+		'medium' => [
+			'resize' => ['width' => '600', 'height' => '600'],
+			'ratio' => true
+		],
+		'small' => [
+			'resize' => ['width' => '50', 'height' => '50'],
+			'ratio' => false
+		]
+	];
+
 	public function files(): \Illuminate\Database\Eloquent\Relations\MorphMany
 	{
 		return $this->morphMany(Files::class, 'imageable');
 	}
 
-
-	public function getImg($name, $size = 'medium')
+	public function getImg($name)
 	{
 		return $this->files
 			->where('name', $name)
-			->where('size', $size)
 			->first();
 	}
 
+	public function getImgPath($name, $size)
+	{
+		if ($img = $this->getImg($name))
+			return $img->getPath($size);
+
+	}
 
 	private function getDirectoryPath($class, $id, $name, $size = null, $filename = null)
 	{
@@ -32,6 +47,14 @@ trait FileTrait
 				$filename,
 			])));
 		return str_replace('\\', '/', $dir);
+	}
+
+	public function configSizeImages()
+	{
+		if ($this->configSizeImages)
+			return $this->configSizeImages;
+
+		return $this->baseConfigSizeImages;
 	}
 
 	public function saveFile($name, $filepath) //inner, "D:\OpenServer\userdata\temp\upload\php3B09.tmp"
@@ -62,41 +85,37 @@ trait FileTrait
 			file_put_contents($tmpFilePath, $content);
 		}
 
-		$sizes = [
-			'medium' => ['resize' => []],
-			'small' => ['resize' => []],
-		];
-		foreach ($sizes as $size => $config) {
+		foreach ($this->configSizeImages() as $size => $config) {
 			$this->resizeImage(
 				$tmpFilePath,
 				$this->getDirectoryPath($class, $id, $name, $size, $fileName),
 				$config
 			);
+
+			$object->files()->updateOrCreate([
+				'name' => $name,
+			], [
+				'filename' => $fileName,
+			]);
+
 		}
-
-		$object->files()->updateOrCreate([
-			'name' => $name,
-			'size' => 'medium'
-		], [
-			'filename' => $fileName,
-		]);
-
+		File::delete($this->getDirectoryPath($class, $id, $name, $fileName));
 	}
-
 
 	public function deleteFile($name)
 	{
-		$image = $this->getImg($name);
-		$service = $this;
-		$className = get_class($service);
-		$objectId = $service->id;
-		$name = $image->name;
-		$fileName = $image->filename;
-		$pathToImage = $this->getDirectoryPath($className, $objectId, $name, $fileName);
-		File::delete($pathToImage);
-		$image->delete();
+		foreach ($this->configSizeImages() as $size => $config) {
+			$image = $this->getImg($name, $size);
+			$service = $this;
+			$className = get_class($service);
+			$objectId = $service->id;
+			$name = $image->name;
+			$fileName = $image->filename;
+			$pathToImage = $this->getDirectoryPath($className, $objectId, $name, $size, $fileName);
+			File::delete($pathToImage);
+			$image->delete();
+		}
 	}
-
 
 	public function resizeImage($filepath, $saveToFile, $config)
 	{
@@ -106,8 +125,15 @@ trait FileTrait
 		}
 
 		$image = Image::make($filepath);
-		$image->resize(100, 50);
-		$image->save($saveToFile);
+		if ($config['ratio']) {
+			$image->resize($config['resize']['width'], $config['resize']['height'], function ($constraint) {
+				$constraint->aspectRatio();
+				$constraint->upsize();
+			});
+		} else {
+			$image->resize($config['resize']['width'], $config['resize']['height']);
+		}
+		$image->save($saveToFile, 90);
 	}
 
 

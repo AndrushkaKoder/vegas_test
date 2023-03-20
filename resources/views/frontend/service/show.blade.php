@@ -6,11 +6,11 @@
 		<div class="row mt-5">
 			<div class="col-lg-6 col-md-12 inside_img mb-5 d-flex flex-column justify-content-center">
 
-				@if($img = $page->getImg('inner'))
-					<img src="{{ $img->getPath() }}" alt="photo" width="80%"
-					     height="405" style="margin: 0 auto">
+				@if($img = $page->getImgPath('inner', 'medium'))
+					<img src="{{ $img ?: asset('no_photo.png') }}" style="height: 450px" alt="photo">
 				@else
-					<div style="background: black; width: 100%; height: 405px">.</div>
+					<div class="no_photo_outer" style="background:url({{ asset('no_photo.png') }});
+						height: 450px; background-position: center; background-size: cover"></div>
 				@endif
 
 				<div class="card-body text-center">

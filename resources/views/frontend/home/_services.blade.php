@@ -4,11 +4,13 @@
 			<div class="card shadow-sm">
 				<a href="{{route('frontend.service.show', [$item->slug])}}">
 
-					@if ($img = $item->getImg('outer'))
-						<img src="{{ $img->getPath() }}" alt="photo" width="100%" height="225">
-
+					@if ($img = $item->getImgPath('outer', 'medium') )
+						<img src="{{ $item->getImgPath('outer', 'medium') }}" alt="photo"
+						     width="100%"
+						     height="225">
 					@else
-						<div style="background: black; width: 100%; height: 225px">.</div>
+						<div class="no_photo_outer" style="background:url({{ asset('no_photo.png') }});
+						height: 225px; background-size: cover; background-position: center"></div>
 					@endif
 
 				</a>

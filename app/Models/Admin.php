@@ -44,4 +44,15 @@ class Admin extends Authenticatable
 	{
 		$this->attributes['password'] = Hash::make($value);
 	}
+
+	protected $configSizeImages = [
+		'medium' => [
+			'resize' => ['width' => '1920', 'height' => '1080'],
+			'ratio' => true
+		],
+		'small' => [
+			'resize' => ['width' => '50', 'height' => '50'],
+			'ratio' => false
+		],
+	];
 }

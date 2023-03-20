@@ -10,11 +10,11 @@
 	<!-- Nav -->
 	<div class="sidebar">
 		<div class="user-panel d-flex justify-content-between align-items-center">
-			<div class="image" style="width: 50%;">
-				@if($img = currentAdmin()->getImg('admin'))
-					<img src="{{ $img->getPath() }}" class="p-2" style="width: 100%; border-radius: 12px">
-				@endif
-			</div>
+{{--			<div class="image" style="width: 50%;">--}}
+{{--				@if($img = currentAdmin()->getImgPath('admin', 'medium'))--}}
+{{--					<img src="{{ $img }}" class="p-2" style="width: 100%; border-radius:12px" alt="admin photo">--}}
+{{--				@endif--}}
+{{--			</div>--}}
 			<div class="info">
 				<p class="admin_name">
 					{{ currentAdmin()->login }}

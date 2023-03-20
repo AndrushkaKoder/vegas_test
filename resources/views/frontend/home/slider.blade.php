@@ -4,8 +4,8 @@
 
 			@foreach($slides as $item)
 				<div class="swiper-slide d-flex justify-content-center align-items-center flex-column"
-				     @if($img = $item->getImg('inner'))
-					     style="background-image: url({{$img->getPath() }})">
+				     @if($img = $item->getImgPath('inner', 'medium'))
+					     style="background-image: url({{ $img }})">
 					@endif
 					<div class="content" style="font-size: 22px">
 						{!! $item->content !!}

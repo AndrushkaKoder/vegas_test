@@ -49,7 +49,7 @@
 								@include('admin.elements._img_uploader', [
 									'title' => 'Фон слайда',
 									'name' => 'inner',
-									'file' => $item->getImg('inner')
+									'filepath' => $item->getImgPath('inner', 'medium')
 								])
 							</div>
 
