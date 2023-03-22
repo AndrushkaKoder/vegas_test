@@ -9,6 +9,7 @@ class SliderController extends BaseCrudController
 	protected $model = Slider::class;
 	protected $sortable = true;
 
+
 	public function getValidationRules()
 	{
 		return [

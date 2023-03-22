@@ -49,14 +49,26 @@ class Service extends BaseModel
 	use FileTrait;
 
 	protected $configSizeImages = [
-		'medium' => [
-			'resize' => ['width' => '400', 'height' => '500'],
-			'ratio' => true
+		'inner' => [
+			'medium' => [
+				'resize' => ['width' => '400', 'height' => '500'],
+				'ratio' => true
+			],
+			'small' => [
+				'resize' => ['width' => '50', 'height' => '50'],
+				'ratio' => false
+			],
 		],
-		'small' => [
-			'resize' => ['width' => '50', 'height' => '50'],
-			'ratio' => false
-		],
+		'outer' => [
+			'medium' => [
+				'resize' => ['width' => '400', 'height' => '500'],
+				'ratio' => true
+			],
+			'small' => [
+				'resize' => ['width' => '50', 'height' => '50'],
+				'ratio' => false
+			],
+		]
 	];
 
 	protected $fillable = [

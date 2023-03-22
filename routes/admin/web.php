@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\NavController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\ParamsController;
 
 
 Route::middleware('admin_auth')->group(function () {
@@ -34,7 +35,12 @@ Route::middleware('admin_auth')->group(function () {
 	Route::post('/slider/change_structure', [SliderController::class, 'change_structure'])->name('slider.change_structure');
 	Route::post('slider/{id}/toggle_params/{param}', [SliderController::class, 'toggle_param'])->name('slider.toggle_params');
 
-	Route::get('/imagine', [\App\Http\Controllers\Admin\UploadController::class, 'processImage'])->name('imagine');
+	Route::get('params', [ParamsController::class, 'index'])->name('params.index');
+	Route::get('params/main', [ParamsController::class, 'mainSettings'])->name('params.main');
+	Route::get('params/social', [ParamsController::class, 'socialSettings'])->name('params.social');
+	Route::get('params/contacts', [ParamsController::class, 'contactsSettings'])->name('params.contacts');
+	Route::post('params/update', [ParamsController::class, 'update'])->name('params.update');
+
 });
 
 Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('admin_not_auth');

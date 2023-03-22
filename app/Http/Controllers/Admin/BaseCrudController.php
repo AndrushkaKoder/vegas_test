@@ -102,7 +102,14 @@ class BaseCrudController extends Controller
 
 	public function getFillData()
 	{
-		return request()->all();
+		$data = request()->all();
+
+		if ($this->sortable) {
+			$data['position'] = $this->getModel()::query()->orderBy('position', 'desc')->first()->position +1;
+			// Если есть связь, то сортируем по position desc
+		}
+
+		return $data;
 	}
 
 	public function getParams($method, $item = null)
@@ -140,7 +147,7 @@ class BaseCrudController extends Controller
 			}
 		}
 
-		return $query->sSorted();
+		return $query->sSorted('desc'); // передан параметр
 	}
 
 	public function filterItems($query)

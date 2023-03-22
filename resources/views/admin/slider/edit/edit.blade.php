@@ -62,7 +62,6 @@
 									['class' => 'form-select']) }}
 							</div>
 
-
 							<div class="admin_action_buttons">
 								{{ Form::submit('Подтвердить', ['class' => 'btn btn-success']) }}
 								<a href="{{ route('admin.slider.index') }}" class="btn btn-dark">Отменить</a>

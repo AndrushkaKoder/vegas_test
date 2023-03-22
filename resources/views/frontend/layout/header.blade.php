@@ -7,20 +7,24 @@
 				<h4 class="text-white">Связаться с нами</h4>
 				<ul class="list-unstyled">
 
-					@if($phone = \App\Models\Params::getValue('phone'))
-						<li>
-							<a href="tel: {{ $phone }}" style="text-decoration: none"
-							   class="text-white">{{ $phone }}
-							</a>
-						</li>
+					@if($phone = getParameters('phone'))
+						@foreach($phone as $item)
+							<li>
+								<a href="tel:{{ $item }}" style="text-decoration: none"
+								   class="text-white">{{ $item }}
+								</a>
+							</li>
+						@endforeach
 					@endif
 
-					@if(!empty($email = \App\Models\Params::getValue('email')))
-						<li>
-							<a href="mailto: {{ $email }}" style="text-decoration: none"
-							   class="text-white">{{ $email }}
-							</a>
-						</li>
+					@if($email = getParameters('email'))
+						@foreach($email as $item)
+							<li>
+								<a href="mailto: {{ $item }}" style="text-decoration: none"
+								   class="text-white">{{ $item }}
+								</a>
+							</li>
+						@endforeach
 					@endif
 				</ul>
 			</div>
@@ -40,7 +44,7 @@
 					@if(!empty($twitter = \App\Models\Params::getValue('OK')))
 						<li>
 							<a href="{{ $twitter }}" style="text-decoration: none"
-							   class="text-white" target="_blank">Twitter
+							   class="text-white" target="_blank">Одноклассники
 							</a>
 						</li>
 					@endif
@@ -89,10 +93,16 @@
 			</ul>
 		@endif
 
+		<div class="header_action">
+			<a href="{{ route('frontend.cart.index') }}" style="margin-right: 20px"><i class="fa-solid
+				fa-cart-shopping text-white
+				fs-5"></i></a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+			        aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
 
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
-		        aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+
 	</div>
 </div>

@@ -10,11 +10,12 @@
 	<!-- Nav -->
 	<div class="sidebar">
 		<div class="user-panel d-flex justify-content-between align-items-center">
-{{--			<div class="image" style="width: 50%;">--}}
-{{--				@if($img = currentAdmin()->getImgPath('admin', 'medium'))--}}
-{{--					<img src="{{ $img }}" class="p-2" style="width: 100%; border-radius:12px" alt="admin photo">--}}
-{{--				@endif--}}
-{{--			</div>--}}
+			<div class="image" style="width: 150px; height: 100px">
+				@if($img = currentAdmin()->getImgPath('admin', 'medium'))
+					<img src="{{ $img }}" class="p-2" style="width: 100%; height: 100%; border-radius:12px" alt="admin
+					photo">
+				@endif
+			</div>
 			<div class="info">
 				<p class="admin_name">
 					{{ currentAdmin()->login }}
@@ -35,7 +36,7 @@
 				</li>
 				<li class="nav-item">
 					<a href="{{ route('admin.service.index') }}" class="nav-link">
-						<i class="nav-icon fas fa-wrench"></i>
+						<i class="nav-icon fas fa-tag"></i>
 						<p>Услуги</p>
 					</a>
 				</li>
@@ -63,6 +64,12 @@
 					<a href="{{ route('admin.slider.index') }}" class="nav-link">
 						<i class="nav-icon fas fa-image"></i>
 						<p>Слайдер</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{ route('admin.params.index') }}" class="nav-link">
+						<i class="nav-icon fas fa-wrench"></i>
+						<p>Параметры</p>
 					</a>
 				</li>
 

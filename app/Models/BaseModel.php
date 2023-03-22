@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Traits\FileTrait;
 use App\Traits\SeoTrait;
 use Illuminate\Database\Eloquent\Model;
 

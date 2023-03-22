@@ -13,6 +13,7 @@ class ServicesController extends Controller
 		$items = Service::with('files')
 			->sSorted()
 			->get();
+
 		return view('frontend.service.index', compact('page', 'items'));
 	}
 

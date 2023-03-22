@@ -19,7 +19,7 @@ class CreateSlidersTable extends Migration
 			$table->string('content');
 			$table->string('link');
 			$table->string('button');
-			$table->integer('position')->default(0);
+			$table->integer('position');
 			$table->integer('visible')->default(1);
 			$table->timestamps();
 		});

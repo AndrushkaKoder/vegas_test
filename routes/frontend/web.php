@@ -5,6 +5,7 @@ use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\SendEmailController;
 use App\Http\Controllers\Frontend\ServicesController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,8 @@ Route::get('/service/{slug}', [ServicesController::class, 'show'])->name('servic
 
 Route::post('/send/service', [SendEmailController::class, 'sendEmail'])->name('sendEmailService');
 Route::post('/send/about', [SendEmailController::class, 'sendEmailAbout'])->name('sendEmailAbout');
+
+Route::get('cart', [CartController::class, 'index'])->name('cart.index');
 
 Auth::routes();
 

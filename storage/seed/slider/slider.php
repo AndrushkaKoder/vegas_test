@@ -6,7 +6,8 @@ return [
 		'link' => '/',
 		'visible' => '1',
 		'position' => 0,
-		'button' => 'Смотреть'
+		'button' => 'Смотреть',
+		'image' => ['inner' => 'slide1.png']
 	],
 	[
 		'title' => 'Слайд 2',
@@ -14,7 +15,8 @@ return [
 		'link' => '/',
 		'visible' => '1',
 		'position' => 1,
-		'button' => 'Подробнее'
+		'button' => 'Подробнее',
+		'image' => ['inner' => 'slide2.jpg']
 	],
 	[
 		'title' => 'Слайд 3',
@@ -22,6 +24,7 @@ return [
 		'link' => '/',
 		'visible' => '1',
 		'position' => 2,
-		'button' => 'Ссылка'
+		'button' => 'Ссылка',
+		'image' => ['inner' => 'slide3.jpg']
 	]
 ];

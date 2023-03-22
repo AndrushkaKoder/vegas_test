@@ -4,19 +4,32 @@ namespace App\Traits;
 
 use App\Models\Files;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 
 trait FileTrait
 {
 	protected $baseConfigSizeImages = [
-		'medium' => [
-			'resize' => ['width' => '600', 'height' => '600'],
-			'ratio' => true
+		'inner' => [
+			'medium' => [
+				'resize' => ['width' => '500', 'height' => '500'],
+				'ratio' => true
+			],
+			'small' => [
+				'resize' => ['width' => '100', 'height' => '100'],
+				'ratio' => false
+			],
 		],
-		'small' => [
-			'resize' => ['width' => '50', 'height' => '50'],
-			'ratio' => false
+		'outer' => [
+			'medium' => [
+				'resize' => ['width' => '500', 'height' => '500'],
+				'ratio' => true
+			],
+			'small' => [
+				'resize' => ['width' => '100', 'height' => '100'],
+				'ratio' => false
+			],
 		]
 	];
 
@@ -85,7 +98,8 @@ trait FileTrait
 			file_put_contents($tmpFilePath, $content);
 		}
 
-		foreach ($this->configSizeImages() as $size => $config) {
+		$configuration = Arr::get($this->configSizeImages(), $name);
+		foreach ($configuration as $size => $config) {
 			$this->resizeImage(
 				$tmpFilePath,
 				$this->getDirectoryPath($class, $id, $name, $size, $fileName),
@@ -97,15 +111,16 @@ trait FileTrait
 			], [
 				'filename' => $fileName,
 			]);
-
 		}
 		File::delete($this->getDirectoryPath($class, $id, $name, $fileName));
 	}
 
 	public function deleteFile($name)
 	{
-		foreach ($this->configSizeImages() as $size => $config) {
-			$image = $this->getImg($name, $size);
+		$configuration = Arr::get($this->configSizeImages(), $name);
+
+		foreach ($configuration as $size => $config) {
+			$image = $this->getImg($name);
 			$service = $this;
 			$className = get_class($service);
 			$objectId = $service->id;
@@ -113,6 +128,11 @@ trait FileTrait
 			$fileName = $image->filename;
 			$pathToImage = $this->getDirectoryPath($className, $objectId, $name, $size, $fileName);
 			File::delete($pathToImage);
+
+			$dir = dirname($pathToImage);
+			if (!count(File::allFiles($dir)))
+				File::deleteDirectory($dir);
+
 			$image->delete();
 		}
 	}

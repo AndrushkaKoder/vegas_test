@@ -19,7 +19,14 @@ class SliderSeeder extends Seeder
 		$data = include storage_path("/seed/slider/slider.php");
 
 		foreach ($data as $item){
-			Slider::query()->create($item);
+			$slider = Slider::query()->create(Arr::except($item, ['image']));
+
+			foreach ($item['image'] as $name => $filename){
+				$filename = storage_path("seed/slider/files/$filename");
+				$slider->saveFile($name, $filename);
+			}
 		}
+
+
 	}
 }

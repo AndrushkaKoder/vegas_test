@@ -49,22 +49,19 @@ class Slider extends BaseModel
 	];
 
 	protected $configSizeImages = [
-		'medium' => [
-			'resize' => ['width' => '1920', 'height' => '1080'],
-			'ratio' => true
-		],
-		'small' => [
-			'resize' => ['width' => '50', 'height' => '50'],
-			'ratio' => false
+		'inner' => [
+			'medium' => [
+				'resize' => ['width' => '1920', 'height' => '1080'],
+				'ratio' => true
+			],
 		],
 	];
 
-	public function scopeSSliderWithPhoto($query){
-
-		if($this->imageable_id){
-			return $query;
-		}
+	public function scopeSHasPhoto($query)
+	{
+		return $query->whereHas('files', function ($query) {
+			return $query->where('name', 'inner');
+		});
 	}
-
 
 }

@@ -111,7 +111,9 @@ class Navigation extends BaseModel
 
 	public function isCurrent($request)
 	{
-		if (request()->path() === $this->getNavPath()) {
+//		dd($this->getNavPath());
+
+		if ($request->path() === $this->url) {
 			return true;
 		}
 

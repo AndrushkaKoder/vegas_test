@@ -10977,8 +10977,10 @@ textarea.form-control-lg {
 }
 
 .no_photo_outer {
-  background-size: cover;
-  background-position: center;
+  background: gray;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
 }
 
 .swiper {

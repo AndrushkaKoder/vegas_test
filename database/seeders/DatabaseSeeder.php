@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
 		$this->call(PagesSeeder::class);
 		$this->call(NavSeeder::class);
 		$this->call(SliderSeeder::class);
+		$this->call(UserSeeder::class);
 
 	}
 }
