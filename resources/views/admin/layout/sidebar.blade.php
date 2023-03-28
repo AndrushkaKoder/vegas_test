@@ -29,13 +29,13 @@
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
 				<li class="nav-item">
-					<a href="{{ route('admin.page.index') }}" class="nav-link">
+					<a href="{{ route('admin.pages.index') }}" class="nav-link">
 						<i class="nav-icon fas fa-list"></i>
 						<p>Страницы</p>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="{{ route('admin.service.index') }}" class="nav-link">
+					<a href="{{ route('admin.services.index') }}" class="nav-link">
 						<i class="nav-icon fas fa-tag"></i>
 						<p>Услуги</p>
 					</a>
@@ -61,7 +61,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="{{ route('admin.slider.index') }}" class="nav-link">
+					<a href="{{ route('admin.sliders.index') }}" class="nav-link">
 						<i class="nav-icon fas fa-image"></i>
 						<p>Слайдер</p>
 					</a>
@@ -72,6 +72,34 @@
 						<p>Параметры</p>
 					</a>
 				</li>
+				<li class="nav-item">
+					<div class="dropdown">
+						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+						style="width: 100%">
+
+							Товары
+						</a>
+
+						<ul class="dropdown-menu products_list text-center" style="width: 100%;">
+							<li>
+								<a href="{{ route('admin.vendors.index') }}" class="nav-link text-black">
+									Производители
+								</a>
+							</li>
+							<li>
+								<a href="{{ route('admin.categories.index') }}" class="nav-link text-black">
+									Категории
+								</a>
+							</li>
+							<li>
+								<a href="{{ route('admin.products.index') }}" class="nav-link text-black">
+									Продукты
+								</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+
 
 
 			</ul>

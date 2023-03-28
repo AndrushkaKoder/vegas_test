@@ -12,9 +12,8 @@
 
 	<ul class="d-flex list-unstyled">
 		<li>
-			<a href="{{ route('admin.settings.edit', currentAdmin()->id) }}" class="btn btn-dark m-3"><i class="nav-icon
-			 fas
-			fa-wrench"></i></a>
+			<a href="{{ route('admin.settings.edit', currentAdmin()->id) }}" class="btn btn-dark m-3">
+				<i class="nav-icon fas fa-user"></i></a>
 		</li>
 		<li>
 			<a href="{{ route('admin.logout') }}" class="btn btn-dark m-3"><i class="nav-icon fas fa-power-off"></i></a>

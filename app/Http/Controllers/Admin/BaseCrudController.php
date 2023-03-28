@@ -3,13 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\BaseModel;
+use App\Models\Product;
 use Illuminate\Support\Str;
+use Kalnoy\Nestedset\NodeTrait;
+use League\CommonMark\Node\Node;
 
 class BaseCrudController extends Controller
 {
 	protected $model;
 	protected $paginateQuantity = 10;
 	protected $sortable = false;
+	protected $viewDir = '';
+	protected $routesDir = '';
 
 	public function index()
 	{
@@ -61,13 +67,18 @@ class BaseCrudController extends Controller
 
 	public function update(int $id): \Illuminate\Http\RedirectResponse
 	{
+//		dd(request()->all());
 		$this->dataValidate();
 		$item = $this->getItem($id);
-		$item->fill($this->getFillData());
+		$item->fill($this->getFillData(__FUNCTION__));
 		$item->save();
 
 		$this->deleteImages($item);
 		$this->saveImages($item);
+
+
+
+		$this->afterSave($item, __FUNCTION__);
 
 		return redirect()->route($this->getRouteName('edit'), $item->id)->with('success', 'Данные изменены');
 	}
@@ -76,11 +87,21 @@ class BaseCrudController extends Controller
 	{
 		$this->dataValidate();
 		$item = new $this->model;
-		$item->fill($this->getFillData());
+		$item->fill($this->getFillData(__FUNCTION__));
 		$item->save();
 		$this->saveImages($item);
-
+		$this->afterSave($item, __FUNCTION__);
 		return redirect()->route($this->getRouteName('edit'), $item->id)->with('success', 'Запись добавлена');
+	}
+
+	public function afterSave($item, $method)
+	{
+		if ($method == 'store' && $item->useTrait(NodeTrait::class)) {
+			$model = $this->getModel();
+			$item->insertBeforeNode(
+				with(new $model)->defaultOrder()->first()
+			);
+		}
 	}
 
 	public function destroy(int $id): \Illuminate\Http\RedirectResponse
@@ -100,12 +121,12 @@ class BaseCrudController extends Controller
 		return $this->model::findOrFail($id);
 	}
 
-	public function getFillData()
+	public function getFillData($method)
 	{
 		$data = request()->all();
 
-		if ($this->sortable) {
-			$data['position'] = $this->getModel()::query()->orderBy('position', 'desc')->first()->position +1;
+		if ($this->sortable && $method == 'store') {
+			$data['position'] = $this->getModel()::query()->max('position') + 1;
 			// Если есть связь, то сортируем по position desc
 		}
 
@@ -124,7 +145,12 @@ class BaseCrudController extends Controller
 		$query = $this->searchItems($query);
 		$query = $this->sortItems($query);
 
-		return $query->paginate($this->paginateQuantity);
+		if ($this->sortable) {
+			return $query->get();
+		} else {
+			return $query->paginate($this->paginateQuantity);
+		}
+
 	}
 
 	public function getQuery()
@@ -147,7 +173,7 @@ class BaseCrudController extends Controller
 			}
 		}
 
-		return $query->sSorted('desc'); // передан параметр
+		return $query->sSorted('desc');
 	}
 
 	public function filterItems($query)
@@ -199,21 +225,34 @@ class BaseCrudController extends Controller
 		return Str::lower(Str::remove('App\\Models\\', $this->getModel()));
 	}
 
+	public function getViewDir(): string
+	{
+		if ($this->viewDir)
+			return $this->viewDir;
+
+		return Str::plural($this->modelName());
+	}
+
 	protected function getViewPath($method): string
 	{
-		$dir = $this->modelName();
-		return "admin.$dir.$method.$method";
+		return "admin." . $this->getViewDir() . ".$method.$method";
+	}
+
+	public function getRouteDir(): string
+	{
+		if ($this->routesDir)
+			return $this->routesDir;
+		return Str::plural($this->modelName());
 	}
 
 	public function getRouteName($method): string
 	{
-		$dir = $this->modelName();
-		return "admin.$dir.$method";
+		return "admin." . $this->getRouteDir() . ".$method";
 	}
 
 	public function getAction($action): string
 	{
-		return "admin." . $this->modelName() . ".$action";
+		return $this->getRouteName($action);
 	}
 
 	public function dataValidate()
@@ -248,10 +287,28 @@ class BaseCrudController extends Controller
 
 	public function change_structure()
 	{
+		$model = $this->getModel();
+		/** @var BaseModel $modelItem */
+		$modelItem = new $model;
+
+		if ($modelItem->useTrait(NodeTrait::class))
+			return $this->change_structure_nestable($model);
+
+		$this->change_structure_default();
+	}
+
+	public function change_structure_nestable($model)
+	{
+		$model::rebuildTree(request('data'), []);
+		return true;
+	}
+
+	public function change_structure_default()
+	{
 		function changeStruct($data, $parent_id, $model)
 		{
 			foreach ($data as $key => $value) {
-				$position = $key;
+				$position = count($data) - $key;
 				$id = $value['id'];
 
 				$update = [
@@ -273,6 +330,8 @@ class BaseCrudController extends Controller
 
 		changeStruct(request()->data, 0, $this->getModel());
 	}
+
+
 
 }
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\SendEmailController;
 use App\Http\Controllers\Frontend\ServicesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CatalogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,8 @@ Route::post('/send/service', [SendEmailController::class, 'sendEmail'])->name('s
 Route::post('/send/about', [SendEmailController::class, 'sendEmailAbout'])->name('sendEmailAbout');
 
 Route::get('cart', [CartController::class, 'index'])->name('cart.index');
+
+Route::get('catalog', [CatalogController::class, 'index'])->name('catalog.index');
 
 Auth::routes();
 

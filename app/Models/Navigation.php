@@ -35,6 +35,7 @@ use Illuminate\Support\Str;
  * @method static \Illuminate\Database\Eloquent\Builder|Navigation whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Navigation whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Navigation whereUrl($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Navigation> $children
  * @mixin \Eloquent
  */
 class Navigation extends BaseModel

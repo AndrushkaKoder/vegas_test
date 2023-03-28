@@ -135,6 +135,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/orchestra/imagine" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/statamic/stringy" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/image" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kalnoy/nestedset" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/dom-crawler" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

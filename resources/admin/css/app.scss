@@ -18,9 +18,6 @@
 .admin_edit_form{
 	padding: 20px;
 }
-.admin_edit_img{
-	border: 2px solid gray;
-}
 
 .admin_create_alert{
 	position: absolute;
@@ -36,13 +33,14 @@
 }
 
 .admin_edit_img{
+	border: 2px solid gray;
 	position: relative;
 	max-width: 293px;
 	height: 200px;
 	margin: auto;
 }
 .admin_edit_img_item{
-	object-fit: cover;
+	object-fit: contain;
 	width: 100%;
 	height: 100%;
 }
@@ -70,12 +68,12 @@
 	position: fixed;
 	right: 0;
 	z-index: 999;
-	padding: 20px;
-	background: linear-gradient(166deg, rgba(131,58,180,0.9445028011204482) 0%, rgba(228,94,96,1) 49%, rgba(232,96,92,0.9248949579831933) 70%);
+	padding: 10px;
 	bottom: 0;
 	width: 100%;
 	display: flex;
 	justify-content: center;
+	background: #343a40;
 
 	a{
 		margin: 0 10px;
@@ -154,3 +152,6 @@
 .navigationForm{
 }
 
+.products_list li:hover {
+	background: #6c757d;
+}

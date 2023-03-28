@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\SeoTrait;
+use App\Traits\UseTrait;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -17,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
 class BaseModel extends Model
 {
 	use SeoTrait;
+	use UseTrait;
 
 	public function scopeSSorted($query, $order = 'asc')
 	{

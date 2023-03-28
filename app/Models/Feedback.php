@@ -41,6 +41,7 @@ use Illuminate\Support\Facades\Validator;
  * @method static \Illuminate\Database\Eloquent\Builder|Feedback whereUserEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Feedback whereUserName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Feedback whereUserPhone($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Files> $files
  * @mixin \Eloquent
  */
 class Feedback extends BaseModel

@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Navigation;
 use App\Models\Page;
 use App\Models\Service;
+use Illuminate\Support\Arr;
 
 class NavController extends BaseCrudController
 {
 	protected $model = Navigation::class;
 	protected $sortable = true;
+	public $viewDir = 'navigations';
+	public $routesDir = 'navigation';
 
 	public function getQuery()
 	{
@@ -59,16 +62,14 @@ class NavController extends BaseCrudController
 		return $groups;
 	}
 
-	public function getFillData()
+	public function getFillData($method)
 	{
+		$fill = Arr::only(parent::getFillData($method), [
+			'title', 'position'
+		]);
+
 		$object_type = request('bind_to');
 		$object_id = intval(request("bind_to_item.{$object_type}"));
-
-		$fill = request()->only([
-				'title',
-			]) + [
-				'position' => $this->getModel()::max('position') + 1,
-			];
 
 		if (request('url_check') === '0') {
 			$fill += [

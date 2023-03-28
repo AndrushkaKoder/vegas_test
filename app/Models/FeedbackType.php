@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|FeedbackType whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|FeedbackType whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|FeedbackType whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Feedback> $feedback
  * @mixin \Eloquent
  */
 class FeedbackType extends BaseModel

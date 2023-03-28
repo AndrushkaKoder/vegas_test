@@ -32,6 +32,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @method static \Illuminate\Database\Eloquent\Builder|Slider whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Slider whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Slider whereVisible($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Files> $files
+ * @method static \Illuminate\Database\Eloquent\Builder|Slider sHasPhoto()
  * @mixin \Eloquent
  */
 class Slider extends BaseModel

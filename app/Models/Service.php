@@ -40,6 +40,7 @@ use App\Traits\FileTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereUpdatedAt($value)
+// * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Files> $files
  * @mixin \Eloquent
  */
 

@@ -2,6 +2,7 @@
 /public/hot
 /public/assets/frontend/files
 /storage/seed/services/files
+/storage/seed/products/files
 /public/storage
 /storage/*.key
 /vendor
@@ -14,4 +15,5 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+
 
